@@ -1,5 +1,12 @@
 # Task Checklist: Design Refinement & Landing Dashboard
 
+## Footer & Terms of Service Integration
+- [x] Add `"tos"` layout state to `ToolType` in `src/app/page.tsx`
+- [x] Build a beautiful client-side `Terms of Service` page styled with Plus Jakarta Sans and local styling classes
+- [x] Implement a premium page footer containing the copyright notice (ARR), links to "Terms of Service" and "Privacy Policy", and local processing highlights
+- [x] Ensure perfect responsiveness of the footer on mobile and desktop viewports
+- [x] Validate static compilation using `npm run build` with zero errors or warnings
+
 ## Design & Typography Setup
 - [x] Import `Plus Jakarta Sans` and set it as `--font-sans` in `globals.css`
 - [x] Create soft, high-end multi-dimensional dropshadow tokens (`--shadow-premium`, `--shadow-soft`)
