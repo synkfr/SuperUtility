@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import QRCode from "qrcode";
 import styles from "./QrCodeGenerator.module.css";
+import pageStyles from "@/app/page.module.css";
 
 const PRESET_FG_COLORS = ["#000000", "#1e3a8a", "#115e59", "#4c1d95", "#854d0e", "#9f1239"];
 const PRESET_BG_COLORS = ["#ffffff", "#f8fafc", "#f0fdf4", "#fef2f2", "#fffbeb", "#fcf7ff"];
@@ -275,6 +276,31 @@ export default function QrCodeGenerator() {
           )}
         </div>
       </div>
+
+      {/* SEO Technical Footer */}
+      <section className={pageStyles.seoSection} style={{ marginTop: "40px" }} aria-label="QR Code Generator Scannability Science">
+        <h2 className={pageStyles.seoTitle}>
+          <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 3.75 9.375v-4.5ZM3.75 14.625c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5a1.125 1.125 0 0 1-1.125-1.125v-4.5ZM13.5 4.875c0-.621.504-1.125 1.125-1.125h4.5c.621 0 1.125.504 1.125 1.125v4.5c0 .621-.504 1.125-1.125 1.125h-4.5A1.125 1.125 0 0 1 13.5 9.375v-4.5Z" />
+            <path strokeLinecap="round" strokeLinejoin="round" d="M15 15h.008v.008H15V15Zm0 3h.008v.008H15V18Zm-3-3h.008v.008H12V15Zm0 3h.008v.008H12V18Zm-3 3h.008v.008H9V21Zm3 0h.008v.008H12V21ZM15 21h.008v.008H15V21Zm3-6h.008v.008H18V15Zm0 3h.008v.008H18V18Zm0 3h.008v.008H18V21ZM16.5 12h.008v.008H16.5V12Zm-1.5-1.5h.008v.008H15v-.008Zm1.5-.008h.008v.008H16.5v-.008Zm-1.5 3h.008v.008H15V13.5Z" />
+          </svg>
+          QR Code Vector Math & Scannability
+        </h2>
+        <div className={pageStyles.seoGrid}>
+          <div className={pageStyles.seoCard}>
+            <h3 className={pageStyles.seoCardTitle}>How does Reed-Solomon Error Correction work?</h3>
+            <p className={pageStyles.seoCardText}>
+              QR codes utilize Reed-Solomon error correction to restore data if the code is dirty, scratched, or partially obstructed. There are four error correction levels: <code className={pageStyles.seoCode}>L (7%)</code>, <code className={pageStyles.seoCode}>M (15%)</code>, <code className={pageStyles.seoCode}>Q (25%)</code>, and <code className={pageStyles.seoCode}>H (30%)</code>. A higher correction level increases data density and redundancy, adding more pixels but ensuring robust scannability in rugged environments.
+            </p>
+          </div>
+          <div className={pageStyles.seoCard}>
+            <h3 className={pageStyles.seoCardTitle}>Why choose SVG vector graphics over standard PNG?</h3>
+            <p className={pageStyles.seoCardText}>
+              Standard raster graphics (like PNG) can become pixelated or blurry when scaled, causing scanning failures. Vector graphics (SVG) are rendered mathematically as XML coordinates, allowing infinite scaling with crisp borders and perfect pixel alignments. SVGs are ideal for large-scale print advertisements, architectural billboards, and premium user interface elements.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

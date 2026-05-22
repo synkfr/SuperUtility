@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import styles from "./UuidGenerator.module.css";
+import pageStyles from "@/app/page.module.css";
 
 // RFC 4122 UUID v4 Cryptographically Secure Generator
 const generateUuidV4 = (): string => {
@@ -253,6 +254,30 @@ export default function UuidGenerator() {
           </div>
         </div>
       </div>
+
+      {/* SEO Technical Footer */}
+      <section className={pageStyles.seoSection} style={{ marginTop: "40px" }} aria-label="UUID Generator Specifications">
+        <h2 className={pageStyles.seoTitle}>
+          <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M14.25 9.75 16.5 12l-2.25 2.25m-4.5 0L7.5 12l2.25-2.25M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z" />
+          </svg>
+          UUID Specifications & Collision Math
+        </h2>
+        <div className={pageStyles.seoGrid}>
+          <div className={pageStyles.seoCard}>
+            <h3 className={pageStyles.seoCardTitle}>What is the difference between UUID v1 and v4?</h3>
+            <p className={pageStyles.seoCardText}>
+              UUID <code className={pageStyles.seoCode}>v1</code> is a time-based identifier that merges a high-resolution 60-bit Gregorian timestamp, clock sequence, and a 48-bit spatial node identifier (usually the network hardware MAC address or random equivalent). UUID <code className={pageStyles.seoCode}>v4</code> is a fully random identifier that uses cryptographically secure hardware entropy to populate 122 bits of random state. v4 is widely preferred for database primary keys because it leaks zero network or temporal metadata.
+            </p>
+          </div>
+          <div className={pageStyles.seoCard}>
+            <h3 className={pageStyles.seoCardTitle}>What is the probability of a UUID v4 collision?</h3>
+            <p className={pageStyles.seoCardText}>
+              UUID v4 yields 2¹²² (or approximately 5.3 × 10³⁶) possible unique states. The collision math is governed by the Birthday Paradox. To have a 50% probability of a single duplicate collision, you would need to generate **125 billion billion** (or 2.7 × 10¹⁸) identifiers. It is mathematically virtually impossible to encounter a duplicate in production systems.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

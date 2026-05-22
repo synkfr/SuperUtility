@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import CryptoJS from "crypto-js";
 import styles from "./HashGenerator.module.css";
+import pageStyles from "@/app/page.module.css";
 
 export default function HashGenerator() {
   const [tab, setTab] = useState<"text" | "file">("text");
@@ -363,6 +364,30 @@ export default function HashGenerator() {
           )}
         </div>
       )}
+
+      {/* SEO Technical Footer */}
+      <section className={pageStyles.seoSection} style={{ marginTop: "40px" }} aria-label="Cryptographic Hash Generator Technical Guide">
+        <h2 className={pageStyles.seoTitle}>
+          <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3Z" />
+          </svg>
+          Cryptographic Hash Functions & Algorithmic Security
+        </h2>
+        <div className={pageStyles.seoGrid}>
+          <div className={pageStyles.seoCard}>
+            <h3 className={pageStyles.seoCardTitle}>What is a cryptographic hash function?</h3>
+            <p className={pageStyles.seoCardText}>
+              A cryptographic hash function is a one-way mathematical algorithm that takes input data of any size and projects it onto a fixed-size bit signature (digest). A secure hash is pre-image resistant (computationally impossible to reverse the input from the output) and collision-resistant (no two different inputs produce the same signature). Hashing is critical for password storage, file verification, and blockchain structures.
+            </p>
+          </div>
+          <div className={pageStyles.seoCard}>
+            <h3 className={pageStyles.seoCardTitle}>MD5 vs SHA-1 vs SHA-256 vs SHA-512: Which is safe?</h3>
+            <p className={pageStyles.seoCardText}>
+              Algorithms like <code className={pageStyles.seoCode}>MD5</code> (128-bit) and <code className={pageStyles.seoCode}>SHA-1</code> (160-bit) are theoretically broken and suffer from mathematical collision vulnerabilities; they should only be used for fast checksum speed checks, never for security. <code className={pageStyles.seoCode}>SHA-256</code> (256-bit) and <code className={pageStyles.seoCode}>SHA-512</code> (512-bit) are modern, secure standard cryptosystems that remain mathematically secure against brute-force attacks and collisions.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
