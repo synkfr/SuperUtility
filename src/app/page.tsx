@@ -275,6 +275,42 @@ export default function Home() {
                 </div>
               ))}
             </div>
+
+            {/* SEO Technical Knowledge Base & FAQs */}
+            <section className={styles.seoSection} aria-label="Security and Technical Specifications">
+              <h2 className={styles.seoTitle}>
+                <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+                </svg>
+                Developer Knowledge Base & Technical FAQ
+              </h2>
+              <div className={styles.seoGrid}>
+                <div className={styles.seoCard}>
+                  <h3 className={styles.seoCardTitle}>Is my sensitive data secure with SuperUtility?</h3>
+                  <p className={styles.seoCardText}>
+                    Absolutely. SuperUtility operates entirely client-side. None of your data, passwords, file streams, or text strings are ever transmitted to any external server. All computations happen locally on your hardware, inside your browser's security sandbox.
+                  </p>
+                </div>
+                <div className={styles.seoCard}>
+                  <h3 className={styles.seoCardTitle}>Are the cryptographic generators algorithmically compliant?</h3>
+                  <p className={styles.seoCardText}>
+                    Yes. Our UUID generator adheres perfectly to <code className={styles.seoCode}>RFC 4122</code> for v1 (timestamp/MAC architecture) and v4 (fully random cryptographic blocks). All hash calculations (SHA-256, MD5) execute local cryptographic digests using pure, verified local JavaScript implementations.
+                  </p>
+                </div>
+                <div className={styles.seoCard}>
+                  <h3 className={styles.seoCardTitle}>How does the offline-first mode work?</h3>
+                  <p className={styles.seoCardText}>
+                    Once SuperUtility is loaded, all application code runs locally. You can disconnect your internet connection entirely, and every generator and hashing algorithm will continue working flawlessly without any network lookups.
+                  </p>
+                </div>
+                <div className={styles.seoCard}>
+                  <h3 className={styles.seoCardTitle}>Does it prevent predictable randomness bias?</h3>
+                  <p className={styles.seoCardText}>
+                    Yes. Standard software libraries often suffer from modulo bias when mapping numbers to specific ranges. SuperUtility mitigates this by utilizing custom integer-mapping wrappers around browser hardware entropy sources, and implementing pure <code className={styles.seoCode}>Fisher-Yates</code> shuffling algorithms for random picker raffle sweeps.
+                  </p>
+                </div>
+              </div>
+            </section>
           </div>
         ) : (
           <div className={styles.contentWrapper} key={currentTool?.id}>
