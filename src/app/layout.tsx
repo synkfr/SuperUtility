@@ -92,26 +92,34 @@ export default function RootLayout({
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Is my data secure on SuperUtility?",
+          "name": "Is my private information safe here?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Absolutely. SuperUtility operates entirely client-side. None of your data, passwords, file streams, or text strings are ever transmitted to any external server. All computations happen locally on your hardware, inside your browser's security sandbox."
+            "text": "Yes, absolutely! SuperUtility runs entirely inside your web browser. None of your passwords, files, or text inputs are ever sent to a server, saved online, or shared with anyone. Everything stays 100% private on your own device."
           }
         },
         {
           "@type": "Question",
-          "name": "How does the offline-first mode work?",
+          "name": "How are passwords and random keys generated?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Once SuperUtility is loaded, all application code runs locally. You can disconnect your internet connection entirely, and every generator and hashing algorithm will continue working flawlessly."
+            "text": "We use highly secure, device-level random generation (using your browser's built-in cryptographic engine). This ensures that every password or unique key (UUID) you generate is completely random, fair, and virtually impossible to guess."
           }
         },
         {
           "@type": "Question",
-          "name": "Does SuperUtility use cryptographically secure random values?",
+          "name": "Can I use this app without an internet connection?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Instead of standard pseudo-random number generators (like Math.random) which are predictable, SuperUtility leverages the browser's native Web Cryptography API (window.crypto.getRandomValues) to tap into hardware-level entropy for high-security key and password generation."
+            "text": "Yes! Once you open the website, the tools are saved directly in your browser. You can turn off your internet or Wi-Fi completely, and all the tools (like the password, QR, and hash generators) will still work perfectly offline."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are the random picks and numbers truly fair?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, they are 100% fair. We use advanced, balanced mathematical algorithms (like the Fisher-Yates shuffle) to make sure every random picker item or random number has an exactly equal chance of being chosen, with zero bias or repeating patterns."
           }
         }
       ]

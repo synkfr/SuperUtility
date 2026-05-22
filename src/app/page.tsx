@@ -226,10 +226,10 @@ export default function Home() {
           {activeTool === "home" ? (
             <div className={styles.homeContainer}>
               <div className={styles.heroCard}>
-                <span className={styles.heroLabel}>Private Local Toolbox</span>
-                <h2 className={styles.heroTitle}>Essential utilities.<br />Meticulously designed.</h2>
+                <span className={styles.heroLabel}>100% Private & Free Tools</span>
+                <h2 className={styles.heroTitle}>Your daily helper tools.<br />Private. Secure. Simple.</h2>
                 <p className={styles.heroDesc}>
-                  SuperUtility offers a curated collection of secure, real-time developer instruments. Everything is compiled to execute in-browser entirely on your hardware. Zero network trackers, zero server handshakes, and absolute data privacy.
+                  SuperUtility is a collection of simple, fast, and completely private tools for your everyday tasks. Generate strong passwords, create custom QR codes, pick random items, and more—all without your data ever leaving your device. Everything runs directly in your web browser, keeping you completely safe.
                 </p>
                 
                 <div className={styles.heroFeatures}>
@@ -237,19 +237,19 @@ export default function Home() {
                     <svg className={styles.featureIcon} fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
-                    <span>100% Offline Capable</span>
+                    <span>Works Offline (No Internet Needed)</span>
                   </div>
                   <div className={styles.featureItem}>
                     <svg className={styles.featureIcon} fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
-                    <span>No Registration / Free</span>
+                    <span>100% Free & No Sign-ups</span>
                   </div>
                   <div className={styles.featureItem}>
                     <svg className={styles.featureIcon} fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
-                    <span>Hardware Entropy Cryptography</span>
+                    <span>Top-Tier Device-Level Security</span>
                   </div>
                 </div>
               </div>
@@ -279,37 +279,37 @@ export default function Home() {
                 ))}
               </div>
 
-              {/* SEO Technical Knowledge Base & FAQs */}
-              <section className={styles.seoSection} aria-label="Security and Technical Specifications">
+              {/* Easy to Read Frequently Asked Questions (FAQ) */}
+              <section className={styles.seoSection} aria-label="Frequently Asked Questions">
                 <h2 className={styles.seoTitle}>
                   <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
                   </svg>
-                  Developer Knowledge Base & Technical FAQ
+                  Frequently Asked Questions (FAQ)
                 </h2>
                 <div className={styles.seoGrid}>
                   <div className={styles.seoCard}>
-                    <h3 className={styles.seoCardTitle}>Is my sensitive data secure with SuperUtility?</h3>
+                    <h3 className={styles.seoCardTitle}>Is my private information safe here?</h3>
                     <p className={styles.seoCardText}>
-                      Absolutely. SuperUtility operates entirely client-side. None of your data, passwords, file streams, or text strings are ever transmitted to any external server. All computations happen locally on your hardware, inside your browser's security sandbox.
+                      Yes, absolutely! SuperUtility runs entirely inside your web browser. None of your passwords, files, or text inputs are ever sent to a server, saved online, or shared with anyone. Everything stays 100% private on your own device.
                     </p>
                   </div>
                   <div className={styles.seoCard}>
-                    <h3 className={styles.seoCardTitle}>Are the cryptographic generators algorithmically compliant?</h3>
+                    <h3 className={styles.seoCardTitle}>How are passwords and random keys generated?</h3>
                     <p className={styles.seoCardText}>
-                      Yes. Our UUID generator adheres perfectly to <code className={styles.seoCode}>RFC 4122</code> for v1 (timestamp/MAC architecture) and v4 (fully random cryptographic blocks). All hash calculations (SHA-256, MD5) execute local cryptographic digests using pure, verified local JavaScript implementations.
+                      We use highly secure, device-level random generation (using your browser's built-in cryptographic engine). This ensures that every password or unique key (<code className={styles.seoCode}>UUID</code>) you generate is completely random, fair, and virtually impossible to guess.
                     </p>
                   </div>
                   <div className={styles.seoCard}>
-                    <h3 className={styles.seoCardTitle}>How does the offline-first mode work?</h3>
+                    <h3 className={styles.seoCardTitle}>Can I use this app without an internet connection?</h3>
                     <p className={styles.seoCardText}>
-                      Once SuperUtility is loaded, all application code runs locally. You can disconnect your internet connection entirely, and every generator and hashing algorithm will continue working flawlessly without any network lookups.
+                      Yes! Once you open the website, the tools are saved directly in your browser. You can turn off your internet or Wi-Fi completely, and all the tools (like the password, QR, and hash generators) will still work perfectly offline.
                     </p>
                   </div>
                   <div className={styles.seoCard}>
-                    <h3 className={styles.seoCardTitle}>Does it prevent predictable randomness bias?</h3>
+                    <h3 className={styles.seoCardTitle}>Are the random picks and numbers truly fair?</h3>
                     <p className={styles.seoCardText}>
-                      Yes. Standard software libraries often suffer from modulo bias when mapping numbers to specific ranges. SuperUtility mitigates this by utilizing custom integer-mapping wrappers around browser hardware entropy sources, and implementing pure <code className={styles.seoCode}>Fisher-Yates</code> shuffling algorithms for random picker raffle sweeps.
+                      Yes, they are 100% fair. We use advanced, balanced mathematical algorithms (like the <code className={styles.seoCode}>Fisher-Yates</code> shuffle) to make sure every random picker item or random number has an exactly equal chance of being chosen, with zero bias or repeating patterns.
                     </p>
                   </div>
                 </div>
