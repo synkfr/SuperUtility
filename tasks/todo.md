@@ -7,6 +7,12 @@
 - [x] Ensure perfect responsiveness of the footer on mobile and desktop viewports
 - [x] Validate static compilation using `npm run build` with zero errors or warnings
 
+## Simplify Dashboard & FAQ Copy
+- [x] Reword Home Hero descriptions to be friendly, clear, and easy to understand for everyday users
+- [x] Simplify the homepage trust badges/labels to highlight benefits clearly (e.g., works offline, no registration)
+- [x] Refactor the Developer Knowledge Base & Technical FAQ into clear, welcoming questions and answers
+- [x] Validate static compilation to confirm zero warnings or errors
+
 ## Design & Typography Setup
 - [x] Import `Plus Jakarta Sans` and set it as `--font-sans` in `globals.css`
 - [x] Create soft, high-end multi-dimensional dropshadow tokens (`--shadow-premium`, `--shadow-soft`)
