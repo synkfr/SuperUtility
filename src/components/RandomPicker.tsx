@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import styles from "./RandomPicker.module.css";
+import pageStyles from "@/app/page.module.css";
 
 const PRESETS = {
   yesNo: "Yes\nNo",
@@ -230,6 +231,30 @@ export default function RandomPicker() {
           )}
         </div>
       </div>
+
+      {/* SEO Technical Footer */}
+      <section className={pageStyles.seoSection} style={{ marginTop: "40px" }} aria-label="Random Picker Math Specifications">
+        <h2 className={pageStyles.seoTitle}>
+          <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 0 0-3.7-3.7 48.678 48.678 0 0 0-7.324 0 4.006 4.006 0 0 0-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3-3-3M3 12c0 1.232.046 2.453.138 3.662a4.006 4.006 0 0 0 3.7 3.7 48.656 48.656 0 0 0 7.324 0 4.006 4.006 0 0 0 3.7-3.7c.017-.22.032-.441.046-.662M3 12l-3 3m3-3 3 3" />
+          </svg>
+          Shuffle Mathematics & Unbiased Distribution
+        </h2>
+        <div className={pageStyles.seoGrid}>
+          <div className={pageStyles.seoCard}>
+            <h3 className={pageStyles.seoCardTitle}>What is the Fisher-Yates (Knuth) Shuffle?</h3>
+            <p className={pageStyles.seoCardText}>
+              The Fisher-Yates (or Knuth) Shuffle is a mathematical algorithm used to generate a random permutation of a finite sequence. It works in-place by iterating through the array in reverse, swapping the current element with a randomly selected element from the remaining unshuffled portion. This guarantees a time complexity of O(n) and auxiliary space of O(1), ensuring every permutation has exactly equal probability.
+            </p>
+          </div>
+          <div className={pageStyles.seoCard}>
+            <h3 className={pageStyles.seoCardTitle}>How does standard software randomization bias work?</h3>
+            <p className={pageStyles.seoCardText}>
+              Standard JS array shuffling like <code className={pageStyles.seoCode}>list.sort(() =&gt; Math.random() - 0.5)</code> is flawed. It does not provide uniform distributions because sorting comparisons are highly dependent on the browser's sorting engine (e.g. V8's Timsort), leading to a significant statistical bias where some elements are favored. SuperUtility uses unbiased index projections to ensure perfect mathematical distribution.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

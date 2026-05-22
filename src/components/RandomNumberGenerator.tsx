@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import styles from "./RandomNumberGenerator.module.css";
+import pageStyles from "@/app/page.module.css";
 
 export default function RandomNumberGenerator() {
   const [min, setMin] = useState(1);
@@ -297,6 +298,30 @@ export default function RandomNumberGenerator() {
           )}
         </div>
       </div>
+
+      {/* SEO Technical Footer */}
+      <section className={pageStyles.seoSection} style={{ marginTop: "40px" }} aria-label="Random Number Generator Technical Guide">
+        <h2 className={pageStyles.seoTitle}>
+          <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M3 7.5L7.5 3m0 0L12 7.5M7.5 3v13.5m13.5 0L16.5 21m0 0L12 16.5m4.5 4.5V7.5" />
+          </svg>
+          Unbiased Random Number Generation & CSPRNG Science
+        </h2>
+        <div className={pageStyles.seoGrid}>
+          <div className={pageStyles.seoCard}>
+            <h3 className={pageStyles.seoCardTitle}>PRNG vs CSPRNG: What is the security difference?</h3>
+            <p className={pageStyles.seoCardText}>
+              Standard random functions (like <code className={pageStyles.seoCode}>Math.random()</code>) are Pseudo-Random Number Generators (PRNGs) based on arithmetic formulas. They are deterministic: if an attacker gains the internal state, they can predict all future sequences. A Cryptographically Secure Pseudo-Random Number Generator (CSPRNG), such as <code className={pageStyles.seoCode}>window.crypto.getRandomValues</code>, integrates hardware entropy inputs (mouse movements, keystroke timings, CPU thermal noise) to ensure absolute unpredictability.
+            </p>
+          </div>
+          <div className={pageStyles.seoCard}>
+            <h3 className={pageStyles.seoCardTitle}>How are random fractions mapped to custom intervals without bias?</h3>
+            <p className={pageStyles.seoCardText}>
+              Simple calculations like <code className={pageStyles.seoCode}>Math.floor(rand * range)</code> can lead to modulo bias where certain numbers in a set have a slightly higher probability of selection. SuperUtility resolves this by scaling random 32-bit unsigned integers from standard OS hardware entropy onto normal decimals and verifying that they map cleanly inside the targeted interval.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

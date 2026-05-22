@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from "react";
 import styles from "./PasswordGenerator.module.css";
+import pageStyles from "@/app/page.module.css";
 
 const WORD_LIST = [
   "apple", "banana", "cherry", "dragon", "eagle", "forest", "gravity", "harbor", "island", "jungle",
@@ -379,6 +380,30 @@ export default function PasswordGenerator() {
           </div>
         )}
       </div>
+
+      {/* SEO Technical Footer */}
+      <section className={pageStyles.seoSection} style={{ marginTop: "40px" }} aria-label="Password Generator Security Science">
+        <h2 className={pageStyles.seoTitle}>
+          <svg width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+          </svg>
+          Password Entropy & Security Science
+        </h2>
+        <div className={pageStyles.seoGrid}>
+          <div className={pageStyles.seoCard}>
+            <h3 className={pageStyles.seoCardTitle}>How is cryptographic entropy calculated?</h3>
+            <p className={pageStyles.seoCardText}>
+              Entropy measures a password's unpredictable strength in bits. It is calculated using the pool size <code className={pageStyles.seoCode}>R</code> and length <code className={pageStyles.seoCode}>L</code> with the formula: <code className={pageStyles.seoCode}>E = L × log₂R</code>. For memorable passphrases, entropy is based on word count <code className={pageStyles.seoCode}>W</code> and vocabulary list size <code className={pageStyles.seoCode}>N</code>: <code className={pageStyles.seoCode}>E = W × log₂N</code>. Passwords with ≥ 80 bits of entropy are highly resilient to brute-force attacks.
+            </p>
+          </div>
+          <div className={pageStyles.seoCard}>
+            <h3 className={pageStyles.seoCardTitle}>What makes this generator cryptographically secure?</h3>
+            <p className={pageStyles.seoCardText}>
+              Unlike standard pseudo-random algorithms like <code className={pageStyles.seoCode}>Math.random()</code>, which are mathematically predictable, SuperUtility leverages the HTML5 <code className={pageStyles.seoCode}>window.crypto.getRandomValues</code> API. This queries your operating system's hardware entropy pool, guaranteeing that generated strings are truly unique and safe for production keys.
+            </p>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
