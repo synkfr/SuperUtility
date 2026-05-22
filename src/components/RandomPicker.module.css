@@ -1,0 +1,310 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.workspace {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (min-width: 992px) {
+  .workspace {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+}
+
+/* Left panel options */
+.settingsPanel {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  box-shadow: var(--shadow-premium);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sectionTitle {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--lime-600);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.presetsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.presetChipBtn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-dark);
+  color: var(--text-secondary);
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.presetChipBtn:hover {
+  border-color: var(--lime-500);
+  color: var(--lime-700);
+  background: var(--lime-50);
+  transform: translateY(-1px);
+}
+
+.controlGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.controlLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.parsedCount {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.textInput {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  min-height: 120px;
+  resize: vertical;
+  width: 100%;
+  transition: all var(--transition-fast);
+}
+
+.textInput:focus {
+  background: var(--bg-surface);
+  border-color: var(--lime-500);
+  box-shadow: 0 0 0 3px rgba(132, 204, 22, 0.15);
+  outline: none;
+}
+
+.sliderContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sliderValue {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  background: var(--lime-50);
+  color: var(--lime-700);
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  min-width: 44px;
+  text-align: center;
+}
+
+.optionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  user-select: none;
+  font-weight: 500;
+  transition: color var(--transition-fast);
+}
+
+.checkboxLabel:hover {
+  color: var(--text-primary);
+}
+
+.checkboxLabel input {
+  width: 18px;
+  height: 18px;
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-dark);
+  color: var(--text-secondary);
+  padding: 12px 18px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btnPrimary {
+  background: var(--lime-500);
+  border-color: var(--lime-500);
+  color: var(--text-inverted);
+  box-shadow: var(--shadow-lime);
+}
+
+.btnPrimary:hover:not(:disabled) {
+  background: var(--lime-600);
+  border-color: var(--lime-600);
+  color: var(--text-inverted);
+  transform: translateY(-1px);
+}
+
+/* Right display panel options */
+.displayPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.revealCard {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  box-shadow: var(--shadow-premium);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 240px;
+  text-align: center;
+}
+
+.pickingAnimationBox {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--lime-700);
+  animation: cycleAnimation 0.12s infinite alternate;
+}
+
+@keyframes cycleAnimation {
+  from { transform: scale(0.96); opacity: 0.85; }
+  to { transform: scale(1.02); opacity: 1; }
+}
+
+.winnerBox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.winnerTitle {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--lime-600);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.winnersList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.winnerChip {
+  background: var(--lime-50);
+  border: 1px solid rgba(132, 204, 22, 0.2);
+  color: var(--lime-700);
+  font-size: 1.4rem;
+  font-weight: 800;
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md), var(--shadow-lime);
+  animation: bounceIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes bounceIn {
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-muted);
+}
+
+.historyCard {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  box-shadow: var(--shadow-premium);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.historyList {
+  display: flex;
+  flex-direction: column;
+  max-height: 200px;
+  overflow-y: auto;
+  gap: 8px;
+}
+
+.historyItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-secondary);
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-dark);
+}
+
+.historyVal {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  word-break: break-all;
+}
+
+.historyTime {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
