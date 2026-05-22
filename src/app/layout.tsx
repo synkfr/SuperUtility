@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://superutility.pages.dev"),
+  metadataBase: new URL("https://superutility.xyz"),
   title: "SuperUtility — Secure, Minimalist & Modern Developer Tools",
   description: "A gorgeous suite of 100% offline-first utility tools including a Secure Password Generator, vector QR Code Generator, bulk UUID v1/v4 Generator, cryptographic Hash Generator (MD5, SHA-256), list Random Picker, and custom range Number Generator. Free, fast, and secure.",
   keywords: [
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "developer toolbox",
     "privacy focused tools"
   ],
-  authors: [{ name: "SuperUtility", url: "https://superutility.pages.dev" }],
+  authors: [{ name: "SuperUtility", url: "https://superutility.xyz" }],
   creator: "SuperUtility",
   publisher: "SuperUtility",
   robots: {
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://superutility.pages.dev",
+    url: "https://superutility.xyz",
     title: "SuperUtility — Secure, Minimalist & Modern Developer Tools",
     description: "A gorgeous, privacy-first suite of offline-first utility tools for developers. Password gen, QR code vector exporter, UUID bulk gen, file hashing, and randomizers. 100% local browser execution.",
     siteName: "SuperUtility",

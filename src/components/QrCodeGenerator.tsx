@@ -9,7 +9,7 @@ const PRESET_FG_COLORS = ["#000000", "#1e3a8a", "#115e59", "#4c1d95", "#854d0e",
 const PRESET_BG_COLORS = ["#ffffff", "#f8fafc", "#f0fdf4", "#fef2f2", "#fffbeb", "#fcf7ff"];
 
 export default function QrCodeGenerator() {
-  const [text, setText] = useState("https://superutility.dev");
+  const [text, setText] = useState("https://superutility.xyz");
   const [size, setSize] = useState(256);
   const [fgColor, setFgColor] = useState("#000000");
   const [bgColor, setBgColor] = useState("#ffffff");
