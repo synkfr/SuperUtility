@@ -131,10 +131,12 @@
 - [x] Fix flexbox nested scrolling and height shrinking overflow clipping bug in ImageEditor.module.css (.controlsScrollArea and .thumbnailScrollArea).
 - [x] Verify static compiles successfully with `npm run build` and test complete batch processing offline.
 
-## Phase 7 — Image Editor Height & Scrolling Fixes
+## Phase 7 — Image Editor & PDF Suite Compilation Fixes
 - [x] Address nested accordion overflow in ImageEditor controls panel.
 - [x] Configure independent, bounded controlsScrollArea max-height and scrolling styles on mobile, tablet, and desktop viewports.
 - [x] Ensure bottom Master Action button card is always visible and never clipped or pushed out of view.
+- [x] Fix image embedding failures in PDF compiler by auto-converting non-standard images (WebP, GIF, AVIF, SVG) to standard JPEG bytes via Canvas before embedding.
+- [x] Revamp PDF compilation error reporting to display exact, precise context (e.g. password blocks) instead of misleading encryption warnings.
 - [x] Validate complete static bundle compile with Next.js compiler.
 
 

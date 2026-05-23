@@ -325,6 +325,38 @@ export default function PdfEditor({ defaultFocusSection = "merge" }: PdfEditorPr
     setDraggedIndex(null);
   };
 
+  // Helper to convert any browser-renderable image (WebP, GIF, PNG, AVIF, SVG) into standard JPEG Uint8Array bytes
+  const getJpgBytesFromImage = (imgUrl: string): Promise<Uint8Array> => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement("canvas");
+        canvas.width = img.width || 800;
+        canvas.height = img.height || 600;
+        const ctx = canvas.getContext("2d");
+        if (!ctx) {
+          reject(new Error("Canvas 2D context failed to construct"));
+          return;
+        }
+        ctx.drawImage(img, 0, 0);
+        canvas.toBlob((blob) => {
+          if (!blob) {
+            reject(new Error("Canvas to JPEG blob conversion failed"));
+            return;
+          }
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            resolve(new Uint8Array(reader.result as ArrayBuffer));
+          };
+          reader.onerror = () => reject(new Error("FileReader buffer read failed"));
+          reader.readAsArrayBuffer(blob);
+        }, "image/jpeg", 0.9);
+      };
+      img.onerror = () => reject(new Error("Failed to load source image viewport"));
+      img.src = imgUrl;
+    });
+  };
+
   // PDF Compilation & Download triggers
   const compileAndDownloadPdf = async () => {
     if (pagesList.length === 0) {
@@ -407,11 +439,25 @@ export default function PdfEditor({ defaultFocusSection = "merge" }: PdfEditorPr
           const page = compiledPdf.addPage([595.28, 841.89]); // A4 Size standard bounds
           
           let img;
-          const isPng = file.name.endsWith(".png");
-          if (isPng) {
-            img = await compiledPdf.embedPng(file.originalBytes);
-          } else {
-            img = await compiledPdf.embedJpg(file.originalBytes);
+          try {
+            // Try embedding directly first if it's PNG or JPG
+            if (file.name.toLowerCase().endsWith(".png")) {
+              img = await compiledPdf.embedPng(file.originalBytes);
+            } else if (file.name.toLowerCase().endsWith(".jpg") || file.name.toLowerCase().endsWith(".jpeg")) {
+              img = await compiledPdf.embedJpg(file.originalBytes);
+            } else {
+              // Convert WebP/GIF/AVIF/etc. to standard JPG bytes first
+              const jpgBytes = await getJpgBytesFromImage(pageItem.previewUrl);
+              img = await compiledPdf.embedJpg(jpgBytes);
+            }
+          } catch (embedErr) {
+            // Fallback: convert to JPG bytes using canvas if direct load failed
+            try {
+              const jpgBytes = await getJpgBytesFromImage(pageItem.previewUrl);
+              img = await compiledPdf.embedJpg(jpgBytes);
+            } catch (fallbackErr) {
+              throw new Error(`Failed to load and convert image ${file.name}: ${fallbackErr instanceof Error ? fallbackErr.message : String(fallbackErr)}`);
+            }
           }
 
           // Fit image to A4 dimensions
@@ -460,8 +506,13 @@ export default function PdfEditor({ defaultFocusSection = "merge" }: PdfEditorPr
 
       setProgress(100);
     } catch (err) {
-      console.error("Failed to merge PDF documents", err);
-      alert("Encryption error: Could not encrypt PDF. Check parameters.");
+      console.error("Failed to compile PDF document", err);
+      const msg = err instanceof Error ? err.message : String(err);
+      if (msg.includes("encrypted") || msg.includes("decrypt") || msg.includes("password")) {
+        alert("Security Error: Could not compile PDF. One or more source PDFs are encrypted or password protected. Please remove protection before merging.");
+      } else {
+        alert(`Failed to compile PDF document: ${msg}. Please check your files and parameters.`);
+      }
     }
 
     setIsProcessing(false);
