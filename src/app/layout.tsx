@@ -139,6 +139,11 @@ export default function RootLayout({
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6504674181065992"
           crossOrigin="anonymous"
         />
+        <script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="b120a0f2-fae8-4ad1-8fd4-a56527d8019d"
+        />
       </head>
       <body>
         <DashboardLayout>
