@@ -50,6 +50,11 @@ export const metadata: Metadata = {
       },
     ],
   },
+  icons: {
+    icon: "/logo.png",
+    shortcut: "/logo.png",
+    apple: "/apple-touch-icon.png",
+  },
   twitter: {
     card: "summary_large_image",
     title: "SuperUtility — Secure, Minimalist & Modern Developer Tools",
