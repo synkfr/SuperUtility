@@ -128,7 +128,9 @@
 - [x] Implement the Canvas-based pipeline, asynchronous sequential processing queue, and JSZip archive bundle exporter.
 - [x] Create the new `/tools/image-editor` route and re-route pages `/tools/image-compressor`, `/tools/image-resizer`, and `/tools/image-converter` to render the unified editor.
 - [x] Ensure full responsiveness and accessibility of the new panel layouts on desktop and mobile viewports.
+- [x] Fix flexbox nested scrolling and height shrinking overflow clipping bug in ImageEditor.module.css (.controlsScrollArea and .thumbnailScrollArea).
 - [x] Verify static compiles successfully with `npm run build` and test complete batch processing offline.
+
 
 ## Review & Results
 

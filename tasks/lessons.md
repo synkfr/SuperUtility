@@ -16,3 +16,10 @@ This file tracks layout, design, and coding patterns discovered during pairs dev
 
 - **Problem**: Unescaped raw `<` and `>` characters inside JSX paragraph or description texts are parsed as unclosed XML tags, causing compilation crashes in Turbopack.
 - **Solution**: Always represent raw HTML symbol signs as literal string curly braces `{"<"}` and `{">"}` or standard entity references to prevent compilation issues.
+
+## 3. Flexbox Nested Scrolling & Height Shrinking
+
+- **Problem**: When a scrollable flex item (e.g. `overflow-y: auto; flex: 1;`) is inside a parent flexbox container with a restricted height (e.g. `max-height` or standard layout limits), opening/expanding options inside the scroll container causes the element to expand indefinitely rather than scrolling. This pushes other elements (like bottom action button cards) out of parent bounds, rendering them half or fully hidden.
+- **Root Cause**: By default, flex items have `min-height: auto` (which resolves to `min-content`). Under CSS flexbox rules, this prevents the flex item from shrinking below the height of its children, which bypasses `flex: 1` compression and overflows the parent container.
+- **Elegant Solution**: Always specify `min-height: 0` (or `min-width: 0` for horizontal flex) on the scrollable flex items (e.g. `.controlsScrollArea`, `.thumbnailScrollArea`) inside flexbox containers under scrolling breakpoints. This forces the browser to shrink the flex item to fit the remaining space and correctly triggers the `overflow-y: auto` scrollbar rather than pushing other flex children out of viewport bounds.
+
