@@ -5,7 +5,7 @@ import DashboardLayout from "@/components/DashboardLayout";
 export const metadata: Metadata = {
   metadataBase: new URL("https://superutility.xyz"),
   title: "SuperUtility — Secure, Minimalist & Modern Developer Tools",
-  description: "A gorgeous suite of 100% offline-first utility tools including a Secure Password Generator, vector QR Code Generator, bulk UUID v1/v4 Generator, cryptographic Hash Generator (MD5, SHA-256), list Random Picker, and custom range Number Generator. Free, fast, and secure.",
+  description: "Supercharge your workflow with SuperUtility: a gorgeous, 100% offline developer toolbox. Generate secure passwords, vector QR codes, bulk UUIDs, and hashes locally.",
   keywords: [
     "superutility",
     "offline developer tools",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://superutility.xyz",
     title: "SuperUtility — Secure, Minimalist & Modern Developer Tools",
-    description: "A gorgeous, privacy-first suite of offline-first utility tools for developers. Password gen, QR code vector exporter, UUID bulk gen, file hashing, and randomizers. 100% local browser execution.",
+    description: "Supercharge your workflow with SuperUtility: a gorgeous, 100% offline developer toolbox. Generate secure passwords, vector QR codes, bulk UUIDs, and hashes locally.",
     siteName: "SuperUtility",
     images: [
       {
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "SuperUtility — Secure, Minimalist & Modern Developer Tools",
-    description: "Privacy-focused developer utilities compiled to run entirely on your hardware. Zero data ever leaves your device.",
+    description: "Supercharge your workflow with SuperUtility: a gorgeous, 100% offline developer toolbox. Generate secure passwords, vector QR codes, bulk UUIDs, and hashes locally.",
     images: ["/logo.png"],
   },
 };
