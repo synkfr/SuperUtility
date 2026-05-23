@@ -386,6 +386,77 @@ export default function DashboardLayout({
             </svg>
           ),
         },
+        {
+          id: "currency-converter",
+          href: "/tools/currency-converter",
+          name: "Currency Converter",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          ),
+        },
+      ],
+    },
+    {
+      id: "images",
+      name: "Image Tools",
+      icon: (
+        <svg className={styles.folderIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+        </svg>
+      ),
+      items: [
+        {
+          id: "image-to-base64",
+          href: "/tools/image-to-base64",
+          name: "Image to Base64",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          ),
+        },
+        {
+          id: "image-compressor",
+          href: "/tools/image-compressor",
+          name: "Image Compressor",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          ),
+        },
+        {
+          id: "image-resizer",
+          href: "/tools/image-resizer",
+          name: "Image Resizer",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5" />
+            </svg>
+          ),
+        },
+        {
+          id: "image-converter",
+          href: "/tools/image-converter",
+          name: "Image Converter",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+            </svg>
+          ),
+        },
+        {
+          id: "color-picker-image",
+          href: "/tools/color-picker-image",
+          name: "Color Picker",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
+            </svg>
+          ),
+        },
       ],
     },
   ];
@@ -399,6 +470,7 @@ export default function DashboardLayout({
       text: true,
       developer: true,
       calculators: true,
+      images: true,
     };
     return initial;
   });
@@ -495,6 +567,7 @@ export default function DashboardLayout({
                 text: true,
                 developer: true,
                 calculators: true,
+                images: true,
               });
             }}
             className={styles.toggleFoldersBtn}
@@ -510,6 +583,7 @@ export default function DashboardLayout({
                 text: false,
                 developer: false,
                 calculators: false,
+                images: false,
               });
             }}
             className={styles.toggleFoldersBtn}
