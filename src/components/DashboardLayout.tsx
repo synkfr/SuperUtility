@@ -166,6 +166,117 @@ export default function DashboardLayout({
         },
       ],
     },
+    {
+      id: "developer",
+      name: "Developer Tools",
+      icon: (
+        <svg className={styles.folderIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M17.25 6.75 22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3-4.5 16.5" />
+        </svg>
+      ),
+      items: [
+        {
+          id: "jwt-decoder",
+          href: "/tools/jwt-decoder",
+          name: "JWT Decoder",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 7a2 2 0 012 2m-2 4a2 2 0 012 2m-8-3a3 3 0 103-3H9a3 3 0 00-3 3v1a3 3 0 003 3h3" />
+            </svg>
+          ),
+        },
+        {
+          id: "timestamp-converter",
+          href: "/tools/timestamp-converter",
+          name: "Unix Timestamp",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+          ),
+        },
+        {
+          id: "regex-tester",
+          href: "/tools/regex-tester",
+          name: "Regex Tester",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          ),
+        },
+        {
+          id: "html-converter",
+          href: "/tools/html-converter",
+          name: "HTML Converter",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+            </svg>
+          ),
+        },
+        {
+          id: "url-parser",
+          href: "/tools/url-parser",
+          name: "URL Parser",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path>
+            </svg>
+          ),
+        },
+        {
+          id: "color-converter",
+          href: "/tools/color-converter",
+          name: "Color Converter",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+            </svg>
+          ),
+        },
+        {
+          id: "lorem-ipsum",
+          href: "/tools/lorem-ipsum",
+          name: "Lorem Ipsum",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7"></path>
+            </svg>
+          ),
+        },
+        {
+          id: "slug-generator",
+          href: "/tools/slug-generator",
+          name: "Slug Generator",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          ),
+        },
+        {
+          id: "css-minifier",
+          href: "/tools/css-minifier",
+          name: "CSS Minifier",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 5a1 1 0 01.707-.293l14.586 14.586a1 1 0 01-.707 1.707H4.707A1 1 0 014 20V5z"></path>
+            </svg>
+          ),
+        },
+        {
+          id: "js-minifier",
+          href: "/tools/js-minifier",
+          name: "JavaScript Minifier",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          ),
+        },
+      ],
+    },
   ];
 
   // Accordion folder state logic
@@ -175,6 +286,7 @@ export default function DashboardLayout({
       randomizers: true,
       security: true,
       text: true,
+      developer: true,
     };
     return initial;
   });

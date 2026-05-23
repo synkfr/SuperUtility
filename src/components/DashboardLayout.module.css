@@ -24,6 +24,7 @@
   position: sticky;
   top: 0;
   z-index: 50;
+  overflow-y: auto;
 }
 
 @media (min-width: 992px) {
@@ -213,6 +214,7 @@
   flex-direction: column;
   padding: 28px 24px;
   animation: slideInSheet var(--transition-normal) cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  overflow-y: auto;
 }
 
 @keyframes slideInSheet {
@@ -249,8 +251,7 @@
 @media (min-width: 992px) {
   .main {
     padding: 48px 64px;
-    height: 100vh;
-    overflow-y: auto;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
