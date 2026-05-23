@@ -1,0 +1,620 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    grid-template-columns: 320px 1fr 340px;
+    gap: 20px;
+    align-items: start;
+  }
+}
+
+/* Left Panel: Files and Pages list */
+.leftPanel {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+@media (min-width: 1200px) {
+  .leftPanel {
+    position: sticky;
+    top: 20px;
+    max-height: calc(100vh - 100px);
+    overflow: hidden;
+    min-height: 0;
+  }
+}
+
+.leftPanelTitle {
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.badge {
+  background: var(--lime-50);
+  border: 1px solid var(--lime-200);
+  color: var(--lime-700);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+}
+
+.scrollArea {
+  padding-right: 4px;
+}
+
+@media (min-width: 1200px) {
+  .scrollArea {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+  }
+}
+
+.filesList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.fileCard {
+  background: var(--bg-secondary);
+  border: 1.5px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.fileCard:hover {
+  border-color: var(--lime-400);
+}
+
+.fileCardActive {
+  border-color: var(--lime-500);
+  box-shadow: 0 0 0 3px rgba(132, 204, 22, 0.1);
+}
+
+.fileName {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.fileSize {
+  font-size: 0.7rem;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+}
+
+.removeBtn {
+  background: rgba(220, 38, 38, 0.1);
+  color: var(--red-600);
+  border: none;
+  border-radius: 50%;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: all var(--transition-fast);
+}
+
+.removeBtn:hover {
+  background: rgba(220, 38, 38, 0.8);
+  color: #fff;
+}
+
+/* Center Panel: Interactive PDF Pages Canvas View */
+.centerPanel {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  min-height: 500px;
+}
+
+@media (min-width: 1200px) {
+  .centerPanel {
+    height: 100%;
+    min-height: 0;
+  }
+}
+
+.previewHeader {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.previewTitle {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.workspace {
+  flex: 1;
+  background: #1e1e1e;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 1200px) {
+  .workspace {
+    overflow-y: auto;
+    max-height: calc(100vh - 240px);
+  }
+}
+
+/* Grid of pages for sorting & multi-selection */
+.pagesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 20px;
+  justify-items: center;
+}
+
+.pageCard {
+  position: relative;
+  background: #2a2a2a;
+  border: 2px solid #3c3c3c;
+  border-radius: var(--radius-md);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: grab;
+  width: 130px;
+  user-select: none;
+  transition: all var(--transition-fast);
+}
+
+.pageCard:hover {
+  border-color: var(--lime-400);
+  transform: translateY(-2px);
+}
+
+.pageCardSelected {
+  border-color: var(--lime-500);
+  box-shadow: 0 0 0 3px rgba(132, 204, 22, 0.25);
+}
+
+.pageCardDragging {
+  opacity: 0.5;
+  cursor: grabbing;
+}
+
+.pageThumbnailWrapper {
+  width: 110px;
+  height: 140px;
+  background: #fff;
+  border-radius: 2px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.pageThumbnail {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.pageCardCheckbox {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  z-index: 10;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--lime-500);
+  cursor: pointer;
+}
+
+.pageActionsOverlay {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  z-index: 10;
+  display: flex;
+  gap: 4px;
+}
+
+.pageQuickBtn {
+  background: rgba(17, 24, 39, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-radius: 4px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.65rem;
+  transition: all var(--transition-fast);
+  backdrop-filter: blur(4px);
+}
+
+.pageQuickBtn:hover {
+  background: var(--lime-500);
+  border-color: var(--lime-600);
+}
+
+.pageNumberBadge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 1px 6px;
+  border-radius: 10px;
+}
+
+/* Empty state drop zone style */
+.uploadContainer {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  border: 2px dashed var(--border-dark);
+  padding: 64px 32px;
+  text-align: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.uploadIcon {
+  width: 48px;
+  height: 48px;
+  color: var(--lime-500);
+}
+
+.uploadTitle {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.uploadDesc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  max-width: 420px;
+  line-height: 1.5;
+}
+
+.uploadBadges {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.uploadBadge {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-dark);
+  color: var(--text-secondary);
+  padding: 4px 10px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+}
+
+/* Right Panel: Editing control accordions */
+.rightPanel {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+@media (min-width: 1200px) {
+  .rightPanel {
+    position: sticky;
+    top: 20px;
+    max-height: calc(100vh - 100px);
+    overflow: hidden;
+    min-height: 0;
+  }
+}
+
+.controlsScrollArea {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-right: 4px;
+}
+
+@media (min-width: 1200px) {
+  .controlsScrollArea {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+  }
+}
+
+.controlSection {
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.controlHeader {
+  width: 100%;
+  background: var(--bg-surface);
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.controlTitle {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.caretIcon {
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+  transition: transform var(--transition-normal);
+}
+
+.caretIconRotated {
+  transform: rotate(180deg);
+}
+
+.controlContent {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  background: var(--bg-base);
+}
+
+.inputLabel {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  display: block;
+  margin-bottom: 6px;
+}
+
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+}
+
+.infoLabel {
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.infoVal {
+  color: var(--text-primary);
+  font-weight: 700;
+  font-family: var(--font-mono);
+}
+
+.actionCard {
+  background: var(--lime-50);
+  border: 1.5px solid var(--lime-200);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.toolbar {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.toolbarGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.toolbarBtn {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-dark);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+}
+
+.toolbarBtn:hover {
+  border-color: var(--lime-400);
+  background: var(--lime-50)/10;
+  color: var(--text-primary);
+}
+
+.toolbarBtnPrimary {
+  background: var(--lime-500);
+  border: 1.5px solid var(--lime-600);
+  color: #fff;
+}
+
+.toolbarBtnPrimary:hover {
+  background: var(--lime-600);
+  color: #fff;
+}
+
+/* Spinner and batch indicators */
+.processingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  color: #fff;
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-left-color: var(--lime-500);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.progressBarContainer {
+  width: 260px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin-top: 8px;
+}
+
+.progressBar {
+  height: 100%;
+  background: var(--lime-500);
+  transition: width 0.1s ease-out;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Helper flex layout presets */
+.presetGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+}
+
+.presetBtn {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-dark);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 10px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--transition-fast);
+}
+
+.presetBtn:hover {
+  border-color: var(--lime-400);
+  background: var(--lime-50)/10;
+  color: var(--text-primary);
+}
+
+.presetBtnActive {
+  background: var(--lime-500);
+  border-color: var(--lime-600);
+  color: #fff !important;
+}
+
+.presetBtnActive:hover {
+  background: var(--lime-600);
+}
+
+.applyBar {
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}

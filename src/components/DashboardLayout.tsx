@@ -454,6 +454,106 @@ export default function DashboardLayout({
         },
       ],
     },
+    {
+      id: "pdf",
+      name: "PDF & Document Tools",
+      icon: (
+        <svg className={styles.folderIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9z" />
+        </svg>
+      ),
+      items: [
+        {
+          id: "pdf-editor",
+          href: "/tools/pdf-editor",
+          name: "All-in-One PDF Suite",
+          keywords: ["pdf", "rotate", "reorder", "extract", "remove", "watermark", "page numbers", "metadata", "encryption", "decrypt", "password"],
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+            </svg>
+          ),
+        },
+        {
+          id: "image-to-pdf",
+          href: "/tools/image-to-pdf",
+          name: "Image to PDF",
+          keywords: ["png to pdf", "jpg to pdf", "convert images"],
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          ),
+        },
+        {
+          id: "pdf-merger",
+          href: "/tools/pdf-merger",
+          name: "Merge PDF Files",
+          keywords: ["combine pdf", "join pdf"],
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4" />
+            </svg>
+          ),
+        },
+        {
+          id: "pdf-splitter",
+          href: "/tools/pdf-splitter",
+          name: "Split PDF Files",
+          keywords: ["extract pages", "cut pdf"],
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          ),
+        },
+        {
+          id: "pdf-compressor",
+          href: "/tools/pdf-compressor",
+          name: "Compress PDF",
+          keywords: ["shrink pdf", "optimize pdf"],
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+            </svg>
+          ),
+        },
+        {
+          id: "pdf-ocr",
+          href: "/tools/pdf-ocr",
+          name: "PDF Text OCR",
+          keywords: ["ocr", "extract text from image", "read scanned pdf"],
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          ),
+        },
+        {
+          id: "document-scanner",
+          href: "/tools/document-scanner",
+          name: "Document Scanner",
+          keywords: ["scan paper", "camera to pdf", "edge detection"],
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          ),
+        },
+        {
+          id: "pdf-security-scanner",
+          href: "/tools/pdf-security-scanner",
+          name: "PDF Security Scanner",
+          keywords: ["malicious pdf", "malware scan", "pdf js detect", "attachments scanner"],
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12.75L11.25 15L15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 01-1.043 3.296 3.745 3.745 0 01-3.296 1.043A3.745 3.745 0 0112 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 01-3.296-1.043 3.745 3.745 0 01-1.043-3.296A3.745 3.745 0 013 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 011.043-3.296 3.746 3.746 0 013.296-1.043A3.746 3.746 0 0112 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 013.296 1.043 3.746 3.746 0 011.043 3.296A3.745 3.745 0 0121 12z" />
+            </svg>
+          ),
+        },
+      ],
+    },
   ];
 
   // Accordion folder state logic
@@ -466,6 +566,7 @@ export default function DashboardLayout({
       developer: true,
       calculators: true,
       images: true,
+      pdf: true,
     };
     return initial;
   });
@@ -564,6 +665,7 @@ export default function DashboardLayout({
                 developer: true,
                 calculators: true,
                 images: true,
+                pdf: true,
               });
             }}
             className={styles.toggleFoldersBtn}
@@ -580,6 +682,7 @@ export default function DashboardLayout({
                 developer: false,
                 calculators: false,
                 images: false,
+                pdf: false,
               });
             }}
             className={styles.toggleFoldersBtn}
