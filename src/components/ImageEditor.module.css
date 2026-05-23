@@ -455,6 +455,8 @@
   flex-direction: column;
   gap: 14px;
   padding-right: 4px;
+  overflow-y: auto;
+  max-height: 480px; /* Scrollable on mobile/tablet when too tall */
 }
 
 @media (min-width: 1200px) {
@@ -462,6 +464,7 @@
     flex: 1;
     overflow-y: auto;
     min-height: 0; /* Prevents flex items from growing larger than container and hiding action buttons */
+    max-height: calc(100vh - 320px); /* Keeps sections scrollable and action buttons visible on desktop */
   }
 }
 
