@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import ImageResizer from "@/components/ImageResizer";
+import ImageEditor from "@/components/ImageEditor";
 import pageStyles from "@/app/page.module.css";
 
 export default function ImageResizerPage() {
@@ -10,7 +10,7 @@ export default function ImageResizerPage() {
       <h1 className={pageStyles.headerTitle}>Image Resizer</h1>
       <p className={pageStyles.headerSubtitle}>Resize PNG, JPG, or WEBP image dimensions by customized pixels or maintain locked aspect ratios locally.</p>
       
-      <ImageResizer />
+      <ImageEditor defaultFocusSection="resize" />
 
       <section className={pageStyles.seoSection} aria-label="Detailed Description">
         <h2 className={pageStyles.seoTitle}>

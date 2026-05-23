@@ -10,6 +10,7 @@ interface NavigationItem {
   href: string;
   name: string;
   icon: React.ReactNode;
+  keywords?: string[];
 }
 
 interface Category {
@@ -421,42 +422,23 @@ export default function DashboardLayout({
       ),
       items: [
         {
+          id: "image-editor",
+          href: "/tools/image-editor",
+          name: "Image Editor (All-in-One)",
+          keywords: ["compressor", "resizer", "converter", "crop", "rotate", "flip", "batch", "resize", "compress", "convert", "jpeg", "png", "webp", "gif", "avif"],
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+            </svg>
+          ),
+        },
+        {
           id: "image-to-base64",
           href: "/tools/image-to-base64",
           name: "Image to Base64",
           icon: (
             <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-            </svg>
-          ),
-        },
-        {
-          id: "image-compressor",
-          href: "/tools/image-compressor",
-          name: "Image Compressor",
-          icon: (
-            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          ),
-        },
-        {
-          id: "image-resizer",
-          href: "/tools/image-resizer",
-          name: "Image Resizer",
-          icon: (
-            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5" />
-            </svg>
-          ),
-        },
-        {
-          id: "image-converter",
-          href: "/tools/image-converter",
-          name: "Image Converter",
-          icon: (
-            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
             </svg>
           ),
         },
@@ -515,7 +497,8 @@ export default function DashboardLayout({
   const filteredCategories = categories
     .map((category) => {
       const matchingItems = category.items.filter((item) =>
-        item.name.toLowerCase().includes(searchQuery.toLowerCase())
+        item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (item.keywords && item.keywords.some((kw) => kw.toLowerCase().includes(searchQuery.toLowerCase())))
       );
       return { ...category, items: matchingItems };
     })

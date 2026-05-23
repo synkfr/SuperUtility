@@ -349,32 +349,12 @@ export default function Home() {
       ),
     },
     {
-      id: "image-compressor",
-      name: "Image Compressor",
-      subtitle: "Optimize graphic sizes locally inside the browser using canvas quality factors.",
+      id: "image-editor",
+      name: "Image Editor (All-in-One)",
+      subtitle: "Compress, resize, crop, rotate, flip, and convert multiple images in a unified dashboard.",
       icon: (
         <svg className={styles.toolIconSvg} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-        </svg>
-      ),
-    },
-    {
-      id: "image-resizer",
-      name: "Image Resizer",
-      subtitle: "Resize image dimensions by custom pixels or locked ratios offline.",
-      icon: (
-        <svg className={styles.toolIconSvg} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5v-4m0 4h-4m4 0l-5-5" />
-        </svg>
-      ),
-    },
-    {
-      id: "image-converter",
-      name: "Image Converter",
-      subtitle: "Transform formats between PNG, JPEG, and WEBP locally instantly.",
-      icon: (
-        <svg className={styles.toolIconSvg} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
         </svg>
       ),
     },

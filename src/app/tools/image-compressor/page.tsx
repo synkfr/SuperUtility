@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import ImageCompressor from "@/components/ImageCompressor";
+import ImageEditor from "@/components/ImageEditor";
 import pageStyles from "@/app/page.module.css";
 
 export default function ImageCompressorPage() {
@@ -10,7 +10,7 @@ export default function ImageCompressorPage() {
       <h1 className={pageStyles.headerTitle}>Image Compressor</h1>
       <p className={pageStyles.headerSubtitle}>Optimize image file sizes locally in your web browser by adjusting compression quality factors.</p>
       
-      <ImageCompressor />
+      <ImageEditor defaultFocusSection="compress" />
 
       <section className={pageStyles.seoSection} aria-label="Detailed Description">
         <h2 className={pageStyles.seoTitle}>

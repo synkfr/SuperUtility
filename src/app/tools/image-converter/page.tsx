@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import ImageConverter from "@/components/ImageConverter";
+import ImageEditor from "@/components/ImageEditor";
 import pageStyles from "@/app/page.module.css";
 
 export default function ImageConverterPage() {
@@ -10,7 +10,7 @@ export default function ImageConverterPage() {
       <h1 className={pageStyles.headerTitle}>Image Converter (PNG ↔ JPG ↔ WEBP)</h1>
       <p className={pageStyles.headerSubtitle}>Convert images instantly between standard PNG, JPEG, and WEBP formats completely offline in-browser.</p>
       
-      <ImageConverter />
+      <ImageEditor defaultFocusSection="convert" />
 
       <section className={pageStyles.seoSection} aria-label="Detailed Description">
         <h2 className={pageStyles.seoTitle}>
