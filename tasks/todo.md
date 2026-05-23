@@ -55,6 +55,15 @@
 - [x] Create standalone route directory for terms of service page
 - [x] Validate complete static bundle compile using `npm run build`
 
+## Phase 1 — Navigation Refactor & Text Tools
+- [x] Refactor `DashboardLayout.tsx` & `.module.css` for accordion categories & Ctrl+K Fuzzy-Search
+- [x] Integrate 5 new Text Tools on the main `page.tsx` home selection grid
+- [x] Implement Word Counter utility component & route `/tools/word-counter`
+- [x] Implement Case Converter utility component & route `/tools/case-converter`
+- [x] Implement Text Line Repeater & Sorter utility component & route `/tools/text-repeater`
+- [x] Implement URL & Base64 Encoder-Decoder utility component & route `/tools/url-base64-converter`
+- [x] Implement JSON Formatter & Validator utility component & route `/tools/json-formatter`
+
 ## Final Validation
 - [x] Verify static compiles successfully with `npm run build`
 - [x] Generate walkthrough.md updates

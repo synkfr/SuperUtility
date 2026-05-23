@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import styles from "./DashboardLayout.module.css";
@@ -12,6 +12,13 @@ interface NavigationItem {
   icon: React.ReactNode;
 }
 
+interface Category {
+  id: string;
+  name: string;
+  icon: React.ReactNode;
+  items: NavigationItem[];
+}
+
 export default function DashboardLayout({
   children,
 }: {
@@ -19,82 +26,214 @@ export default function DashboardLayout({
 }) {
   const pathname = usePathname();
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
-  const navigationItems: NavigationItem[] = [
+  // Categories and their tools
+  const categories: Category[] = [
     {
-      id: "password-generator",
-      href: "/tools/password-generator",
-      name: "Password Generator",
+      id: "randomizers",
+      name: "Randomizers",
       icon: (
-        <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <rect x="3" y="11" width="18" height="11" rx="2" ry="2" strokeWidth="2"></rect>
-          <path d="M7 11V7a5 5 0 0 1 10 0v4" strokeWidth="2"></path>
+        <svg className={styles.folderIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 0 0-3.7-3.7 48.678 48.678 0 0 0-7.324 0 4.006 4.006 0 0 0-3.7 3.7c-.017.22-.032.441-.046.662M19.5 12l3-3m-3 3-3-3M3 12a48.884 48.884 0 0 1 .138-3.662M3 12h18M3 12l3 3m-3-3-3 3M21 12a48.756 48.756 0 0 1-.138 3.662 4.006 4.006 0 0 1-3.7 3.7 48.656 48.656 0 0 1-7.324 0 4.006 4.006 0 0 1-3.7-3.7C6.047 14.453 6 13.232 6 12m15.5 0-3 3m3-3 3 3" />
         </svg>
       ),
+      items: [
+        {
+          id: "password-generator",
+          href: "/tools/password-generator",
+          name: "Password Generator",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" strokeWidth="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" strokeWidth="2"></path>
+            </svg>
+          ),
+        },
+        {
+          id: "random-picker",
+          href: "/tools/random-picker",
+          name: "Random Picker",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
+            </svg>
+          ),
+        },
+        {
+          id: "random-number",
+          href: "/tools/random-number",
+          name: "Number Generator",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+            </svg>
+          ),
+        },
+      ],
     },
     {
-      id: "qr-generator",
-      href: "/tools/qr-generator",
-      name: "QR Code Generator",
+      id: "security",
+      name: "Security & Identifiers",
       icon: (
-        <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <rect x="3" y="3" width="7" height="7" strokeWidth="2"></rect>
-          <rect x="14" y="3" width="7" height="7" strokeWidth="2"></rect>
-          <rect x="3" y="14" width="7" height="7" strokeWidth="2"></rect>
-          <path d="M14 14h2v2h-2zm4 4h2v2h-2zm2-2h-2v2h2zm-2-2h2v2h-2zm-2 4h2v-2h-2zm0 2v2h2v-2z" strokeWidth="2"></path>
+        <svg className={styles.folderIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
         </svg>
       ),
+      items: [
+        {
+          id: "uuid-generator",
+          href: "/tools/uuid-generator",
+          name: "UUID Generator",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" strokeWidth="2"></rect>
+              <path d="M21 16H3M8 12H3m10 0H8m3-4H8m13 0h-7" strokeWidth="2"></path>
+            </svg>
+          ),
+        },
+        {
+          id: "hash-generator",
+          href: "/tools/hash-generator",
+          name: "Hash Generator",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+            </svg>
+          ),
+        },
+      ],
     },
     {
-      id: "uuid-generator",
-      href: "/tools/uuid-generator",
-      name: "UUID Generator",
+      id: "text",
+      name: "Text Tools",
       icon: (
-        <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <rect x="3" y="3" width="18" height="18" rx="2" strokeWidth="2"></rect>
-          <path d="M21 16H3M8 12H3m10 0H8m3-4H8m13 0h-7" strokeWidth="2"></path>
+        <svg className={styles.folderIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 0 1 .865-.501 48.172 48.172 0 0 0 3.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v5.78Z" />
         </svg>
       ),
-    },
-    {
-      id: "hash-generator",
-      href: "/tools/hash-generator",
-      name: "Hash Generator",
-      icon: (
-        <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
-        </svg>
-      ),
-    },
-    {
-      id: "random-picker",
-      href: "/tools/random-picker",
-      name: "Random Picker",
-      icon: (
-        <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path>
-        </svg>
-      ),
-    },
-    {
-      id: "random-number",
-      href: "/tools/random-number",
-      name: "Number Generator",
-      icon: (
-        <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
-        </svg>
-      ),
+      items: [
+        {
+          id: "word-counter",
+          href: "/tools/word-counter",
+          name: "Word Counter",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+            </svg>
+          ),
+        },
+        {
+          id: "case-converter",
+          href: "/tools/case-converter",
+          name: "Case Converter",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          ),
+        },
+        {
+          id: "text-repeater",
+          href: "/tools/text-repeater",
+          name: "Text Line Tools",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+          ),
+        },
+        {
+          id: "url-base64-converter",
+          href: "/tools/url-base64-converter",
+          name: "URL & Base64 Encoder",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          ),
+        },
+        {
+          id: "json-formatter",
+          href: "/tools/json-formatter",
+          name: "JSON Formatter",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+            </svg>
+          ),
+        },
+      ],
     },
   ];
+
+  // Accordion folder state logic
+  const [expandedFolders, setExpandedFolders] = useState<Record<string, boolean>>(() => {
+    // Expand by default if URL matches one of the items inside
+    const initial: Record<string, boolean> = {
+      randomizers: true,
+      security: true,
+      text: true,
+    };
+    return initial;
+  });
+
+  // Global keybind registration for Ctrl + K
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+        e.preventDefault();
+        searchInputRef.current?.focus();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  const toggleFolder = (folderId: string) => {
+    setExpandedFolders((prev) => ({
+      ...prev,
+      [folderId]: !prev[folderId],
+    }));
+  };
 
   const handleLinkClick = () => {
     setDrawerOpen(false);
   };
 
+  // Filter categories and items dynamically based on search
+  const filteredCategories = categories
+    .map((category) => {
+      const matchingItems = category.items.filter((item) =>
+        item.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      return { ...category, items: matchingItems };
+    })
+    .filter((category) => category.items.length > 0);
+
+  // Expand folders automatically when a search query is active
+  const isSearchActive = searchQuery.trim().length > 0;
+
   const renderNavList = () => {
     return (
-      <>
+      <div className={styles.navWrapper}>
+        {/* Search bar inside the sidebar */}
+        <div className={styles.searchContainer}>
+          <svg className={styles.searchIcon} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+          </svg>
+          <input
+            ref={searchInputRef}
+            type="text"
+            placeholder="Search tools..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className={styles.searchInput}
+          />
+          <span className={styles.shortcutBadge}>Ctrl K</span>
+        </div>
+
         <Link
           href="/"
           onClick={handleLinkClick}
@@ -106,18 +245,53 @@ export default function DashboardLayout({
           <span>Dashboard Home</span>
         </Link>
         <div style={{ height: "1px", background: "var(--border)", margin: "8px 0" }} />
-        {navigationItems.map((item) => (
-          <Link
-            key={item.id}
-            href={item.href}
-            onClick={handleLinkClick}
-            className={`${styles.navBtn} ${pathname === item.href ? styles.navBtnActive : ""}`}
-          >
-            {item.icon}
-            <span>{item.name}</span>
-          </Link>
-        ))}
-      </>
+
+        {/* Accoridions */}
+        <div className={styles.categoriesList}>
+          {filteredCategories.map((category) => {
+            const isExpanded = isSearchActive || expandedFolders[category.id];
+            return (
+              <div key={category.id} className={styles.categorySection}>
+                <button
+                  onClick={() => toggleFolder(category.id)}
+                  className={styles.categoryHeader}
+                  disabled={isSearchActive}
+                >
+                  {category.icon}
+                  <span className={styles.categoryName}>{category.name}</span>
+                  {!isSearchActive && (
+                    <svg
+                      className={`${styles.caretIcon} ${isExpanded ? styles.caretIconRotated : ""}`}
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      viewBox="0 0 24 24"
+                    >
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  )}
+                </button>
+                {isExpanded && (
+                  <div className={styles.categoryItems}>
+                    {category.items.map((item) => (
+                      <Link
+                        key={item.id}
+                        href={item.href}
+                        onClick={handleLinkClick}
+                        className={`${styles.navBtn} ${pathname === item.href ? styles.navBtnActive : ""}`}
+                        style={{ paddingLeft: "32px", fontSize: "0.9rem" }}
+                      >
+                        {item.icon}
+                        <span>{item.name}</span>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
     );
   };
 

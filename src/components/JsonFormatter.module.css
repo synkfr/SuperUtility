@@ -1,0 +1,335 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.inputArea {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-premium);
+}
+
+.textareaHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.actionBtn {
+  background: var(--lime-50);
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--lime-700);
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.actionBtn:hover {
+  background: var(--lime-100);
+}
+
+.clearBtn {
+  background: transparent;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ef4444;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.clearBtn:hover {
+  background: #fef2f2;
+}
+
+/* View Selector Tab and Alert section */
+.tabsRow {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+}
+
+@media (min-width: 768px) {
+  .tabsRow {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.viewSelector {
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
+  padding: 3px;
+  display: flex;
+  align-self: flex-start;
+  gap: 4px;
+}
+
+.viewBtn {
+  background: transparent;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.viewBtn:hover:not(:disabled) {
+  color: var(--text-primary);
+}
+
+.viewBtnActive {
+  background: #ffffff;
+  color: var(--lime-700);
+  box-shadow: var(--shadow-sm);
+}
+
+.viewBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Syntax warning alert */
+.errorAlert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #fef2f2;
+  border: 1px solid #fca5a5;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+}
+
+.errorIcon {
+  font-size: 0.9rem;
+}
+
+.errorText {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ef4444;
+}
+
+/* Valid JSON Alert */
+.successAlert {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--lime-50);
+  border: 1px solid var(--lime-200);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  align-self: flex-start;
+}
+
+.successIcon {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--lime-700);
+}
+
+.successText {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--lime-700);
+}
+
+/* Editor Input Textarea */
+.textarea {
+  width: 100%;
+  padding: 16px;
+  border: 1.5px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.6;
+  resize: vertical;
+  transition: all var(--transition-fast);
+  min-height: 320px;
+}
+
+.textarea:focus {
+  border-color: var(--lime-400);
+  box-shadow: 0 0 0 3px rgba(132, 204, 22, 0.15);
+  outline: none;
+}
+
+.textareaError {
+  border-color: #fca5a5;
+  background-color: #faf5f5;
+}
+
+/* Collapsible Tree Visualizer Viewer */
+.treeViewer {
+  border: 1.5px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  background-color: var(--bg-base);
+  min-height: 320px;
+  max-height: 500px;
+  overflow: auto;
+}
+
+.treeRoot {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.nestedContent {
+  padding-left: 20px;
+  border-left: 1.5px dashed var(--border-dark);
+  margin: 2px 0 2px 6px;
+}
+
+.nodeRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 2px 0;
+}
+
+.collapsibleRow {
+  cursor: pointer;
+  user-select: none;
+  border-radius: var(--radius-sm);
+  padding-right: 8px;
+}
+
+.collapsibleRow:hover {
+  background-color: var(--bg-secondary);
+}
+
+.caret {
+  display: inline-block;
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  width: 12px;
+  text-align: center;
+  margin-right: 4px;
+  transition: transform var(--transition-fast);
+}
+
+.caretCollapsed {
+  transform: rotate(-90deg);
+}
+
+.nodeKey {
+  font-weight: 700;
+  color: #1e3a8a; /* deep blue for JSON keys */
+  margin-right: 6px;
+}
+
+.bracket, .comma {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.ellipsis {
+  font-weight: 700;
+  color: var(--text-muted);
+  background-color: var(--bg-secondary);
+  padding: 0 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  margin: 0 4px;
+}
+
+/* Syntax colors */
+.typeString {
+  color: var(--lime-600); /* green for strings */
+  font-weight: 600;
+}
+
+.typeNumber {
+  color: #b45309; /* amber for numbers */
+  font-weight: 600;
+}
+
+.typeBool {
+  color: #4c1d95; /* purple for booleans */
+  font-weight: 600;
+}
+
+.typeNull {
+  color: #ef4444; /* red for null values */
+  font-weight: 700;
+}
+
+/* Control Buttons row */
+.buttonGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .buttonGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.ctrlBtn {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  padding: 14px 16px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.ctrlBtn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lime), var(--shadow-md);
+  border-color: var(--lime-300);
+  color: var(--lime-700);
+}
+
+.ctrlBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
