@@ -399,16 +399,88 @@ export default function Home() {
         </svg>
       ),
     },
+    {
+      id: "length-converter",
+      name: "Height & Length",
+      subtitle: "Convert millimeters, centimeters, meters, kilometers, inches, feet, yards, and miles.",
+      icon: (
+        <svg className={styles.toolIconSvg} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 4h18M3 20h18M4 12h16M12 4v16" />
+        </svg>
+      ),
+    },
+    {
+      id: "weight-converter",
+      name: "Weight & Mass",
+      subtitle: "Convert weights instantly between kilograms, grams, pounds, ounces, and stones.",
+      icon: (
+        <svg className={styles.toolIconSvg} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 6l3 12h12l3-12M12 3v18" />
+        </svg>
+      ),
+    },
+    {
+      id: "area-converter",
+      name: "Area Converter",
+      subtitle: "Convert area values instantly between square meters, feet, acres, and hectares.",
+      icon: (
+        <svg className={styles.toolIconSvg} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4h16v16H4z" />
+        </svg>
+      ),
+    },
+    {
+      id: "volume-converter",
+      name: "Volume Converter",
+      subtitle: "Convert liquid and solid volumes between milliliters, liters, cups, and gallons.",
+      icon: (
+        <svg className={styles.toolIconSvg} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+        </svg>
+      ),
+    },
+    {
+      id: "temperature-converter",
+      name: "Temperature",
+      subtitle: "Convert temperature values instantly between Celsius, Fahrenheit, and Kelvin.",
+      icon: (
+        <svg className={styles.toolIconSvg} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19c-1.657 0-3-1.343-3-3V7a3 3 0 116 0v9c0 1.657-1.343 3-3 3z" />
+        </svg>
+      ),
+    },
+    {
+      id: "speed-converter",
+      name: "Speed & Velocity",
+      subtitle: "Convert speed values between meters per second, km/h, mph, knots, and Mach.",
+      icon: (
+        <svg className={styles.toolIconSvg} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+      ),
+    },
+    {
+      id: "data-converter",
+      name: "Data & Storage",
+      subtitle: "Convert size values between bits, Bytes, Kilobytes, Megabytes, and Gigabytes.",
+      icon: (
+        <svg className={styles.toolIconSvg} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <rect x="3" y="3" width="18" height="18" rx="2" strokeWidth="2"></rect>
+          <path d="M21 16H3M8 12H3m10 0H8m3-4H8m13 0h-7" strokeWidth="2"></path>
+        </svg>
+      ),
+    },
   ];
 
   return (
     <div className={styles.homeContainer}>
       {/* Welcome Hero Card */}
       <div className={styles.heroCard}>
-        <span className={styles.heroLabel}>100% Private & Free Tools</span>
-        <h1 className={styles.heroTitle}>Your daily helper tools.<br />Private. Secure. Simple.</h1>
+        <span className={styles.heroLabel}>100% Free & Private Browser-Based Tools</span>
+        <h1 className={styles.heroTitle}>Your daily helper tools.<br />Private. Secure. Completely Free.</h1>
         <p className={styles.heroDesc}>
-          SuperUtility is a collection of simple, fast, and completely private tools for your everyday tasks. Generate strong passwords, create custom QR codes, pick random items, and more—all without your data ever leaving your device. Everything runs directly in your web browser, keeping you completely safe.
+          SuperUtility is a premium collection of 50+ simple, fast, and completely private helper tools for your everyday tasks. From advanced image editors and PDF manipulation to digital unit converters and secure randomizers, everything runs entirely inside your browser's local sandbox memory. This guarantees that your private files, passwords, and data never touch any external server. 
+          <br /><strong style={{ color: "var(--lime-700)" }}>All tools are 100% free to use with absolutely no paywalls, subscriptions, premium limitations, or registration requirements.</strong>
         </p>
         
         <div className={styles.heroFeatures}>
@@ -416,19 +488,19 @@ export default function Home() {
             <svg className={styles.featureIcon} fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span>Works Offline (No Internet Needed)</span>
+            <span>Works 100% Offline (No Internet Required)</span>
           </div>
           <div className={styles.featureItem}>
             <svg className={styles.featureIcon} fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span>100% Free & No Sign-ups</span>
+            <span>No Accounts, Sign-ups, or Paid Features</span>
           </div>
           <div className={styles.featureItem}>
             <svg className={styles.featureIcon} fill="none" stroke="currentColor" strokeWidth="3" viewBox="0 0 24 24">
               <polyline points="20 6 9 17 4 12"></polyline>
             </svg>
-            <span>Top-Tier Device-Level Security</span>
+            <span>Top-Tier Offline Device-Level Safety</span>
           </div>
         </div>
       </div>

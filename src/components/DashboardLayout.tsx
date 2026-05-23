@@ -554,6 +554,95 @@ export default function DashboardLayout({
         },
       ],
     },
+    {
+      id: "converters",
+      name: "Converters & Units",
+      icon: (
+        <svg className={styles.folderIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13L21 8m0 0-4.5 4.5M21 8H7.5" />
+        </svg>
+      ),
+      items: [
+        {
+          id: "length-converter",
+          href: "/tools/length-converter",
+          name: "Height & Length",
+          keywords: ["height", "distance", "meters", "feet", "inches", "measurement", "miles", "cm", "mm"],
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 4h18M3 20h18M4 12h16M12 4v16" />
+            </svg>
+          ),
+        },
+        {
+          id: "weight-converter",
+          href: "/tools/weight-converter",
+          name: "Weight & Mass",
+          keywords: ["weight", "mass", "kilograms", "pounds", "grams", "lbs", "oz", "ounces", "stone"],
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 6l3 12h12l3-12M12 3v18" />
+            </svg>
+          ),
+        },
+        {
+          id: "area-converter",
+          href: "/tools/area-converter",
+          name: "Area Converter",
+          keywords: ["area", "square feet", "acres", "hectares", "square meters", "land"],
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4h16v16H4z" />
+            </svg>
+          ),
+        },
+        {
+          id: "volume-converter",
+          href: "/tools/volume-converter",
+          name: "Volume Converter",
+          keywords: ["volume", "liters", "gallons", "cups", "milliliters", "liquid", "capacity"],
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+            </svg>
+          ),
+        },
+        {
+          id: "temperature-converter",
+          href: "/tools/temperature-converter",
+          name: "Temperature",
+          keywords: ["temperature", "celsius", "fahrenheit", "kelvin", "weather", "heat"],
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19c-1.657 0-3-1.343-3-3V7a3 3 0 116 0v9c0 1.657-1.343 3-3 3z" />
+            </svg>
+          ),
+        },
+        {
+          id: "speed-converter",
+          href: "/tools/speed-converter",
+          name: "Speed & Velocity",
+          keywords: ["speed", "velocity", "km/h", "mph", "knots", "mach", "sound"],
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          ),
+        },
+        {
+          id: "data-converter",
+          href: "/tools/data-converter",
+          name: "Data & Storage",
+          keywords: ["data", "storage", "bytes", "megabytes", "gigabytes", "terabytes", "bits", "kb", "mb", "gb", "tb"],
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" strokeWidth="2"></rect>
+              <path d="M21 16H3M8 12H3m10 0H8m3-4H8m13 0h-7" strokeWidth="2"></path>
+            </svg>
+          ),
+        },
+      ],
+    },
   ];
 
   // Accordion folder state logic
@@ -567,6 +656,7 @@ export default function DashboardLayout({
       calculators: true,
       images: true,
       pdf: true,
+      converters: true,
     };
     return initial;
   });
@@ -666,6 +756,7 @@ export default function DashboardLayout({
                 calculators: true,
                 images: true,
                 pdf: true,
+                converters: true,
               });
             }}
             className={styles.toggleFoldersBtn}
@@ -683,6 +774,7 @@ export default function DashboardLayout({
                 calculators: false,
                 images: false,
                 pdf: false,
+                converters: false,
               });
             }}
             className={styles.toggleFoldersBtn}
