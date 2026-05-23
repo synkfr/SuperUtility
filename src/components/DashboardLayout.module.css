@@ -468,3 +468,84 @@
   }
 }
 
+.clearSearchBtn {
+  position: absolute;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.clearSearchBtn:hover {
+  color: var(--text-primary);
+  background-color: var(--bg-secondary);
+}
+
+.toggleFoldersRow {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+}
+
+.toggleFoldersBtn {
+  background: transparent;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.toggleFoldersBtn:hover {
+  color: var(--lime-700);
+  background-color: var(--lime-50);
+  transform: translateY(-1px);
+}
+
+.toggleSeparator {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+  opacity: 0.5;
+}
+
+.categoryBadge {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  background-color: var(--bg-secondary);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  margin-right: 8px;
+  transition: all var(--transition-fast);
+}
+
+.categoryHeader:hover .categoryBadge {
+  background-color: var(--lime-100);
+  color: var(--lime-700);
+}
+
+.categoryHeader:hover .folderIcon {
+  color: var(--lime-600);
+  filter: drop-shadow(0 0 4px rgba(132, 204, 22, 0.3));
+}
+
+

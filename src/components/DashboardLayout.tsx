@@ -103,6 +103,46 @@ export default function DashboardLayout({
             </svg>
           ),
         },
+        {
+          id: "password-strength",
+          href: "/tools/password-strength",
+          name: "Password Strength",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          ),
+        },
+        {
+          id: "bcrypt-generator",
+          href: "/tools/bcrypt-generator",
+          name: "Bcrypt Hash & Verify",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+            </svg>
+          ),
+        },
+        {
+          id: "hmac-generator",
+          href: "/tools/hmac-generator",
+          name: "HMAC Generator",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z" />
+            </svg>
+          ),
+        },
+        {
+          id: "random-string",
+          href: "/tools/random-string",
+          name: "Random String",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+          ),
+        },
       ],
     },
     {
@@ -161,6 +201,16 @@ export default function DashboardLayout({
           icon: (
             <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path>
+            </svg>
+          ),
+        },
+        {
+          id: "text-diff",
+          href: "/tools/text-diff",
+          name: "Text Diff Checker",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
             </svg>
           ),
         },
@@ -277,6 +327,67 @@ export default function DashboardLayout({
         },
       ],
     },
+    {
+      id: "calculators",
+      name: "Calculators",
+      icon: (
+        <svg className={styles.folderIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+        </svg>
+      ),
+      items: [
+        {
+          id: "percentage-calculator",
+          href: "/tools/percentage-calculator",
+          name: "Percentage Calc",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 7h.01M15 17h.01M19 5L5 19" />
+            </svg>
+          ),
+        },
+        {
+          id: "age-calculator",
+          href: "/tools/age-calculator",
+          name: "Age Calculator",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          ),
+        },
+        {
+          id: "loan-calculator",
+          href: "/tools/loan-calculator",
+          name: "EMI & Loan Calc",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+          ),
+        },
+        {
+          id: "gst-calculator",
+          href: "/tools/gst-calculator",
+          name: "GST Calculator",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 14l2-2 4 4m5-7a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          ),
+        },
+        {
+          id: "profit-calculator",
+          href: "/tools/profit-calculator",
+          name: "Discount & Profit",
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 7h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+          ),
+        },
+      ],
+    },
   ];
 
   // Accordion folder state logic
@@ -287,6 +398,7 @@ export default function DashboardLayout({
       security: true,
       text: true,
       developer: true,
+      calculators: true,
     };
     return initial;
   });
@@ -341,9 +453,25 @@ export default function DashboardLayout({
             placeholder="Search tools..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Escape") {
+                setSearchQuery("");
+              }
+            }}
             className={styles.searchInput}
           />
-          <span className={styles.shortcutBadge}>Ctrl K</span>
+          {searchQuery ? (
+            <button
+              onClick={() => setSearchQuery("")}
+              className={styles.clearSearchBtn}
+              title="Clear search"
+              aria-label="Clear search"
+            >
+              &times;
+            </button>
+          ) : (
+            <span className={styles.shortcutBadge}>Ctrl K</span>
+          )}
         </div>
 
         <Link
@@ -356,12 +484,50 @@ export default function DashboardLayout({
           </svg>
           <span>Dashboard Home</span>
         </Link>
-        <div style={{ height: "1px", background: "var(--border)", margin: "8px 0" }} />
 
-        {/* Accoridions */}
+        {/* Expand / Collapse All Folders Fast Toggle Row */}
+        <div className={styles.toggleFoldersRow}>
+          <button 
+            onClick={() => {
+              setExpandedFolders({
+                randomizers: true,
+                security: true,
+                text: true,
+                developer: true,
+                calculators: true,
+              });
+            }}
+            className={styles.toggleFoldersBtn}
+          >
+            Expand All
+          </button>
+          <span className={styles.toggleSeparator}>&bull;</span>
+          <button 
+            onClick={() => {
+              setExpandedFolders({
+                randomizers: false,
+                security: false,
+                text: false,
+                developer: false,
+                calculators: false,
+              });
+            }}
+            className={styles.toggleFoldersBtn}
+          >
+            Collapse All
+          </button>
+        </div>
+
+        <div style={{ height: "1px", background: "var(--border)", margin: "4px 0" }} />
+ 
+        {/* Accordions */}
         <div className={styles.categoriesList}>
           {filteredCategories.map((category) => {
             const isExpanded = isSearchActive || expandedFolders[category.id];
+            // Resolve original count
+            const originalCategory = categories.find((c) => c.id === category.id);
+            const totalCount = originalCategory ? originalCategory.items.length : category.items.length;
+
             return (
               <div key={category.id} className={styles.categorySection}>
                 <button
@@ -371,6 +537,7 @@ export default function DashboardLayout({
                 >
                   {category.icon}
                   <span className={styles.categoryName}>{category.name}</span>
+                  <span className={styles.categoryBadge}>{totalCount}</span>
                   {!isSearchActive && (
                     <svg
                       className={`${styles.caretIcon} ${isExpanded ? styles.caretIconRotated : ""}`}

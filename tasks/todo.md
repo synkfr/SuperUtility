@@ -78,9 +78,30 @@
 - [x] Implement CSS Minifier utility component & route `/tools/css-minifier`
 - [x] Implement JavaScript Minifier utility component & route `/tools/js-minifier`
 
-## Final Validation
-- [ ] Verify static compiles successfully with `npm run build`
-- [ ] Generate walkthrough.md updates
+## Final Validation Phase 2
+- [x] Verify static compiles successfully with `npm run build`
+- [x] Generate walkthrough.md updates
+
+## Phase 3 — Sidebar Enhancements & High-Value Tools (Security & Calculators)
+- [x] Refactor `DashboardLayout.tsx` and `.module.css` for a better, easy-to-use premium sidebar:
+  - [x] Add item counts to category headers (e.g. "Text Tools (6)")
+  - [x] Add a "Collapse All / Expand All" fast-toggle trigger button
+  - [x] Add a clear-search button `(×)` or `Esc` trigger inside the fuzzy-search bar
+  - [x] Add smooth micro-animations, glowing folder markers, and HSL highlights
+- [x] Implement Text Diff Checker utility component & route `/tools/text-diff`
+- [x] Implement Password Strength Checker utility component & route `/tools/password-strength`
+- [x] Implement Bcrypt Generator utility component & route `/tools/bcrypt-generator`
+- [x] Implement HMAC Generator utility component & route `/tools/hmac-generator`
+- [x] Implement Random String Generator utility component & route `/tools/random-string`
+- [x] Implement Percentage Calculator utility component & route `/tools/percentage-calculator`
+- [x] Implement Age Calculator utility component & route `/tools/age-calculator`
+- [x] Implement EMI & Loan Calculator utility component & route `/tools/loan-calculator`
+- [x] Implement GST Calculator utility component & route `/tools/gst-calculator`
+- [x] Implement Discount & Profit Margin Calculator utility component & route `/tools/profit-calculator`
+
+## Final Validation Phase 3
+- [x] Verify static compiles successfully with `npm run build`
+- [x] Generate walkthrough.md updates for Phase 3
 
 ## Review & Results
 
