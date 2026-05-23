@@ -47,6 +47,14 @@
 - [x] Implement `WebPage` JSON-LD nested schemas or rich breadcrumbs in layout/meta blocks for better snippet ranking
 - [x] Audit build size and verify static compile output using `npm run build`
 
+## Multi-Page Static SEO Restructuring
+- [x] Create global shared `DashboardLayout` client component & CSS module to consolidate navigation
+- [x] Update root `layout.tsx` to wrap children in `DashboardLayout`
+- [x] Convert main `page.tsx` dashboard home to focus purely on visual grids and core FAQs
+- [x] Create individual route directories & `page.tsx` files for each of the six tools containing interactive modules, tool descriptions, FAQs, and concrete examples
+- [x] Create standalone route directory for terms of service page
+- [x] Validate complete static bundle compile using `npm run build`
+
 ## Final Validation
 - [x] Verify static compiles successfully with `npm run build`
 - [x] Generate walkthrough.md updates

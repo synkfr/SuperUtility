@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import DashboardLayout from "@/components/DashboardLayout";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://superutility.xyz"),
@@ -134,7 +135,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <DashboardLayout>
+          {children}
+        </DashboardLayout>
+      </body>
     </html>
   );
 }
