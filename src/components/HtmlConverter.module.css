@@ -1,0 +1,231 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.workspace {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 992px) {
+  .workspace {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-premium);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.sampleRow {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.sampleBtn {
+  background: var(--lime-50);
+  border: 1.5px solid var(--lime-200);
+  color: var(--lime-700);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.sampleBtn:hover {
+  background: var(--lime-100);
+}
+
+.clearBtn {
+  background: transparent;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ef4444;
+  cursor: pointer;
+}
+
+.textarea {
+  width: 100%;
+  padding: 16px;
+  border: 1.5px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  resize: vertical;
+  transition: all var(--transition-fast);
+}
+
+.textarea:focus {
+  border-color: var(--lime-400);
+  box-shadow: 0 0 0 3px rgba(132, 204, 22, 0.15);
+  outline: none;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.encodeBtn, .decodeBtn {
+  flex: 1;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.encodeBtn {
+  background: var(--lime-500);
+  border: 1.5px solid var(--lime-600);
+  color: var(--text-inverted);
+}
+
+.encodeBtn:hover {
+  background: var(--lime-600);
+  box-shadow: var(--shadow-sm);
+}
+
+.decodeBtn {
+  background: var(--bg-secondary);
+  border: 1.5px solid var(--border-dark);
+  color: var(--text-secondary);
+}
+
+.decodeBtn:hover {
+  background: var(--border-dark);
+}
+
+.copyBtn {
+  background: var(--lime-50);
+  border: 1.5px solid var(--lime-200);
+  color: var(--lime-700);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.copyBtn:hover {
+  background: var(--lime-100);
+}
+
+/* Reference Card */
+.referenceCard {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-premium);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.refTitle {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+@media (min-width: 576px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.refItem {
+  background: var(--bg-base);
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.refCharBox {
+  width: 32px;
+  height: 32px;
+  background: #ffffff;
+  border: 1px solid var(--border-dark);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--lime-600);
+}
+
+.refInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.refName {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.refEntity {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}

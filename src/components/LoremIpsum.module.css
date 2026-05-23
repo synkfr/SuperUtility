@@ -1,0 +1,174 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.workspace {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+@media (min-width: 992px) {
+  .workspace {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+  }
+}
+
+.card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  box-shadow: var(--shadow-premium);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cardTitle {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1.5px solid var(--border-dark);
+  padding-bottom: 8px;
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.label {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.headerActions {
+  display: flex;
+  gap: 8px;
+}
+
+.regenBtn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-dark);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.regenBtn:hover {
+  background: var(--border-dark);
+}
+
+.copyBtn {
+  background: var(--lime-50);
+  border: 1.5px solid var(--lime-200);
+  color: var(--lime-700);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.copyBtn:hover {
+  background: var(--lime-100);
+  transform: translateY(-1px);
+}
+
+.controlGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fieldLabel {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  background: var(--bg-secondary);
+  padding: 4px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-dark);
+}
+
+.tab {
+  flex: 1;
+  background: transparent;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-secondary);
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tabActive {
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  box-shadow: var(--shadow-sm);
+}
+
+.slider {
+  width: 100%;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+.textarea {
+  width: 100%;
+  padding: 16px;
+  border: 1.5px solid var(--border-dark);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  resize: vertical;
+  transition: all var(--transition-fast);
+}
+
+.textarea:focus {
+  border-color: var(--lime-400);
+  box-shadow: 0 0 0 3px rgba(132, 204, 22, 0.15);
+  outline: none;
+}
