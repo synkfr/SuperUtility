@@ -1,0 +1,3 @@
+# Redirect from WWW to non-WWW domain (HTTPS forced)
+http://www.superutility.xyz/* https://superutility.xyz/:splat 301!
+https://www.superutility.xyz/* https://superutility.xyz/:splat 301!
