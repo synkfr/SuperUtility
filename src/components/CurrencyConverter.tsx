@@ -35,6 +35,44 @@ export default function CurrencyConverter() {
   const [customRate, setCustomRate] = useState("");
   const [useCustomRate, setUseCustomRate] = useState(false);
   const [result, setResult] = useState(0);
+  const [rateSource, setRateSource] = useState<"offline" | "live">("offline");
+  const [lastUpdated, setLastUpdated] = useState<string | null>(null);
+
+  // Fetch real-time exchange rates client-side
+  useEffect(() => {
+    let active = true;
+    fetch("https://open.er-api.com/v6/latest/USD")
+      .then((res) => {
+        if (!res.ok) throw new Error("Network error fetching exchange rates");
+        return res.json();
+      })
+      .then((data) => {
+        if (data && data.result === "success" && data.rates && active) {
+          setRates((prev) => {
+            const updated = { ...prev };
+            Object.keys(prev).forEach((cur) => {
+              if (data.rates[cur] !== undefined) {
+                updated[cur] = data.rates[cur];
+              }
+            });
+            return updated;
+          });
+          setRateSource("live");
+          if (data.time_last_update_utc) {
+            setLastUpdated(data.time_last_update_utc);
+          }
+        }
+      })
+      .catch((err) => {
+        console.warn("Could not fetch live currency rates, falling back to preloaded offline rates:", err);
+        setRateSource("offline");
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
 
   const calculateConversion = () => {
     const amt = parseFloat(amount);
@@ -186,8 +224,23 @@ export default function CurrencyConverter() {
 
         {/* Results Card */}
         <div className={styles.card}>
-          <div className={styles.cardHeader}>
+          <div className={styles.cardHeader} style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
             <span className={styles.label}>Conversion Result</span>
+            {useCustomRate ? (
+              <div style={{ display: "flex", alignItems: "center", gap: "6px", backgroundColor: "var(--bg-secondary)", border: "1px solid var(--border-dark)", padding: "4px 8px", borderRadius: "20px", fontSize: "0.7rem", fontWeight: 700, color: "var(--text-secondary)" }}>
+                Custom Rate Active
+              </div>
+            ) : rateSource === "live" ? (
+              <div style={{ display: "flex", alignItems: "center", gap: "6px", backgroundColor: "var(--lime-50)", border: "1px solid var(--lime-200)", padding: "4px 8px", borderRadius: "20px", fontSize: "0.7rem", fontWeight: 700, color: "var(--lime-700)" }}>
+                <span className={styles.pulseCircle} style={{ width: "6px", height: "6px", borderRadius: "50%", display: "inline-block" }}></span>
+                Live Rates Active
+              </div>
+            ) : (
+              <div style={{ display: "flex", alignItems: "center", gap: "6px", backgroundColor: "#fef3c7", border: "1px solid #fde68a", padding: "4px 8px", borderRadius: "20px", fontSize: "0.7rem", fontWeight: 700, color: "#d97706" }}>
+                <span style={{ width: "6px", height: "6px", backgroundColor: "#f59e0b", borderRadius: "50%", display: "inline-block" }}></span>
+                Offline Fallback
+              </div>
+            )}
           </div>
 
           {result > 0 ? (
@@ -201,11 +254,18 @@ export default function CurrencyConverter() {
                 </div>
               </div>
 
-              <div style={{ fontSize: "0.8rem", color: "var(--text-secondary)", fontWeight: 600, display: "flex", justifyContent: "space-between", borderTop: "1.5px solid var(--border)", paddingTop: "12px" }}>
-                <span>Applied Conversion Rate:</span>
-                <span style={{ color: "var(--text-primary)", fontFamily: "var(--font-mono)" }}>
-                  1 {fromCurrency} = {activeRate.toFixed(6)} {toCurrency}
-                </span>
+              <div style={{ display: "flex", flexDirection: "column", borderTop: "1.5px solid var(--border)", paddingTop: "12px", gap: "4px" }}>
+                <div style={{ fontSize: "0.8rem", color: "var(--text-secondary)", fontWeight: 600, display: "flex", justifyContent: "space-between" }}>
+                  <span>Applied Conversion Rate:</span>
+                  <span style={{ color: "var(--text-primary)", fontFamily: "var(--font-mono)" }}>
+                    1 {fromCurrency} = {activeRate.toFixed(6)} {toCurrency}
+                  </span>
+                </div>
+                {lastUpdated && rateSource === "live" && !useCustomRate && (
+                  <div style={{ fontSize: "0.7rem", color: "var(--text-muted)", textAlign: "right" }}>
+                    Rates last updated (UTC): {lastUpdated}
+                  </div>
+                )}
               </div>
             </div>
           ) : (

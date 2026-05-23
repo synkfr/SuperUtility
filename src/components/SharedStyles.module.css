@@ -279,3 +279,20 @@
   background-color: var(--lime-50)/30;
   color: var(--text-primary);
 }
+
+.pulseCircle {
+  width: 6px;
+  height: 6px;
+  background-color: var(--lime-500);
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(132, 204, 22, 0.4);
+  animation: pulse-ring 2s infinite;
+  display: inline-block;
+}
+
+@keyframes pulse-ring {
+  0% { box-shadow: 0 0 0 0 rgba(132, 204, 22, 0.7); }
+  70% { box-shadow: 0 0 0 8px rgba(132, 204, 22, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(132, 204, 22, 0); }
+}
+
