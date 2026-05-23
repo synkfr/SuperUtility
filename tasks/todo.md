@@ -135,6 +135,7 @@
 - [x] Address nested accordion overflow in ImageEditor controls panel.
 - [x] Configure independent, bounded controlsScrollArea max-height and scrolling styles on mobile, tablet, and desktop viewports.
 - [x] Ensure bottom Master Action button card is always visible and never clipped or pushed out of view.
+- [x] Address nested accordion overflow in PDF Suite controls panel by adding symmetrical scrolling and max-height constraints to PdfEditor.module.css.
 - [x] Fix image embedding failures in PDF compiler by auto-converting non-standard images (WebP, GIF, AVIF, SVG) to standard JPEG bytes via Canvas before embedding.
 - [x] Revamp PDF compilation error reporting to display exact, precise context (e.g. password blocks) instead of misleading encryption warnings.
 - [x] Validate complete static bundle compile with Next.js compiler.
