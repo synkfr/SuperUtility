@@ -64,9 +64,23 @@
 - [x] Implement URL & Base64 Encoder-Decoder utility component & route `/tools/url-base64-converter`
 - [x] Implement JSON Formatter & Validator utility component & route `/tools/json-formatter`
 
+## Phase 2 — Developer Tools Suite
+- [x] Integrate 10 new Developer Tools in `DashboardLayout.tsx` collapsible category
+- [x] Update `page.tsx` home selection grid to display new Dev tools
+- [x] Implement JWT Decoder utility component & route `/tools/jwt-decoder`
+- [x] Implement Unix Timestamp Converter utility component & route `/tools/timestamp-converter`
+- [x] Implement Regex Tester utility component & route `/tools/regex-tester`
+- [x] Implement HTML Encoder/Decoder utility component & route `/tools/html-converter`
+- [x] Implement URL Parser utility component & route `/tools/url-parser`
+- [x] Implement Color Converter utility component & route `/tools/color-converter`
+- [x] Implement Lorem Ipsum Generator utility component & route `/tools/lorem-ipsum`
+- [x] Implement Slug Generator utility component & route `/tools/slug-generator`
+- [x] Implement CSS Minifier utility component & route `/tools/css-minifier`
+- [x] Implement JavaScript Minifier utility component & route `/tools/js-minifier`
+
 ## Final Validation
-- [x] Verify static compiles successfully with `npm run build`
-- [x] Generate walkthrough.md updates
+- [ ] Verify static compiles successfully with `npm run build`
+- [ ] Generate walkthrough.md updates
 
 ## Review & Results
 
