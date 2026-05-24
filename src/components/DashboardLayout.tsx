@@ -835,6 +835,22 @@ export default function DashboardLayout({
             );
           })}
         </div>
+
+        {!isSearchActive && (
+          <>
+            <div style={{ height: "1px", background: "var(--border)", margin: "8px 0" }} />
+            <Link
+              href="/contact"
+              onClick={handleLinkClick}
+              className={`${styles.navBtn} ${pathname === "/contact" ? styles.navBtnActive : ""}`}
+            >
+              <svg className={styles.navIcon} fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 18.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 14.985 3 13.589 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
+              </svg>
+              <span>Contact & Support</span>
+            </Link>
+          </>
+        )}
       </div>
     );
   };
@@ -942,6 +958,14 @@ export default function DashboardLayout({
               id="tos-footer-link"
             >
               Terms & Privacy
+            </Link>
+            <span className={styles.footerSeparator}>&bull;</span>
+            <Link 
+              href="/contact" 
+              className={`${styles.footerLink} ${pathname === "/contact" ? styles.footerLinkActive : ""}`}
+              id="contact-footer-link"
+            >
+              Contact & Support
             </Link>
             <span className={styles.footerSeparator}>&bull;</span>
             <Link 
