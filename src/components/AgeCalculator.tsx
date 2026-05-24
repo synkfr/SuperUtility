@@ -151,11 +151,11 @@ export default function AgeCalculator() {
             <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
               <div>
                 <div style={{ fontSize: "0.75rem", color: "var(--text-muted)", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: "4px" }}>
-                  Days until next birthday 🎂
+                  Days until next birthday
                 </div>
                 <div style={{ fontSize: "1.25rem", fontWeight: 800, color: "var(--text-primary)" }}>
                   {ageDetails.nextBirthdayDays === 365 || ageDetails.nextBirthdayDays === 0
-                    ? "Today is your birthday! 🎉 Happy Birthday!"
+                    ? "Today is your birthday! Happy Birthday!"
                     : `${ageDetails.nextBirthdayDays} Days`}
                 </div>
               </div>

@@ -93,10 +93,10 @@ export default function UrlBase64ConverterPage() {
 "U3VwZXJVdGlsaXR5"
 
 // Input Unicode string (Standard btoa fails, but SuperUtility succeeds):
-"Hello 🚀"
+"Hello 世界"
 
 // Base64 Encoded Output:
-"SGVsbG8g8J+Zig=="`}
+"SGVsbG8g5LiW55WM"`}
             </pre>
           </div>
         </div>

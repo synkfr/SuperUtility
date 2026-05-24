@@ -127,6 +127,28 @@ export default function PdfSecurityScanner() {
     setIsScanning(false);
   };
 
+  const renderStatusDot = (type: "clean" | "warning" | "danger") => {
+    const color =
+      type === "clean"
+        ? "var(--lime-500)"
+        : type === "warning"
+        ? "#f59e0b"
+        : "var(--red-600)";
+    return (
+      <span
+        style={{
+          display: "inline-block",
+          width: "8px",
+          height: "8px",
+          borderRadius: "50%",
+          backgroundColor: color,
+          marginLeft: "6px",
+          verticalAlign: "middle"
+        }}
+      />
+    );
+  };
+
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: "24px", maxWidth: "800px", margin: "0 auto" }}>
       {/* Dynamic scan picker container */}
@@ -198,9 +220,11 @@ export default function PdfSecurityScanner() {
                   fontSize: "0.8rem",
                   fontWeight: 800,
                   textTransform: "uppercase",
+                  display: "inline-flex",
+                  alignItems: "center",
                 }}
               >
-                Safe 🟢
+                Safe {renderStatusDot("clean")}
               </span>
             ) : report.severity === "warning" ? (
               <span
@@ -213,9 +237,11 @@ export default function PdfSecurityScanner() {
                   fontSize: "0.8rem",
                   fontWeight: 800,
                   textTransform: "uppercase",
+                  display: "inline-flex",
+                  alignItems: "center",
                 }}
               >
-                Warning 🟡
+                Warning {renderStatusDot("warning")}
               </span>
             ) : (
               <span
@@ -228,9 +254,11 @@ export default function PdfSecurityScanner() {
                   fontSize: "0.8rem",
                   fontWeight: 800,
                   textTransform: "uppercase",
+                  display: "inline-flex",
+                  alignItems: "center",
                 }}
               >
-                Suspicious 🔴
+                Suspicious {renderStatusDot("danger")}
               </span>
             )}
           </div>
@@ -244,12 +272,12 @@ export default function PdfSecurityScanner() {
             }}
           >
             {[
-              { label: "Embedded Scripts", value: report.hasJavaScript ? "Detected 🔴" : "Clean 🟢" },
-              { label: "Auto Execution", value: report.hasAutoActions ? "Detected 🔴" : "Clean 🟢" },
-              { label: "Program Launch", value: report.hasLaunch ? "Detected 🔴" : "Clean 🟢" },
-              { label: "Embedded Attachments", value: report.hasAttachments ? "Detected 🔴" : "Clean 🟢" },
-              { label: "Hyperlinks / Links", value: report.hasUrlLinks ? "Found 🟡" : "None 🟢" },
-              { label: "Password Encryption", value: report.isEncrypted ? "Enabled 🟡" : "Disabled 🟢" },
+              { label: "Embedded Scripts", value: report.hasJavaScript ? <span style={{ display: "inline-flex", alignItems: "center" }}>Detected {renderStatusDot("danger")}</span> : <span style={{ display: "inline-flex", alignItems: "center" }}>Clean {renderStatusDot("clean")}</span> },
+              { label: "Auto Execution", value: report.hasAutoActions ? <span style={{ display: "inline-flex", alignItems: "center" }}>Detected {renderStatusDot("danger")}</span> : <span style={{ display: "inline-flex", alignItems: "center" }}>Clean {renderStatusDot("clean")}</span> },
+              { label: "Program Launch", value: report.hasLaunch ? <span style={{ display: "inline-flex", alignItems: "center" }}>Detected {renderStatusDot("danger")}</span> : <span style={{ display: "inline-flex", alignItems: "center" }}>Clean {renderStatusDot("clean")}</span> },
+              { label: "Embedded Attachments", value: report.hasAttachments ? <span style={{ display: "inline-flex", alignItems: "center" }}>Detected {renderStatusDot("danger")}</span> : <span style={{ display: "inline-flex", alignItems: "center" }}>Clean {renderStatusDot("clean")}</span> },
+              { label: "Hyperlinks / Links", value: report.hasUrlLinks ? <span style={{ display: "inline-flex", alignItems: "center" }}>Found {renderStatusDot("warning")}</span> : <span style={{ display: "inline-flex", alignItems: "center" }}>None {renderStatusDot("clean")}</span> },
+              { label: "Password Encryption", value: report.isEncrypted ? <span style={{ display: "inline-flex", alignItems: "center" }}>Enabled {renderStatusDot("warning")}</span> : <span style={{ display: "inline-flex", alignItems: "center" }}>Disabled {renderStatusDot("clean")}</span> },
             ].map((m, idx) => (
               <div
                 key={idx}
