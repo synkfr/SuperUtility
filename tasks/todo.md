@@ -166,6 +166,14 @@
 - [x] Review and update Terms of Service (`terms-of-service/page.tsx`) if required
 - [x] Validate static compilation via `npm run build` with zero warnings/errors
 
+## Phase 11 — Image Compression Bug Fixes
+- [ ] Fix async race conditions in `compileImagesPipeline` by adding sequence request tracking refs
+- [ ] Align default quality `0.75` and preset `"medium"` in `DEFAULT_EDIT_STATE`
+- [ ] Update range slider `onChange` handler to set correct preset dynamically (`low` / `medium` / `high` / `max` / `custom`)
+- [ ] Implement live compression results comparison summary directly inside the controls panel
+- [ ] Add explicit warning and quick-action converter button inside the compression panel for lossless PNG formats
+- [ ] Validate static compilation via `npm run build` with zero warnings/errors
+
 ## Review & Results
 
 SuperUtility's SEO and technical capability have been fully optimized to outperform generic utility suites in search visibility, user trust, and performance:

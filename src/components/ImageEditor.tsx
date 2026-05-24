@@ -15,7 +15,7 @@ interface EditState {
   };
   compress: {
     quality: number; // 0.1 to 1.0
-    preset: "low" | "medium" | "high" | "max";
+    preset: "low" | "medium" | "high" | "max" | "custom";
   };
   crop: {
     active: boolean;
@@ -64,8 +64,8 @@ const DEFAULT_EDIT_STATE = (width: number, height: number): EditState => ({
     maintainAspectRatio: true,
   },
   compress: {
-    quality: 0.8,
-    preset: "high",
+    quality: 0.75,
+    preset: "medium",
   },
   crop: {
     active: false,
@@ -104,6 +104,7 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
   const dropZoneRef = useRef<HTMLDivElement>(null);
   const previewImgRef = useRef<HTMLImageElement>(null);
   const previewContainerRef = useRef<HTMLDivElement>(null);
+  const compileRequestsRef = useRef<Record<string, number>>({});
 
   // Crop Drag state
   const [cropDrag, setCropDrag] = useState<{
@@ -328,8 +329,16 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
   const compileImagesPipeline = async (targetList: ImageFile[]) => {
     for (let i = 0; i < targetList.length; i++) {
       const target = targetList[i];
+      const reqId = (compileRequestsRef.current[target.id] || 0) + 1;
+      compileRequestsRef.current[target.id] = reqId;
+
       try {
         const out = await renderCanvasImage(target);
+        
+        // Ignore if a newer compilation request has been queued in the meantime
+        if (compileRequestsRef.current[target.id] !== reqId) {
+          continue;
+        }
         
         // Free prior object URL if exists to prevent memory leaks
         if (target.processed && target.processed.previewUrl) {
@@ -1335,9 +1344,15 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                       value={activeImage.editState.compress.quality}
                       onChange={(e) => {
                         const val = parseFloat(e.target.value);
+                        let calculatedPreset: "low" | "medium" | "high" | "max" | "custom" = "custom";
+                        if (val === 0.9) calculatedPreset = "low";
+                        else if (val === 0.75) calculatedPreset = "medium";
+                        else if (val === 0.6) calculatedPreset = "high";
+                        else if (val === 0.3) calculatedPreset = "max";
+
                         updateActiveEditState((prev) => ({
                           ...prev,
-                          compress: { ...prev.compress, quality: val, preset: "high" },
+                          compress: { ...prev.compress, quality: val, preset: calculatedPreset },
                         }));
                       }}
                       style={{ width: "100%", accentColor: "var(--lime-500)" }}
@@ -1395,6 +1410,114 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                           Max Compression
                         </button>
                       </div>
+                    </div>
+
+                    {/* PNG Lossless Alert Banner */}
+                    {activeImage.editState.format === "PNG" && (
+                      <div style={{
+                        marginTop: "16px",
+                        padding: "12px 14px",
+                        background: "#fffbeb",
+                        border: "1.5px solid #fde68a",
+                        borderRadius: "var(--radius-md)",
+                        color: "#b45309",
+                        fontSize: "0.75rem",
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "6px",
+                        lineHeight: 1.4
+                      }}>
+                        <div style={{ fontWeight: 800, display: "flex", alignItems: "center", gap: "6px" }}>
+                          <span>⚠️</span> PNG format is completely lossless!
+                        </div>
+                        <div>
+                          PNG files do not support lossy quality compression. Convert your output format to <strong>WEBP</strong> or <strong>JPG</strong> for up to 90% space savings.
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            updateActiveEditState((prev) => ({
+                              ...prev,
+                              format: "WEBP"
+                            }));
+                          }}
+                          style={{
+                            background: "#b45309",
+                            color: "#ffffff",
+                            border: "none",
+                            padding: "6px 12px",
+                            borderRadius: "var(--radius-sm)",
+                            fontWeight: 700,
+                            cursor: "pointer",
+                            fontSize: "0.72rem",
+                            width: "fit-content",
+                            alignSelf: "flex-start",
+                            transition: "all var(--transition-fast)"
+                          }}
+                          onMouseOver={(e) => e.currentTarget.style.opacity = "0.9"}
+                          onMouseOut={(e) => e.currentTarget.style.opacity = "1"}
+                        >
+                          ⚡ Convert & Compress to WEBP
+                        </button>
+                      </div>
+                    )}
+
+                    {/* Live Real-time Compression Summary Card */}
+                    <div style={{
+                      marginTop: "16px",
+                      padding: "14px",
+                      background: "var(--bg-secondary)",
+                      borderRadius: "var(--radius-md)",
+                      border: "1.5px solid var(--border)",
+                      display: "flex",
+                      flexDirection: "column",
+                      gap: "10px"
+                    }}>
+                      <span className={styles.inputLabel} style={{ margin: 0, textTransform: "uppercase", fontSize: "0.65rem", letterSpacing: "0.05em" }}>
+                        Real-time Compression Metrics
+                      </span>
+                      
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
+                        <div style={{ padding: "8px 10px", background: "var(--bg-surface)", borderRadius: "var(--radius-sm)", border: "1px solid var(--border)" }}>
+                          <span style={{ fontSize: "0.65rem", color: "var(--text-muted)", display: "block", marginBottom: "2px" }}>Original Size</span>
+                          <span style={{ fontSize: "0.95rem", fontWeight: 700, color: "var(--text-primary)" }}>
+                            {(activeImage.originalSize / 1024).toFixed(1)} KB
+                          </span>
+                        </div>
+                        <div style={{ padding: "8px 10px", background: "var(--bg-surface)", borderRadius: "var(--radius-sm)", border: "1px solid var(--border)" }}>
+                          <span style={{ fontSize: "0.65rem", color: "var(--text-muted)", display: "block", marginBottom: "2px" }}>Optimized Size</span>
+                          <span style={{ fontSize: "0.95rem", fontWeight: 700, color: "var(--lime-700)" }}>
+                            {activeImage.processed ? `${(activeImage.processed.size / 1024).toFixed(1)} KB` : "Calculating..."}
+                          </span>
+                        </div>
+                      </div>
+
+                      {activeImage.processed && (
+                        <div style={{
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: "6px",
+                          padding: "6px 12px",
+                          background: activeImage.processed.size < activeImage.originalSize ? "var(--lime-50)" : "#fef2f2",
+                          border: activeImage.processed.size < activeImage.originalSize ? "1px solid var(--lime-200)" : "1px solid #fca5a5",
+                          borderRadius: "var(--radius-sm)",
+                          color: activeImage.processed.size < activeImage.originalSize ? "var(--lime-700)" : "#ef4444",
+                          fontSize: "0.75rem",
+                          fontWeight: 700,
+                          textAlign: "center"
+                        }}>
+                          {activeImage.processed.size < activeImage.originalSize ? (
+                            <span>
+                              🎉 Saved {((1 - activeImage.processed.size / activeImage.originalSize) * 100).toFixed(0)}% of original size!
+                            </span>
+                          ) : (
+                            <span>
+                              ⚠️ Size increased slightly. Try reducing quality!
+                            </span>
+                          )}
+                        </div>
+                      )}
                     </div>
 
                     <div className={styles.applyBar}>
