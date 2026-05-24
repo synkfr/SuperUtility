@@ -24,6 +24,7 @@ export default function BackgroundRemover() {
   const [blurRadius, setBlurRadius] = useState(15);
   const [bloomRadius, setBloomRadius] = useState(10);
   const [bloomIntensity, setBloomIntensity] = useState(30);
+  const [alphaThreshold, setAlphaThreshold] = useState(15);
   
   const [zoom, setZoom] = useState(100);
   const [activeTab, setActiveTab] = useState<"processed" | "original">("processed");
@@ -53,6 +54,7 @@ export default function BackgroundRemover() {
     }
     setEnabled(false);
     setMode("transparent");
+    setAlphaThreshold(15);
   };
 
   const triggerFilePicker = () => {
@@ -162,7 +164,7 @@ export default function BackgroundRemover() {
       canvas.width = w;
       canvas.height = h;
 
-      const drawLayer = (layerImg: HTMLImageElement, filterStr?: string) => {
+      const drawLayer = (layerImg: HTMLImageElement | HTMLCanvasElement, filterStr?: string) => {
         ctx.save();
         if (filterStr) {
           ctx.filter = filterStr;
@@ -185,17 +187,45 @@ export default function BackgroundRemover() {
           drawLayer(img, `blur(${blurRadius}px)`);
         }
 
+        // Pre-process foreground subject with alpha threshold if > 0
+        let subjectLayer: HTMLImageElement | HTMLCanvasElement = maskImg;
+        if (alphaThreshold > 0) {
+          const tempCanvas = document.createElement("canvas");
+          tempCanvas.width = w;
+          tempCanvas.height = h;
+          const tempCtx = tempCanvas.getContext("2d");
+          if (tempCtx) {
+            tempCtx.drawImage(maskImg, 0, 0, w, h);
+            const imgData = tempCtx.getImageData(0, 0, w, h);
+            const data = imgData.data;
+            const thresholdLimit = (100 - alphaThreshold) * 2.55;
+            
+            for (let i = 3; i < data.length; i += 4) {
+              const a = data[i];
+              if (a > 0) {
+                if (a >= thresholdLimit) {
+                  data[i] = 255;
+                } else if (thresholdLimit > 0) {
+                  data[i] = Math.min(255, Math.round(a * (255 / thresholdLimit)));
+                }
+              }
+            }
+            tempCtx.putImageData(imgData, 0, 0);
+            subjectLayer = tempCanvas;
+          }
+        }
+
         // Bloom glowing screen Layer
         if (bloomRadius > 0 && bloomIntensity > 0) {
           ctx.save();
           ctx.globalCompositeOperation = "screen";
           ctx.globalAlpha = bloomIntensity / 100;
-          drawLayer(maskImg, `blur(${bloomRadius}px)`);
+          drawLayer(subjectLayer, `blur(${bloomRadius}px)`);
           ctx.restore();
         }
 
         // Foreground subject Layer
-        drawLayer(maskImg);
+        drawLayer(subjectLayer);
       }
 
       let mimeType = "image/png";
@@ -231,7 +261,7 @@ export default function BackgroundRemover() {
       };
       maskImg.src = bgMask.previewUrl;
     }
-  }, [activeImage, bgMask, enabled, mode, color, blurRadius, bloomRadius, bloomIntensity, format]);
+  }, [activeImage, bgMask, enabled, mode, color, blurRadius, bloomRadius, bloomIntensity, format, alphaThreshold]);
 
   // Clean URLs on unmount
   useEffect(() => {
@@ -305,11 +335,11 @@ export default function BackgroundRemover() {
               </div>
             </div>
 
-            <div className={styles.previewArea}>
+            <div className={`${styles.previewArea} ${mode === "transparent" ? styles.checkerboard : ""}`}>
               <img
                 src={activeTab === "processed" && processedPreviewUrl ? processedPreviewUrl : activeImage.previewUrl}
                 alt="Workspace preview"
-                className={styles.previewImg}
+                className={`${styles.previewImg} ${activeTab === "processed" && enabled && bgMask && mode === "transparent" ? styles.previewImgTransparent : ""}`}
                 style={{ transform: `scale(${zoom / 100})` }}
               />
               
@@ -444,6 +474,28 @@ export default function BackgroundRemover() {
                       </div>
                     </div>
                   )}
+
+                  <hr style={{ border: 0, borderTop: "1px solid var(--border)", margin: "4px 0" }} />
+
+                  {/* Subject Extraction Threshold / Hole Fill Slider */}
+                  <div className={styles.controlGroup}>
+                    <div className={styles.sliderHeader}>
+                      <span className={styles.controlLabel}>Subject Edge Sensitivity (Hole-Fill)</span>
+                      <span className={styles.sliderValue}>{alphaThreshold}%</span>
+                    </div>
+                    <input
+                      type="range"
+                      min="0"
+                      max="100"
+                      value={alphaThreshold}
+                      onChange={(e) => setAlphaThreshold(parseInt(e.target.value))}
+                      className={styles.sliderInput}
+                      aria-label="Subject extraction threshold slider"
+                    />
+                    <span style={{ fontSize: "0.65rem", color: "var(--text-muted)", marginTop: "-2px", lineHeight: "1.3" }}>
+                      Increase to restore and solidify low-probability interior subject parts (e.g. skin or clothing matching background tones) in real-time.
+                    </span>
+                  </div>
 
                   <hr style={{ border: 0, borderTop: "1px solid var(--border)", margin: "4px 0" }} />
 

@@ -183,13 +183,20 @@
 
 ## Phase 13 — Standalone Client-Side Background Remover
 - [x] Install `@imgly/background-removal` package in `package.json`
-- [ ] Create standalone [BackgroundRemover.tsx](file:///home/sayan/Projects/webpages/UtilityKit/src/components/BackgroundRemover.tsx) and [BackgroundRemover.module.css](file:///home/sayan/Projects/webpages/UtilityKit/src/components/BackgroundRemover.module.css) components
-- [ ] Create route page [page.tsx](file:///home/sayan/Projects/webpages/UtilityKit/src/app/tools/background-remover/page.tsx) with SEO FAQs and guides
-- [ ] Integrate background remover inside [DashboardLayout.tsx](file:///home/sayan/Projects/webpages/UtilityKit/src/components/DashboardLayout.tsx) accordion nav list and Ctrl+K search index
-- [ ] Integrate background remover on the dashboard landing grid inside [page.tsx](file:///home/sayan/Projects/webpages/UtilityKit/src/app/page.tsx)
-- [ ] Verify static compiles successfully with `npm run build` with zero warnings/errors
+- [x] Create standalone [BackgroundRemover.tsx](file:///home/sayan/Projects/webpages/UtilityKit/src/components/BackgroundRemover.tsx) and [BackgroundRemover.module.css](file:///home/sayan/Projects/webpages/UtilityKit/src/components/BackgroundRemover.module.css) components
+- [x] Create route page [page.tsx](file:///home/sayan/Projects/webpages/UtilityKit/src/app/tools/background-remover/page.tsx) with SEO FAQs and guides
+- [x] Integrate background remover inside [DashboardLayout.tsx](file:///home/sayan/Projects/webpages/UtilityKit/src/components/DashboardLayout.tsx) accordion nav list and Ctrl+K search index
+- [x] Integrate background remover on the dashboard landing grid inside [page.tsx](file:///home/sayan/Projects/webpages/UtilityKit/src/app/page.tsx)
+- [x] Verify static compiles successfully with `npm run build` with zero warnings/errors
 
-
+## Phase 14 — Checkerboard Grid, Drop Shadow, and Subject Hole-Filling Matting Fixes
+- [x] Implement elegant checkered transparency grid styling `.checkerboard` in `BackgroundRemover.module.css`
+- [x] Implement realistic PNG alpha outline drop-shadow styling `.previewImgTransparent` in `BackgroundRemover.module.css`
+- [x] Apply `.checkerboard` and `.previewImgTransparent` classes dynamically inside `BackgroundRemover.tsx` when mode is `"transparent"`
+- [x] Expose dynamic "Subject Extraction Threshold" range slider in `BackgroundRemover.tsx` controls panel
+- [x] Refactor real-time Canvas compositing in `BackgroundRemover.tsx` to apply real-time pixel alpha thresholding
+- [x] Integrate architectural and educational explanations of local WASM-based AI background extraction into the FAQ/SEO section
+- [x] Verify static compiles successfully with `npm run build` with zero warnings/errors
 
 ## Review & Results
 
@@ -199,6 +206,3 @@ SuperUtility's SEO and technical capability have been fully optimized to outperf
 2. **Contextual Keyword Enrichment**: Adding custom scientific and mathematical footers (covering topics like CSPRNG vs PRNG, Reed-Solomon error correction, RFC 4122 compliance, and Fisher-Yates shuffle) provides extremely rich long-tail keywords that index beautifully because Next.js compiles the entire application statically into HTML.
 3. **Flawless Technical Build**: Static exports build within seconds with zero warnings or errors. Images and social pre-views are fully resolved via `metadataBase`.
 4. **Offline First Sandbox Trust**: Highlighted offline-first sandboxing capability directly on both landing grids and sidebar sections, boosting conversion and retaining privacy-minded developers.
-
-
-

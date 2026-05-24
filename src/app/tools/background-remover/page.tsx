@@ -38,6 +38,18 @@ export default function BackgroundRemoverPage() {
             </p>
           </div>
           <div className={pageStyles.seoCard}>
+            <h3 className={pageStyles.seoCardTitle}>How can this AI be completely free and offline?</h3>
+            <p className={pageStyles.seoCardText}>
+              Unlike other services that require subscription API keys, SuperUtility compiles the entire neural network (RMBG-1.4) into **WebAssembly** and runs it using **ONNX Runtime Web**. Because the heavy calculations are performed entirely by your local CPU or graphics card (GPU) and the model weights (~72MB) are cached locally, we have zero hosting costs. This lets us keep the tool 100% free, private, and unlimited!
+            </p>
+          </div>
+          <div className={pageStyles.seoCard}>
+            <h3 className={pageStyles.seoCardTitle}>What should I do if the AI cuts out parts of my subject?</h3>
+            <p className={pageStyles.seoCardText}>
+              If your clothing or skin matches the background color, the model might mistake them and create hollow, semi-transparent holes inside the subject. You can easily fix this by increasing the <strong>Subject Edge Sensitivity (Hole-Fill)</strong> slider in the adjustments sidebar. This uses high-performance canvas pixel math to instantly solidify low-confidence interior areas in real-time.
+            </p>
+          </div>
+          <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>How does the rim light bloom effect work?</h3>
             <p className={pageStyles.seoCardText}>
               The bloom effect duplicates the isolated transparent subject, applies a Gaussian blur, and layers it behind the subject under a <code className={pageStyles.seoCode}>screen</code> composite blending operation. This simulates natural backlighting, wrapping light bleed around fine hair strands so they blend realistically into solid color or blurred backdrops.

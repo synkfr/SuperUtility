@@ -93,6 +93,23 @@
   transition: transform var(--transition-fast);
 }
 
+.checkerboard {
+  background-color: var(--bg-surface) !important;
+  background-image: 
+    linear-gradient(45deg, var(--border-dark) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--border-dark) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, var(--border-dark) 75%),
+    linear-gradient(-45deg, transparent 75%, var(--border-dark) 75%) !important;
+  background-size: 20px 20px !important;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0 !important;
+}
+
+.previewImgTransparent {
+  box-shadow: none !important;
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.12));
+}
+
+
 /* Right Panel: Controls Panel */
 .controlsPanel {
   background: var(--bg-surface);
