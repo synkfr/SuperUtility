@@ -433,6 +433,17 @@ export default function DashboardLayout({
           ),
         },
         {
+          id: "background-remover",
+          href: "/tools/background-remover",
+          name: "Background Remover",
+          keywords: ["bg", "remover", "remove", "clean", "transparency", "blur", "bloom", "hair", "matte", "portrait", "onnx", "wasm"],
+          icon: (
+            <svg className={styles.navIcon} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
+            </svg>
+          ),
+        },
+        {
           id: "image-to-base64",
           href: "/tools/image-to-base64",
           name: "Image to Base64",

@@ -175,11 +175,20 @@
 - [x] Validate static compilation via `npm run build` with zero warnings/errors
 
 ## Phase 12 — Emoji Replacement with Premium Vector Icons
-- [ ] Replace `🟢`, `🟡`, `🔴` emojis in `src/components/PdfSecurityScanner.tsx` with clean, styled colored dots
-- [ ] Replace `🎉` emoji in `src/components/ImageCompressor.tsx` with premium check/badge vector SVG
-- [ ] Replace `🎲` emoji in `src/components/RandomPicker.tsx` with premium custom vector dice SVG
-- [ ] Replace `🚀` emoji in Base64 Unicode example inside `src/app/tools/url-base64-converter/page.tsx` with standard multi-byte `"Hello 世界"` string
+- [x] Replace `🟢`, `🟡`, `🔴` emojis in `src/components/PdfSecurityScanner.tsx` with clean, styled colored dots
+- [x] Replace `🎉` emoji in `src/components/ImageCompressor.tsx` with premium check/badge vector SVG
+- [x] Replace `🎲` emoji in `src/components/RandomPicker.tsx` with premium custom vector dice SVG
+- [x] Replace `🚀` emoji in Base64 Unicode example inside `src/app/tools/url-base64-converter/page.tsx` with standard multi-byte `"Hello 世界"` string
+- [x] Verify static compiles successfully with `npm run build` with zero warnings/errors
+
+## Phase 13 — Standalone Client-Side Background Remover
+- [x] Install `@imgly/background-removal` package in `package.json`
+- [ ] Create standalone [BackgroundRemover.tsx](file:///home/sayan/Projects/webpages/UtilityKit/src/components/BackgroundRemover.tsx) and [BackgroundRemover.module.css](file:///home/sayan/Projects/webpages/UtilityKit/src/components/BackgroundRemover.module.css) components
+- [ ] Create route page [page.tsx](file:///home/sayan/Projects/webpages/UtilityKit/src/app/tools/background-remover/page.tsx) with SEO FAQs and guides
+- [ ] Integrate background remover inside [DashboardLayout.tsx](file:///home/sayan/Projects/webpages/UtilityKit/src/components/DashboardLayout.tsx) accordion nav list and Ctrl+K search index
+- [ ] Integrate background remover on the dashboard landing grid inside [page.tsx](file:///home/sayan/Projects/webpages/UtilityKit/src/app/page.tsx)
 - [ ] Verify static compiles successfully with `npm run build` with zero warnings/errors
+
 
 
 ## Review & Results

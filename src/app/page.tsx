@@ -359,6 +359,16 @@ export default function Home() {
       ),
     },
     {
+      id: "background-remover",
+      name: "Background Remover",
+      subtitle: "Erase backgrounds, isolate hair details, and add bokeh blurs and halos offline.",
+      icon: (
+        <svg className={styles.toolIconSvg} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" strokeWidth="2" />
+        </svg>
+      ),
+    },
+    {
       id: "color-picker-image",
       name: "Color Picker",
       subtitle: "Zoom sample image pixel coordinates and copy colors in HEX, RGB, or HSL.",
