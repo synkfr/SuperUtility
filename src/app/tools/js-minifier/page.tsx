@@ -19,7 +19,7 @@ export default function JsMinifierPage() {
           About JavaScript Compaction
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility offers a lightweight, high-speed **JavaScript Minifier** running 100% locally on your computer. During development, programmers structure scripts with single-line comments (`//`), block explanations (`/* ... */`), clear indentations, and vertical spacing to make logic easy to navigate.
+          SuperUtility offers a lightweight, high-speed <strong>JavaScript Minifier</strong> running 100% locally on your computer. During development, programmers structure scripts with single-line comments (`//`), block explanations (`/* ... */`), clear indentations, and vertical spacing to make logic easy to navigate.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           While this is great for team review, it adds bloated file sizes that prolong page download times. Minification compiles your Javascript by completely eliminating these formatting and comments elements, producing dense, lightweight script lines ready for immediate production environments without changing the execution outcome.
@@ -53,7 +53,7 @@ export default function JsMinifierPage() {
           <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>How can I restore minified code?</h3>
             <p className={pageStyles.seoCardText}>
-              Minification is a one-way process because it permanently strips comments and formatting. To restore structure for reading, you can run the code through a standard **Code Beautifier / Formatter**.
+              Minification is a one-way process because it permanently strips comments and formatting. To restore structure for reading, you can run the code through a standard <strong>Code Beautifier / Formatter</strong>.
             </p>
           </div>
         </div>

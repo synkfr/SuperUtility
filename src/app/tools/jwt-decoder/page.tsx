@@ -19,7 +19,7 @@ export default function JwtDecoderPage() {
           About JSON Web Token (JWT) Decoding
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility offers an offline-first **JWT Decoder** tool designed for developers and security engineers. JSON Web Tokens (JWT) are an open, industry-standard RFC 7519 method for representing claims securely between two parties.
+          SuperUtility offers an offline-first <strong>JWT Decoder</strong> tool designed for developers and security engineers. JSON Web Tokens (JWT) are an open, industry-standard RFC 7519 method for representing claims securely between two parties.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           A standard JWT consists of three parts separated by dots (`.`): a Header (specifying algorithm and token type), a Payload (containing claims like subject, expiration, and custom user metadata), and a Cryptographic Signature. Our tool reads this string, translates it instantly from Base64URL encoding, formats the resulting JSON structures, and auto-converts timestamp numbers (like standard claims `exp` and `iat`) into your local timezone dates.
@@ -41,7 +41,7 @@ export default function JwtDecoderPage() {
           <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>What are standard claim keywords inside JWTs?</h3>
             <p className={pageStyles.seoCardText}>
-              Common claims include: **sub** (Subject, usually user ID), **iss** (Issuer who created the token), **aud** (Audience for whom it is intended), **exp** (Expiration Unix epoch time), and **iat** (Issued-At Unix epoch time).
+              Common claims include: <strong>sub</strong> (Subject, usually user ID), <strong>iss</strong> (Issuer who created the token), <strong>aud</strong> (Audience for whom it is intended), <strong>exp</strong> (Expiration Unix epoch time), and <strong>iat</strong> (Issued-At Unix epoch time).
             </p>
           </div>
           <div className={pageStyles.seoCard}>

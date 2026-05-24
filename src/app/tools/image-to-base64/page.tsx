@@ -17,7 +17,7 @@ export default function ImageToBase64Page() {
           About Base64 Graphics Embeds
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility offers an offline-first **Image to Base64 Encoder** built for web developers, designers, and email marketers. Base64 encoding represents binary image data as a safe ASCII text string, allowing you to embed images directly inside HTML, CSS, or JSON documents.
+          SuperUtility offers an offline-first <strong>Image to Base64 Encoder</strong> built for web developers, designers, and email marketers. Base64 encoding represents binary image data as a safe ASCII text string, allowing you to embed images directly inside HTML, CSS, or JSON documents.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           This technique eliminates external HTTP requests when loading small graphic icons, custom CSS cursor maps, or HTML email newsletters, resulting in faster asset delivery. Since all file processing executes locally, your corporate graphics never touch any cloud databases.

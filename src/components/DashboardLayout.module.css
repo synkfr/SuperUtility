@@ -25,6 +25,7 @@
   top: 0;
   z-index: 50;
   overflow-y: auto;
+  align-self: flex-start;
 }
 
 @media (min-width: 992px) {

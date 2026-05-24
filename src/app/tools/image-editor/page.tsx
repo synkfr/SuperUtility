@@ -21,7 +21,7 @@ export default function ImageEditorPage() {
           About the All-in-One Browser Image Editor
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility includes a premium, local, browser-based **All-in-One Image Editor** designed to streamline your design workflows. Instead of bouncing between separate pages to crop, rotate, resize, and compress your image files, this single unified interface allows you to execute complex transformations in a single transaction.
+          SuperUtility includes a premium, local, browser-based <strong>All-in-One Image Editor</strong> designed to streamline your design workflows. Instead of bouncing between separate pages to crop, rotate, resize, and compress your image files, this single unified interface allows you to execute complex transformations in a single transaction.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           Perform operations globally on dozens of files at once or override edit configurations for individual files independently. Our processing engine executes 100% on your device, leveraging HTML5 Canvas and asynchronous sequentially structured queue computations to handle heavy batches without crashing your browser tab.

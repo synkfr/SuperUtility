@@ -19,10 +19,10 @@ export default function JsonFormatterPage() {
           About SuperUtility JSON Formatter & Inspector
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility offers a modern, fully-featured **JSON Formatter & Validator** to inspect and format nested data structures. JSON (JavaScript Object Notation) is the standard format for API data exchanges, configuration files, and state storage. However, unformatted, minified, or raw API outputs are completely unreadable for humans.
+          SuperUtility offers a modern, fully-featured <strong>JSON Formatter & Validator</strong> to inspect and format nested data structures. JSON (JavaScript Object Notation) is the standard format for API data exchanges, configuration files, and state storage. However, unformatted, minified, or raw API outputs are completely unreadable for humans.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility lets you beautify raw strings instantly with custom 2-space or 4-space tab selections, minify JSON configurations into single lines, validate syntax correctness with precise error line alerts, and parse keys into a **recursive, collapsible visual tree layout** with full syntax color-highlighting. Everything runs entirely client-side on your computer, ensuring absolute privacy.
+          SuperUtility lets you beautify raw strings instantly with custom 2-space or 4-space tab selections, minify JSON configurations into single lines, validate syntax correctness with precise error line alerts, and parse keys into a <strong>recursive, collapsible visual tree layout</strong> with full syntax color-highlighting. Everything runs entirely client-side on your computer, ensuring absolute privacy.
         </p>
       </section>
 

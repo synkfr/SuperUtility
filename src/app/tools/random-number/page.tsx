@@ -19,7 +19,7 @@ export default function RandomNumberPage() {
           About SuperUtility Random Number Generator
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility provides a highly secure and completely unbiased **Random Number Generator**. Whether you need a single index integer (like a lottery draw or roll), custom float decimals (like physics coefficients), or non-repeating sets of sorted ranges, our tool handles it seamlessly in real-time.
+          SuperUtility provides a highly secure and completely unbiased <strong>Random Number Generator</strong>. Whether you need a single index integer (like a lottery draw or roll), custom float decimals (like physics coefficients), or non-repeating sets of sorted ranges, our tool handles it seamlessly in real-time.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           You can specify the exact minimum and maximum bounds, set decimal precision from 0 to 5 places, generate lists of numbers at once, toggle duplicate prevention, and arrange outputs in ascending, descending, or shuffled layouts. Plus, with our modern layout tokens, you can copy individual numbers or export the entire list to your clipboard with a single click.
@@ -35,25 +35,25 @@ export default function RandomNumberPage() {
           <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>Why is CSPRNG better than typical software Math.random()?</h3>
             <p className={pageStyles.seoCardText}>
-              Standard computer algorithms (like Javascript's built-in <code className={pageStyles.seoCode}>Math.random()</code>) are pseudo-random number generators (PRNG). They use fixed seed values that can be predicted after observing past sequences. SuperUtility uses your browser's native **Cryptographically Secure Pseudo-Random Number Generator** (<code className={pageStyles.seoCode}>CSPRNG</code>), which polls physical OS entropy noise, making it mathematically unpredictable and secure for security keys.
+              Standard computer algorithms (like Javascript's built-in <code className={pageStyles.seoCode}>Math.random()</code>) are pseudo-random number generators (PRNG). They use fixed seed values that can be predicted after observing past sequences. SuperUtility uses your browser's native <strong>Cryptographically Secure Pseudo-Random Number Generator</strong> (<code className={pageStyles.seoCode}>CSPRNG</code>), which polls physical OS entropy noise, making it mathematically unpredictable and secure for security keys.
             </p>
           </div>
           <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>What is a modulo bias and how do you prevent it?</h3>
             <p className={pageStyles.seoCardText}>
-              When mapping large random 32-bit integers onto custom ranges (like Min to Max), developers often use a standard modulo formula. This creates a statistical defect called **modulo bias**, where certain numbers have a slightly higher probability of selection. SuperUtility resolves this by utilizing unbiased scaling and rejection sampling to guarantee a perfectly equal distribution of choices.
+              When mapping large random 32-bit integers onto custom ranges (like Min to Max), developers often use a standard modulo formula. This creates a statistical defect called <strong>modulo bias</strong>, where certain numbers have a slightly higher probability of selection. SuperUtility resolves this by utilizing unbiased scaling and rejection sampling to guarantee a perfectly equal distribution of choices.
             </p>
           </div>
           <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>Can I generate a sequence of non-repeating numbers?</h3>
             <p className={pageStyles.seoCardText}>
-              Yes! By turning off the **"Allow Duplicates"** toggle, SuperUtility uses a local rejection loop to filter out repeating values, allowing you to generate things like raffle grids or lottery pools without repeats.
+              Yes! By turning off the <strong>"Allow Duplicates"</strong> toggle, SuperUtility uses a local rejection loop to filter out repeating values, allowing you to generate things like raffle grids or lottery pools without repeats.
             </p>
           </div>
           <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>Is there a limit to how many numbers I can generate?</h3>
             <p className={pageStyles.seoCardText}>
-              To prevent browser page crashes and memory leaks, we limit bulk generation to a high-speed batch size of **100 numbers** per click, executing instantly with sub-millisecond response rates.
+              To prevent browser page crashes and memory leaks, we limit bulk generation to a high-speed batch size of <strong>100 numbers</strong> per click, executing instantly with sub-millisecond response rates.
             </p>
           </div>
         </div>

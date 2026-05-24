@@ -35,7 +35,7 @@ export default function TemperatureConverterPage() {
       <section className={pageStyles.seoSection} aria-label="Detailed Description">
         <h2 className={pageStyles.seoTitle}>Free Browser-Based Temperature Converter</h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility includes a high-precision, client-side **Temperature Converter** designed to translate values between Celsius, Fahrenheit, and Kelvin. The tool runs 100% locally in your web browser.
+          SuperUtility includes a high-precision, client-side <strong>Temperature Converter</strong> designed to translate values between Celsius, Fahrenheit, and Kelvin. The tool runs 100% locally in your web browser.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           Temperature formulas use distinct offsets rather than basic multiplication constants. Our converter implements these exact mathematical offsets (e.g. Celsius to Fahrenheit: `(C * 9/5) + 32`, and Celsius to Kelvin: `C + 273.15`) for perfect mathematical conversions.

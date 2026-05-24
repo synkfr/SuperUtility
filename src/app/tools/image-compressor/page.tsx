@@ -17,7 +17,7 @@ export default function ImageCompressorPage() {
           About Client-Side Graphic Optimization
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility includes a powerful **Image Compressor** designed for optimizing web graphics, layouts, and document uploads. Standard web images contain bloated header tags and uncompressed color channels that lead to high load times, dragging down Largest Contentful Paint (LCP) performance.
+          SuperUtility includes a powerful <strong>Image Compressor</strong> designed for optimizing web graphics, layouts, and document uploads. Standard web images contain bloated header tags and uncompressed color channels that lead to high load times, dragging down Largest Contentful Paint (LCP) performance.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           Our compressor loads files into browser memory and redraws them onto custom HTML5 canvas buffers, utilizing adaptive DCT (Discrete Cosine Transform) compression. This process reduces file sizes by up to 90% while preserving high visual details, all done without any central cloud processing.

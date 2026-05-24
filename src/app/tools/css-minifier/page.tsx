@@ -19,7 +19,7 @@ export default function CssMinifierPage() {
           About CSS Minification
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility offers an offline-first **CSS Minifier** designed for front-end developers, UI engineers, and performance optimizers. CSS styles written during development are packed with descriptive comments, clean nesting indentations, and empty line breaks to keep stylesheets readable for humans.
+          SuperUtility offers an offline-first <strong>CSS Minifier</strong> designed for front-end developers, UI engineers, and performance optimizers. CSS styles written during development are packed with descriptive comments, clean nesting indentations, and empty line breaks to keep stylesheets readable for humans.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           However, these whitespaces and comments add extra bytes that web browsers must download when loading your website. Minification strips these unnecessary formatting bytes without altering visual styles, drastically reducing file sizes and improving your site's Largest Contentful Paint (LCP) performance score.

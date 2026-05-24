@@ -17,7 +17,7 @@ export default function BcryptGeneratorPage() {
           About Adaptive Bcrypt Hashing
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility includes a local, offline-first **Bcrypt Hashing** interface. Bcrypt is an adaptive password-hashing function designed by Niels Provos and David Mazières, based on the Blowfish cipher. It incorporates a work factor parameter (salt rounds) that allows it to scale in computation difficulty.
+          SuperUtility includes a local, offline-first <strong>Bcrypt Hashing</strong> interface. Bcrypt is an adaptive password-hashing function designed by Niels Provos and David Mazières, based on the Blowfish cipher. It incorporates a work factor parameter (salt rounds) that allows it to scale in computation difficulty.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           This adaptability makes it highly resistant to hardware acceleration attacks (such as custom FPGA or GPU brute-force rigs) because verifying a password remains computationally expensive, protecting backend records from leak exploitation.

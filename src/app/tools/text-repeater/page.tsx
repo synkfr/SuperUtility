@@ -19,7 +19,7 @@ export default function TextRepeaterPage() {
           About SuperUtility Text Line Tools
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility offers a powerful **Text Line Tools Suite** combining three essential text operations: a bulk **Text Repeater**, an instant **Duplicate Lines Filter**, and an advanced **Line Sorter**. Developers, designers, writers, and data entry specialists often need to manipulate large lists of items (such as emails, domain links, IDs, or database values).
+          SuperUtility offers a powerful <strong>Text Line Tools Suite</strong> combining three essential text operations: a bulk <strong>Text Repeater</strong>, an instant <strong>Duplicate Lines Filter</strong>, and an advanced <strong>Line Sorter</strong>. Developers, designers, writers, and data entry specialists often need to manipulate large lists of items (such as emails, domain links, IDs, or database values).
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           Instead of writing complex terminal scripting commands or copy-pasting data into heavy spreadsheet programs, our tools let you manage, filter, and organize text sequences instantly. Every calculation is performed locally in your browser memory state, guaranteeing that your proprietary lists are never uploaded to any external server.
@@ -43,19 +43,19 @@ export default function TextRepeaterPage() {
             <p className={pageStyles.seoCardText}>
               We support four primary sorting methods:
               <br />
-              • **A to Z**: Standard alphabetical ascending sort.
+              • <strong>A to Z</strong>: Standard alphabetical ascending sort.
               <br />
-              • **Z to A**: Alphabetical descending sort.
+              • <strong>Z to A</strong>: Alphabetical descending sort.
               <br />
-              • **Shortest to Longest**: Sorts lines in ascending order of character length.
+              • <strong>Shortest to Longest</strong>: Sorts lines in ascending order of character length.
               <br />
-              • **Longest to Shortest**: Sorts lines in descending order of character length.
+              • <strong>Longest to Shortest</strong>: Sorts lines in descending order of character length.
             </p>
           </div>
           <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>Can I repeat text with custom separators?</h3>
             <p className={pageStyles.seoCardText}>
-              Yes! In addition to standard separators like **Newlines**, **Spaces**, and **Commas**, you can choose **"Custom Character"** and define any string of your choice (such as hyphens, backslashes, or words) to join your repeated elements.
+              Yes! In addition to standard separators like <strong>Newlines</strong>, <strong>Spaces</strong>, and <strong>Commas</strong>, you can choose <strong>"Custom Character"</strong> and define any string of your choice (such as hyphens, backslashes, or words) to join your repeated elements.
             </p>
           </div>
           <div className={pageStyles.seoCard}>

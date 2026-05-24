@@ -19,10 +19,10 @@ export default function UrlBase64ConverterPage() {
           About SuperUtility URL & Base64 Converter
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility offers a highly robust, developer-grade **URL & Base64 Encoder / Decoder**. Translating, sanitizing, and encoding strings are fundamental daily tasks in web development, database management, and network request formatting.
+          SuperUtility offers a highly robust, developer-grade <strong>URL & Base64 Encoder / Decoder</strong>. Translating, sanitizing, and encoding strings are fundamental daily tasks in web development, database management, and network request formatting.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          Our dual-utility panel allows you to perform **URL Percent-Encoding** (to sanitize query parameter keys, pathnames, and search parameters for API requests) and **Base64 Encoding** (to convert plain text strings into binary-to-text representations safe for data storage, basic authentication headers, or embedded media streams). With built-in UTF-8 safety checks, our converter is completely protected against Unicode character crashes.
+          Our dual-utility panel allows you to perform <strong>URL Percent-Encoding</strong> (to sanitize query parameter keys, pathnames, and search parameters for API requests) and <strong>Base64 Encoding</strong> (to convert plain text strings into binary-to-text representations safe for data storage, basic authentication headers, or embedded media streams). With built-in UTF-8 safety checks, our converter is completely protected against Unicode character crashes.
         </p>
       </section>
 

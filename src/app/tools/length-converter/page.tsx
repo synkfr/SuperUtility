@@ -35,7 +35,7 @@ export default function LengthConverterPage() {
       <section className={pageStyles.seoSection} aria-label="Detailed Description">
         <h2 className={pageStyles.seoTitle}>Free Browser-Based Height and Distance Converter</h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility offers a powerful and secure **Length and Distance Converter** designed to handle all your height, distance, and dimensions calculations instantly inside your browser. By carrying out the calculations client-side using JavaScript, the conversion results are computed on your device, keeping your inputs private.
+          SuperUtility offers a powerful and secure <strong>Length and Distance Converter</strong> designed to handle all your height, distance, and dimensions calculations instantly inside your browser. By carrying out the calculations client-side using JavaScript, the conversion results are computed on your device, keeping your inputs private.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           Whether you need to convert your height from feet and inches to centimeters for a form, calculate distances in miles and kilometers, or scale detailed dimensions in yards and meters, our tool provides extremely high precision.

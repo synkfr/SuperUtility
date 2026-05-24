@@ -19,10 +19,10 @@ export default function HtmlConverterPage() {
           About HTML Character Entities
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility provides an offline-first **HTML Encoder and Decoder** designed for web developers, designers, and content managers. In HTML, special reserved characters like `{"<"}` and `{">"}` have built-in meaning to web browsers as layout tags. If you paste raw symbols directly into code blocks, the browser interprets them as HTML tags, corrupting content layouts.
+          SuperUtility provides an offline-first <strong>HTML Encoder and Decoder</strong> designed for web developers, designers, and content managers. In HTML, special reserved characters like `{"<"}` and `{">"}` have built-in meaning to web browsers as layout tags. If you paste raw symbols directly into code blocks, the browser interprets them as HTML tags, corrupting content layouts.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          To render these symbols safely, they must be converted into **HTML Character Entities** (e.g. `{"&lt;"}` and `{"&gt;"}`). This converter parses your strings, performs translations completely client-side in your browser sandbox, and translates numeric or named entity representations back to standard readable unicode glyphs.
+          To render these symbols safely, they must be converted into <strong>HTML Character Entities</strong> (e.g. `{"&lt;"}` and `{"&gt;"}`). This converter parses your strings, performs translations completely client-side in your browser sandbox, and translates numeric or named entity representations back to standard readable unicode glyphs.
         </p>
       </section>
 
@@ -47,7 +47,7 @@ export default function HtmlConverterPage() {
           <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>What are named vs numeric entities?</h3>
             <p className={pageStyles.seoCardText}>
-              **Named entities** represent characters using friendly alphabetic strings (e.g., `&copy;` for the copyright symbol). **Numeric entities** specify the exact Unicode/ASCII position of the character (e.g., `&#169;`).
+              <strong>Named entities</strong> represent characters using friendly alphabetic strings (e.g., `&copy;` for the copyright symbol). <strong>Numeric entities</strong> specify the exact Unicode/ASCII position of the character (e.g., `&#169;`).
             </p>
           </div>
           <div className={pageStyles.seoCard}>

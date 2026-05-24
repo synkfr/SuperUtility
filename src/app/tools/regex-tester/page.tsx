@@ -19,7 +19,7 @@ export default function RegexTesterPage() {
           About JavaScript Regular Expressions
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility offers an offline-first **Regular Expression (Regex) Tester** designed for developers, systems administrators, and data analysts. Regular expressions are powerful character pattern sequences used to perform advanced search, validation, parsing, and replacing operations in text documents.
+          SuperUtility offers an offline-first <strong>Regular Expression (Regex) Tester</strong> designed for developers, systems administrators, and data analysts. Regular expressions are powerful character pattern sequences used to perform advanced search, validation, parsing, and replacing operations in text documents.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           This tester compiles standard JavaScript RegExp rules directly inside your browser engine. As you modify the search pattern or toggle flags like Global (`g`), Case-Insensitive (`i`), or Multiline (`m`), the tool highlights matching substrings instantly, compiles execution indexes, and itemizes captured groups to help you build complex patterns without guessing.
@@ -35,7 +35,7 @@ export default function RegexTesterPage() {
           <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>What does the Global (g) flag do?</h3>
             <p className={pageStyles.seoCardText}>
-              By default, a regular expression stops searching after finding the first matching substring. Toggling the Global (**g**) flag instructs the engine to scan the entire string, returning all matches.
+              By default, a regular expression stops searching after finding the first matching substring. Toggling the Global (<strong>g</strong>) flag instructs the engine to scan the entire string, returning all matches.
             </p>
           </div>
           <div className={pageStyles.seoCard}>
@@ -53,7 +53,7 @@ export default function RegexTesterPage() {
           <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>Why does the interface freeze on some patterns?</h3>
             <p className={pageStyles.seoCardText}>
-              Certain patterns with nested quantifiers can trigger **Catastrophic Backtracking** (a state of infinite complexity). We've built in a standard search guard threshold to automatically interrupt evaluation loops if matches exceed safe limits.
+              Certain patterns with nested quantifiers can trigger <strong>Catastrophic Backtracking</strong> (a state of infinite complexity). We've built in a standard search guard threshold to automatically interrupt evaluation loops if matches exceed safe limits.
             </p>
           </div>
         </div>

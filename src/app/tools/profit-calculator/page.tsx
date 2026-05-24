@@ -17,10 +17,10 @@ export default function ProfitCalculatorPage() {
           About Profit Margins, Markups, & Retail Discounts
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility includes a **Discount & Profit Margin Calculator** built for retail business operators, marketing agents, and smart consumers. Understanding the mathematical difference between margin and markup is crucial for setting sustainable sale prices.
+          SuperUtility includes a <strong>Discount & Profit Margin Calculator</strong> built for retail business operators, marketing agents, and smart consumers. Understanding the mathematical difference between margin and markup is crucial for setting sustainable sale prices.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          **Gross Margin** represents the percentage of selling price that is profit: `((Price - Cost) / Price) * 100`. **Markup** represents the percentage rate added to cost price to establish the selling price: `((Price - Cost) / Cost) * 100`.
+          <strong>Gross Margin</strong> represents the percentage of selling price that is profit: `((Price - Cost) / Price) * 100`. <strong>Markup</strong> represents the percentage rate added to cost price to establish the selling price: `((Price - Cost) / Cost) * 100`.
         </p>
       </section>
 

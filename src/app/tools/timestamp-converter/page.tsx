@@ -19,7 +19,7 @@ export default function TimestampConverterPage() {
           Understanding Unix Epoch Time
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility provides a high-performance **Unix Timestamp Converter** running 100% locally in your browser. Unix time (also known as Epoch time or POSIX time) is a standard system for tracking time, defined as the total number of seconds that have elapsed since **January 1, 1970, at 00:00:00 UTC** (excluding leap seconds).
+          SuperUtility provides a high-performance <strong>Unix Timestamp Converter</strong> running 100% locally in your browser. Unix time (also known as Epoch time or POSIX time) is a standard system for tracking time, defined as the total number of seconds that have elapsed since <strong>January 1, 1970, at 00:00:00 UTC</strong> (excluding leap seconds).
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           Because computer operating systems and databases represent timestamps as simple integers, developers constantly need to translate numbers like `1779455422` into human-readable calendar dates. Our converter instantly detects whether you entered values in seconds or milliseconds, displaying local time-zone dates, UTC strings, and active relative intervals.
@@ -41,13 +41,13 @@ export default function TimestampConverterPage() {
           <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>How does this tool handle timezone offsets?</h3>
             <p className={pageStyles.seoCardText}>
-              All calculations run inside your browser engine. The **Local Time** conversion uses the exact timezone settings configured on your physical computer/operating system, while the **UTC Time** displays dates relative to the standard Zero meridian.
+              All calculations run inside your browser engine. The <strong>Local Time</strong> conversion uses the exact timezone settings configured on your physical computer/operating system, while the <strong>UTC Time</strong> displays dates relative to the standard Zero meridian.
             </p>
           </div>
           <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>What is the Year 2038 Problem?</h3>
             <p className={pageStyles.seoCardText}>
-              Systems representing Unix seconds as signed 32-bit integers will overflow on **January 19, 2038**, when the elapsed seconds exceed 2,147,483,647. Modern 64-bit systems are unaffected, allowing dates to be resolved billions of years into the future.
+              Systems representing Unix seconds as signed 32-bit integers will overflow on <strong>January 19, 2038</strong>, when the elapsed seconds exceed 2,147,483,647. Modern 64-bit systems are unaffected, allowing dates to be resolved billions of years into the future.
             </p>
           </div>
           <div className={pageStyles.seoCard}>

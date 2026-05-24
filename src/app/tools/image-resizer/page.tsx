@@ -17,7 +17,7 @@ export default function ImageResizerPage() {
           About Proportional Image Scaling
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility includes a local, offline-first **Image Resizer** designed for resizing marketing assets, photos, or avatars. Resizing images before uploading them online saves storage margins and significantly optimizes website rendering performance.
+          SuperUtility includes a local, offline-first <strong>Image Resizer</strong> designed for resizing marketing assets, photos, or avatars. Resizing images before uploading them online saves storage margins and significantly optimizes website rendering performance.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           Our resizing tool allows you to specify custom target widths and heights in pixels, with a responsive aspect-ratio lock option to keep graphics perfectly proportional. Everything runs securely in-browser without sending your files over internet connections.

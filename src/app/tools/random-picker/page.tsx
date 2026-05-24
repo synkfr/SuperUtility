@@ -19,7 +19,7 @@ export default function RandomPickerPage() {
           About SuperUtility Random Picker
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility provides a fun, interactive, and completely fair **Random List Picker** (or raffle sweep spinner). Perfect for teacher classroom draws, giveaway raffle sweeps, picking a restaurant for lunch, or resolving daily choices. 
+          SuperUtility provides a fun, interactive, and completely fair <strong>Random List Picker</strong> (or raffle sweep spinner). Perfect for teacher classroom draws, giveaway raffle sweeps, picking a restaurant for lunch, or resolving daily choices. 
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           Simply paste or type your list of choices, and SuperUtility will instantly extract one or more items completely at random. You can configure options to pull multiple winners at once, prevent duplicates, and view your rolling history. Best of all, everything runs locally on your browser using pure math algorithms, ensuring no choice bias or predictable repeat patterns.
@@ -35,7 +35,7 @@ export default function RandomPickerPage() {
           <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>How can I be sure the selections are completely fair?</h3>
             <p className={pageStyles.seoCardText}>
-              We implement the standard **Fisher-Yates (Knuth) shuffling algorithm** to randomize the list. This mathematically guarantees that every single item on your list has an exactly equal probability of being chosen in every sweep, eliminating the bias found in simpler software shuffles.
+              We implement the standard <strong>Fisher-Yates (Knuth) shuffling algorithm</strong> to randomize the list. This mathematically guarantees that every single item on your list has an exactly equal probability of being chosen in every sweep, eliminating the bias found in simpler software shuffles.
             </p>
           </div>
           <div className={pageStyles.seoCard}>
@@ -49,13 +49,13 @@ export default function RandomPickerPage() {
             <p className={pageStyles.seoCardText}>
               Yes! We provide quick-roll presets for common draws:
               <br />
-              • **Dice Roll**: Simulates a standard 6-sided die draw.
+              • <strong>Dice Roll</strong>: Simulates a standard 6-sided die draw.
               <br />
-              • **Coin Flip**: Classic Head or Tail selection.
+              • <strong>Coin Flip</strong>: Classic Head or Tail selection.
               <br />
-              • **Weekdays**: Picks a day from Monday through Sunday.
+              • <strong>Weekdays</strong>: Picks a day from Monday through Sunday.
               <br />
-              • **Meal Picker**: Picks from common food options (Pizza, Burger, Pasta).
+              • <strong>Meal Picker</strong>: Picks from common food options (Pizza, Burger, Pasta).
             </p>
           </div>
           <div className={pageStyles.seoCard}>

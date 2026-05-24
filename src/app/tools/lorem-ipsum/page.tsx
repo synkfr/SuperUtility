@@ -19,7 +19,7 @@ export default function LoremIpsumPage() {
           About Lorem Ipsum Typography
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility provides an offline-first **Lorem Ipsum Generator** designed for graphic designers, web developers, and layout typesetters. Lorem Ipsum represents standard scramble-Latin dummy text derived from Cicero's classic philosophical treatises in 45 BC.
+          SuperUtility provides an offline-first <strong>Lorem Ipsum Generator</strong> designed for graphic designers, web developers, and layout typesetters. Lorem Ipsum represents standard scramble-Latin dummy text derived from Cicero's classic philosophical treatises in 45 BC.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           When presenting new website layout wireframes or application designs, using actual copy text draws the audience's focus away from visual proportions and structure. Using pseudo-Latin mock text ensures viewers focus purely on typography, alignment, and grid systems. Our generator creates custom paragraphs, sentences, or word counts completely client-side in a fraction of a millisecond.

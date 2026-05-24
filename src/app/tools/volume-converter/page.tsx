@@ -35,7 +35,7 @@ export default function VolumeConverterPage() {
       <section className={pageStyles.seoSection} aria-label="Detailed Description">
         <h2 className={pageStyles.seoTitle}>Free Browser-Based Volume Converter</h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility includes a complete, client-side **Volume Converter** designed to convert capacity measurements in real-time. Everything happens in your browser, keeping your calculations secure and private.
+          SuperUtility includes a complete, client-side <strong>Volume Converter</strong> designed to convert capacity measurements in real-time. Everything happens in your browser, keeping your calculations secure and private.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           Convert liquid capacity between metric milliliters, liters, cubic meters, and standard US/Imperial units like teaspoons (tsp), tablespoons (tbsp), fluid ounces (fl oz), cups, pints (pt), quarts (qt), and gallons (gal). Ideal for cooking, home brewing, shipping, chemistry experiments, and packaging design.

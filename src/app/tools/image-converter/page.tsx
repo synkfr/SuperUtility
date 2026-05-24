@@ -17,7 +17,7 @@ export default function ImageConverterPage() {
           About Client-Side Format Transformations
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility includes a highly efficient **Image Format Converter** designed for changing graphical extensions. Different extensions serve different performance targets: PNG handles transparent backgrounds beautifully; JPEG offers rich colors for photographic assets; WEBP integrates modern, highly-optimized compression ratios.
+          SuperUtility includes a highly efficient <strong>Image Format Converter</strong> designed for changing graphical extensions. Different extensions serve different performance targets: PNG handles transparent backgrounds beautifully; JPEG offers rich colors for photographic assets; WEBP integrates modern, highly-optimized compression ratios.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           Our converter loads the source graphic into memory, draws it onto an offline canvas, and outputs it in your target extension. Since all code execution happens client-side, your confidential design files never touch external servers, preventing leaks.
@@ -32,9 +32,9 @@ export default function ImageConverterPage() {
           <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>What are the differences between extensions?</h3>
             <p className={pageStyles.seoCardText}>
-              - **PNG**: Lossless compression, supports background transparency. Excellent for logos and vector icons.
-              - **JPEG**: Lossy compression. Excellent for photos and color-dense screens.
-              - **WEBP**: Next-generation web format. Merges transparency and rich colors with up to 30% smaller file sizes than JPEGs.
+              - <strong>PNG</strong>: Lossless compression, supports background transparency. Excellent for logos and vector icons.
+              - <strong>JPEG</strong>: Lossy compression. Excellent for photos and color-dense screens.
+              - <strong>WEBP</strong>: Next-generation web format. Merges transparency and rich colors with up to 30% smaller file sizes than JPEGs.
             </p>
           </div>
           <div className={pageStyles.seoCard}>

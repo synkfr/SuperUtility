@@ -22,7 +22,7 @@ export default function QrCodeGeneratorPage() {
           SuperUtility provides a modern, pixel-perfect tool to design and export standard QR (Quick Response) codes. It allows you to enter any text, URL, email address, or contact detail and generates matching high-density graphics instantly in real-time. 
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          You can customize the QR Code's color palette (selecting from gorgeous premium presets or defining custom CSS hex colors), adjust outer margin paddings, and control error correction density. Best of all, SuperUtility supports exporting in both raster **PNG** graphics and scale-independent **vector SVG** formats—allowing you to scale your QR graphics infinitely for digital layouts or print media without losing clarity.
+          You can customize the QR Code's color palette (selecting from gorgeous premium presets or defining custom CSS hex colors), adjust outer margin paddings, and control error correction density. Best of all, SuperUtility supports exporting in both raster <strong>PNG</strong> graphics and scale-independent <strong>vector SVG</strong> formats—allowing you to scale your QR graphics infinitely for digital layouts or print media without losing clarity.
         </p>
       </section>
 
@@ -43,13 +43,13 @@ export default function QrCodeGeneratorPage() {
             <p className={pageStyles.seoCardText}>
               QR codes use the mathematical Reed-Solomon algorithm to recover data if the code is scratched, dirty, or partially covered. The levels represent data restoration capacities:
               <br />
-              • **Level L**: Restores up to 7% of data (best for clean digital URLs).
+              • <strong>Level L</strong>: Restores up to 7% of data (best for clean digital URLs).
               <br />
-              • **Level M**: Restores up to 15% (standard fallback default).
+              • <strong>Level M</strong>: Restores up to 15% (standard fallback default).
               <br />
-              • **Level Q**: Restores up to 25% (great for harsh environments).
+              • <strong>Level Q</strong>: Restores up to 25% (great for harsh environments).
               <br />
-              • **Level H**: Restores up to 30% (perfect if you want to place a custom logo in the center).
+              • <strong>Level H</strong>: Restores up to 30% (perfect if you want to place a custom logo in the center).
             </p>
           </div>
           <div className={pageStyles.seoCard}>

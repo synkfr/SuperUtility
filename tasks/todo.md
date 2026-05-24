@@ -159,6 +159,12 @@
 - [x] Implement desktop and mobile layout rules in `PdfEditor.module.css`
 - [x] Verify build compiles cleanly with `npm run build`
 - [x] Verify manual layout responsiveness across mobile and desktop viewport profiles
+## Phase 10 — Layout Tweaks, Bold Text & Typography Fixes
+- [x] Fix double-asterisk bold typography in all JSX routes/components by replacing them with `<strong>` tags
+- [x] Prevent desktop sidebar layout cutoff during main page scroll by adding `align-self: flex-start` to `.sidebar`
+- [x] Change sidebar footer banner text from "100% Client-Side" to "100% Free & Secure" in `DashboardLayout.tsx`
+- [x] Review and update Terms of Service (`terms-of-service/page.tsx`) if required
+- [x] Validate static compilation via `npm run build` with zero warnings/errors
 
 ## Review & Results
 

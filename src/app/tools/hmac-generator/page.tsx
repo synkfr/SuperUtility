@@ -17,7 +17,7 @@ export default function HmacGeneratorPage() {
           About Keyed-Hash Message Authentication Codes
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility includes a **Keyed-HMAC Generator** tool. HMAC is a specific type of message authentication code (MAC) involving a cryptographic hash function and a secret cryptographic key. It simultaneously verifies both the data integrity and the authenticity of a message.
+          SuperUtility includes a <strong>Keyed-HMAC Generator</strong> tool. HMAC is a specific type of message authentication code (MAC) involving a cryptographic hash function and a secret cryptographic key. It simultaneously verifies both the data integrity and the authenticity of a message.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           Any cryptographic hash function, such as MD5, SHA-1, SHA-256, or SHA-512, may be used in the calculation of an HMAC. The cryptographic strength of the HMAC depends upon the cryptographic strength of the underlying hash function, the size of its hash output, and the size and quality of the key.

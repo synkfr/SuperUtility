@@ -35,7 +35,7 @@ export default function WeightConverterPage() {
       <section className={pageStyles.seoSection} aria-label="Detailed Description">
         <h2 className={pageStyles.seoTitle}>Free Browser-Based Weight & Mass Converter</h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility offers an interactive, local **Weight & Mass Converter** designed to convert weights instantly. Our client-side architecture guarantees that all weight entries are calculated entirely in browser memory.
+          SuperUtility offers an interactive, local <strong>Weight & Mass Converter</strong> designed to convert weights instantly. Our client-side architecture guarantees that all weight entries are calculated entirely in browser memory.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           This converter supports standard international units, including kilograms, grams, metric tonnes, as well as traditional US/UK systems like pounds (lbs), ounces (oz), and stones (st). Perfect for recipes, scientific calculations, parcel shipping, or fitness tracking.

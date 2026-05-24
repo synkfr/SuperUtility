@@ -19,10 +19,10 @@ export default function ColorConverterPage() {
           About Digital Color Models
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility provides a highly responsive **Color Converter** designed for UI designers, web developer programmers, and content authors. Designing and styling user interfaces requires dealing with multiple technical color representations depending on whether you are working in design editors (like Figma), writing stylesheet variables (CSS), or structuring graphic layers.
+          SuperUtility provides a highly responsive <strong>Color Converter</strong> designed for UI designers, web developer programmers, and content authors. Designing and styling user interfaces requires dealing with multiple technical color representations depending on whether you are working in design editors (like Figma), writing stylesheet variables (CSS), or structuring graphic layers.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          Our color space encoder supports instantaneous local conversions across three major standard color formats: **Hexadecimal (HEX)** (ideal for compact markup), **Red Green Blue (RGB)** (matching physical hardware display models), and **Hue Saturation Lightness (HSL)** (a more intuitive cylindrical coordinate model aligning with how humans perceive tone values).
+          Our color space encoder supports instantaneous local conversions across three major standard color formats: <strong>Hexadecimal (HEX)</strong> (ideal for compact markup), <strong>Red Green Blue (RGB)</strong> (matching physical hardware display models), and <strong>Hue Saturation Lightness (HSL)</strong> (a more intuitive cylindrical coordinate model aligning with how humans perceive tone values).
         </p>
       </section>
 
@@ -35,7 +35,7 @@ export default function ColorConverterPage() {
           <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>What is the HSL color model?</h3>
             <p className={pageStyles.seoCardText}>
-              HSL stands for **Hue** (the type of color represented as degrees from 0 to 360), **Saturation** (the purity or intensity of the color from 0% to 100%), and **Lightness** (the brightness or white/black balance from 0% to 100%). HSL makes it incredibly easy to create harmonious light and dark variants of a single shade.
+              HSL stands for <strong>Hue</strong> (the type of color represented as degrees from 0 to 360), <strong>Saturation</strong> (the purity or intensity of the color from 0% to 100%), and <strong>Lightness</strong> (the brightness or white/black balance from 0% to 100%). HSL makes it incredibly easy to create harmonious light and dark variants of a single shade.
             </p>
           </div>
           <div className={pageStyles.seoCard}>

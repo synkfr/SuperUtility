@@ -35,7 +35,7 @@ export default function DataConverterPage() {
       <section className={pageStyles.seoSection} aria-label="Detailed Description">
         <h2 className={pageStyles.seoTitle}>Free Browser-Based Data & Storage Size Converter</h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility includes a high-fidelity **Data and Storage Converter** designed to translate values between digital storage scales. Everything happens locally in your browser memory, keeping your specifications private.
+          SuperUtility includes a high-fidelity <strong>Data and Storage Converter</strong> designed to translate values between digital storage scales. Everything happens locally in your browser memory, keeping your specifications private.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           This converter supports both standard decimal SI units (base 10, e.g. KB, MB, GB, TB) and standard binary IEC units (base 2, e.g. KiB, MiB, GiB, TiB) which are commonly used in system memory calculations. Ideal for software engineers, database admins, hardware technicians, and content creators.

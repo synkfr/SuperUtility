@@ -17,7 +17,7 @@ export default function PasswordStrengthPage() {
           About Cryptographic Password Entropy
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility provides a secure **Password Strength Checker** that relies on mathematical formulas to evaluate security rather than arbitrary scoring rules. Cryptographic entropy (measured in bits) defines the total search space a hacker must traverse to guess a password using brute-force algorithms.
+          SuperUtility provides a secure <strong>Password Strength Checker</strong> that relies on mathematical formulas to evaluate security rather than arbitrary scoring rules. Cryptographic entropy (measured in bits) defines the total search space a hacker must traverse to guess a password using brute-force algorithms.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           Higher entropy indicates a password is more resistant to cracking attempts. For example, a password with 64 bits of entropy takes approximately 18 billion billion attempts to exhaustively search, providing robust security.

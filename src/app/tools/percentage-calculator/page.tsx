@@ -17,7 +17,7 @@ export default function PercentageCalculatorPage() {
           About Percentage Calculations
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility includes a comprehensive **Percentage Calculator** containing three essential mathematical layouts that humans and developers interact with daily: finding custom ratios, determining totals proportions, and tracking percentage gains or losses.
+          SuperUtility includes a comprehensive <strong>Percentage Calculator</strong> containing three essential mathematical layouts that humans and developers interact with daily: finding custom ratios, determining totals proportions, and tracking percentage gains or losses.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           Everything executes in-browser, preventing your confidential business statistics, marketing conversion numbers, or academic scoring from hitting any cloud servers.

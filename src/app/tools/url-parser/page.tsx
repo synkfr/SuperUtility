@@ -19,7 +19,7 @@ export default function UrlParserPage() {
           About URL Structure Parsing
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility offers an offline-first **URL Parser** designed for developers, SEO professionals, and marketing analysts. A Uniform Resource Locator (URL) represents the specific address of a resource on the web. A standard URL is composed of multiple distinct parameters, including a transfer protocol (like HTTP or HTTPS), authority hostname domains, port numbers, exact route pathnames, query strings, and hash fragment anchors.
+          SuperUtility offers an offline-first <strong>URL Parser</strong> designed for developers, SEO professionals, and marketing analysts. A Uniform Resource Locator (URL) represents the specific address of a resource on the web. A standard URL is composed of multiple distinct parameters, including a transfer protocol (like HTTP or HTTPS), authority hostname domains, port numbers, exact route pathnames, query strings, and hash fragment anchors.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           Analyzing URLs manually to inspect UTM trackers or find key API parameters is time-consuming. Our parser separates these components instantly, showing them in structured grids and automatically decoding percent-encoded query parameter strings (like `%20` translating back to standard spaces) completely inside your web browser.

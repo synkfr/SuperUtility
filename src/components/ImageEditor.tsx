@@ -816,7 +816,7 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
           </svg>
           <div className={styles.uploadTitle}>Drag & Drop Images Here</div>
           <div className={styles.uploadDesc}>
-            Supports batch uploading and real-time client-side processing for **JPG, JPEG, PNG, WEBP, and GIF** graphics.
+            Supports batch uploading and real-time client-side processing for <strong>JPG, JPEG, PNG, WEBP, and GIF</strong> graphics.
           </div>
           <button className={sharedStyles.btnPrimary} style={{ padding: "10px 20px" }}>Browse Local Files</button>
           

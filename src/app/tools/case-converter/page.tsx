@@ -19,7 +19,7 @@ export default function CaseConverterPage() {
           About SuperUtility Case Converter
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility provides a highly versatile, real-time **Case Converter** tool designed to format strings, text articles, or code comments instantly. When copy-pasting documents from different sources, text formatting and letter casing are often inconsistent or completely broken (such as accidental CAPS LOCK text or uncapitalized titles). 
+          SuperUtility provides a highly versatile, real-time <strong>Case Converter</strong> tool designed to format strings, text articles, or code comments instantly. When copy-pasting documents from different sources, text formatting and letter casing are often inconsistent or completely broken (such as accidental CAPS LOCK text or uncapitalized titles). 
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           Instead of manually editing characters line-by-line, SuperUtility allows you to convert massive blocks of text into six different standard casing conventions in a single click. Everything runs inside your local browser memory sandbox, keeping your documents 100% private.

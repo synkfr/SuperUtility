@@ -17,7 +17,7 @@ export default function RandomStringPage() {
           About Cryptographically-Secure Random Generation
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility offers an offline-first **Random String Generator** built using the browser's built-in Cryptographically Secure Pseudo-Random Number Generator (CSPRNG) interface. Traditional generators rely on math libraries (like `Math.random`) which generate predictable values, making them vulnerable to attack.
+          SuperUtility offers an offline-first <strong>Random String Generator</strong> built using the browser's built-in Cryptographically Secure Pseudo-Random Number Generator (CSPRNG) interface. Traditional generators rely on math libraries (like `Math.random`) which generate predictable values, making them vulnerable to attack.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           Our generator taps directly into `window.crypto.getRandomValues`, capturing entropy from operating system seed states. This makes it perfect for generating API tokens, database keys, salt values, temp passwords, or secure identifiers.

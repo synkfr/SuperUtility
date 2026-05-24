@@ -17,7 +17,7 @@ export default function GstCalculatorPage() {
           About Indian Goods & Services Tax (GST)
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility offers an offline-first **GST Calculator** tailored for business invoicing, billing, and retail pricing. GST is a consolidated destination-based tax levied on the manufacture, sale, and consumption of goods and services.
+          SuperUtility offers an offline-first <strong>GST Calculator</strong> tailored for business invoicing, billing, and retail pricing. GST is a consolidated destination-based tax levied on the manufacture, sale, and consumption of goods and services.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           In India's tax regime, intra-state transactions split the GST equally into Central GST (CGST) and State GST (SGST), whereas inter-state trade maps the full tax amount to Integrated GST (IGST).
@@ -32,8 +32,8 @@ export default function GstCalculatorPage() {
           <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>What is inclusive vs exclusive GST?</h3>
             <p className={pageStyles.seoCardText}>
-              - **Exclusive (Add GST)**: Base price excludes tax. Total = `Base * (1 + rate/100)`.
-              - **Inclusive (Remove GST)**: Base price already contains tax. Net Price = `Base / (1 + rate/100)`, with the remainder being tax.
+              - <strong>Exclusive (Add GST)</strong>: Base price excludes tax. Total = `Base * (1 + rate/100)`.
+              - <strong>Inclusive (Remove GST)</strong>: Base price already contains tax. Net Price = `Base / (1 + rate/100)`, with the remainder being tax.
             </p>
           </div>
           <div className={pageStyles.seoCard}>

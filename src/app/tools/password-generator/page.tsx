@@ -22,7 +22,7 @@ export default function PasswordGeneratorPage() {
           SuperUtility offers a highly secure and completely private environment to generate random passwords and memorable passphrases. Unlike other online password checkers and generators that stream your generated text to remote databases, every operation on SuperUtility runs completely locally on your hardware using client-side JavaScript. 
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          You can toggle between a **Random Password** (ideal for database keys, system logins, and absolute security) and a **Memorable Passphrase** (ideal for master passwords and daily logins, using standard English dictionary words joined by custom separators).
+          You can toggle between a <strong>Random Password</strong> (ideal for database keys, system logins, and absolute security) and a <strong>Memorable Passphrase</strong> (ideal for master passwords and daily logins, using standard English dictionary words joined by custom separators).
         </p>
       </section>
 

@@ -17,7 +17,7 @@ export default function ColorPickerImagePage() {
           About Client-Side Color Extraction
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility offers an offline-first **Color Picker from Image** designed for developers, graphic designers, and branding specialists. Selecting precise brand colors or sampling palette colors from design files is essential to keeping visuals cohesive.
+          SuperUtility offers an offline-first <strong>Color Picker from Image</strong> designed for developers, graphic designers, and branding specialists. Selecting precise brand colors or sampling palette colors from design files is essential to keeping visuals cohesive.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           Our color picker tool allows you to upload any local image file, and rendering it inside a canvas element. Simply hover or click over any section of the image to extract its exact pixel color data. Everything operates offline in-browser, preventing leakage of proprietary designs.

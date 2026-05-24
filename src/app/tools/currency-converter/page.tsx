@@ -17,7 +17,7 @@ export default function CurrencyConverterPage() {
           About Offline-First Currency Conversions
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility includes a completely **Offline Currency Converter** designed for private budgeting, corporate accounting calculations, or travel cost estimations. Rather than forcing you to sync your internal financials or invoices with external tracking systems, everything executes locally in-browser.
+          SuperUtility includes a completely <strong>Offline Currency Converter</strong> designed for private budgeting, corporate accounting calculations, or travel cost estimations. Rather than forcing you to sync your internal financials or invoices with external tracking systems, everything executes locally in-browser.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           We preload standard, representative exchange rates relative to the US Dollar (USD). Since global currency rates fluctuate constantly, we provide a complete manual rate editor so you can easily override the exchange values, assuring 100% accurate conversion margins for your custom trade transactions.

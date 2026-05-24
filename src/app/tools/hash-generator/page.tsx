@@ -19,10 +19,10 @@ export default function HashGeneratorPage() {
           About SuperUtility Hash Generator
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility provides a high-security cryptographic digest hash generator. Cryptographic hashing is a mathematical process that takes an input (either text strings or binary files) and converts it into a fixed-length hexadecimal sequence of characters. Hashing is a **one-way function**, meaning it is impossible to reverse-engineer the original input from the resulting digest hash.
+          SuperUtility provides a high-security cryptographic digest hash generator. Cryptographic hashing is a mathematical process that takes an input (either text strings or binary files) and converts it into a fixed-length hexadecimal sequence of characters. Hashing is a <strong>one-way function</strong>, meaning it is impossible to reverse-engineer the original input from the resulting digest hash.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          Our app features a highly intuitive user interface allowing you to calculate hashes for text strings in real-time as you type, or verify large files via client-side drag-and-drop. It supports four major hashing standards: **MD5, SHA-1, SHA-256, and SHA-512**, and includes a real-time matching input block to instantly check download checksums.
+          Our app features a highly intuitive user interface allowing you to calculate hashes for text strings in real-time as you type, or verify large files via client-side drag-and-drop. It supports four major hashing standards: <strong>MD5, SHA-1, SHA-256, and SHA-512</strong>, and includes a real-time matching input block to instantly check download checksums.
         </p>
       </section>
 
@@ -35,15 +35,15 @@ export default function HashGeneratorPage() {
           <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>Is it safe to drag and drop large files onto this website?</h3>
             <p className={pageStyles.seoCardText}>
-              Absolutely. SuperUtility operates entirely offline and local to your browser. When you drop a file to calculate its hash checksum (like an installer or archive), our Javascript reads the binary file **directly from your hard drive memory stream**. No part of the file is ever uploaded to a server or transferred across the network.
+              Absolutely. SuperUtility operates entirely offline and local to your browser. When you drop a file to calculate its hash checksum (like an installer or archive), our Javascript reads the binary file <strong>directly from your hard drive memory stream</strong>. No part of the file is ever uploaded to a server or transferred across the network.
             </p>
           </div>
           <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>What is the difference between MD5 and SHA-256?</h3>
             <p className={pageStyles.seoCardText}>
-              • **MD5**: Produces a 128-bit (32 hex characters) string. It is extremely fast but is considered cryptographically broken for high-security applications due to collision vulnerabilities.
+              • <strong>MD5</strong>: Produces a 128-bit (32 hex characters) string. It is extremely fast but is considered cryptographically broken for high-security applications due to collision vulnerabilities.
               <br />
-              • **SHA-256**: Produces a 256-bit (64 hex characters) string. It is highly secure, mathematically robust, and the current global standard for security signatures and blockchain proofs.
+              • <strong>SHA-256</strong>: Produces a 256-bit (64 hex characters) string. It is highly secure, mathematically robust, and the current global standard for security signatures and blockchain proofs.
             </p>
           </div>
           <div className={pageStyles.seoCard}>

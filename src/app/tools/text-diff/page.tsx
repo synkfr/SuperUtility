@@ -17,7 +17,7 @@ export default function TextDiffPage() {
           About Client-Side Text Comparison
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility offers an offline-first **Text Diff Checker** designed for comparing configuration files, documents, scripts, or paragraphs. Our comparison tool calculates line-by-line differences completely inside your web browser.
+          SuperUtility offers an offline-first <strong>Text Diff Checker</strong> designed for comparing configuration files, documents, scripts, or paragraphs. Our comparison tool calculates line-by-line differences completely inside your web browser.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           By using an efficient dynamic programming Longest Common Subsequence (LCS) algorithm, we compute and map differences without uploading your confidential logs, notes, or source code to third-party databases.

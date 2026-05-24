@@ -273,7 +273,7 @@ export default function UuidGenerator() {
           <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>What is the probability of a UUID v4 collision?</h3>
             <p className={pageStyles.seoCardText}>
-              UUID v4 yields 2¹²² (or approximately 5.3 × 10³⁶) possible unique states. The collision math is governed by the Birthday Paradox. To have a 50% probability of a single duplicate collision, you would need to generate **125 billion billion** (or 2.7 × 10¹⁸) identifiers. It is mathematically virtually impossible to encounter a duplicate in production systems.
+              UUID v4 yields 2¹²² (or approximately 5.3 × 10³⁶) possible unique states. The collision math is governed by the Birthday Paradox. To have a 50% probability of a single duplicate collision, you would need to generate <strong>125 billion billion</strong> (or 2.7 × 10¹⁸) identifiers. It is mathematically virtually impossible to encounter a duplicate in production systems.
             </p>
           </div>
         </div>

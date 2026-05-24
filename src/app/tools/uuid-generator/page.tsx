@@ -19,7 +19,7 @@ export default function UuidGeneratorPage() {
           About SuperUtility UUID Generator
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility offers an industrial-grade bulk UUID (Universally Unique Identifier) generator. A UUID is a 128-bit label used to identify information in computer systems without relying on a central authority. SuperUtility fully complies with the **RFC 4122** specification, offering both time-based **Version 1** and fully random **Version 4** formats.
+          SuperUtility offers an industrial-grade bulk UUID (Universally Unique Identifier) generator. A UUID is a 128-bit label used to identify information in computer systems without relying on a central authority. SuperUtility fully complies with the <strong>RFC 4122</strong> specification, offering both time-based <strong>Version 1</strong> and fully random <strong>Version 4</strong> formats.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           Our generator features rich customization, allowing you to choose between uppercase or lowercase formatting, toggle hyphens on or off, define exact generation batch sizes (up to 50 in a single click), and instantly export your dataset into a standard flat text file for developer scripting or database seeding.
@@ -35,9 +35,9 @@ export default function UuidGeneratorPage() {
           <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>What is the difference between UUID v1 and v4?</h3>
             <p className={pageStyles.seoCardText}>
-              • **UUID Version 1**: Generated using a combination of the current system timestamp, clock sequence numbers, and your device's MAC address. It guarantees chronological uniqueness but exposes timestamp details in the string.
+              • <strong>UUID Version 1</strong>: Generated using a combination of the current system timestamp, clock sequence numbers, and your device's MAC address. It guarantees chronological uniqueness but exposes timestamp details in the string.
               <br />
-              • **UUID Version 4**: Generated using pure, cryptographically secure pseudo-random values. It provides complete anonymity and extreme entropy, making it the industry standard for modern application keys.
+              • <strong>UUID Version 4</strong>: Generated using pure, cryptographically secure pseudo-random values. It provides complete anonymity and extreme entropy, making it the industry standard for modern application keys.
             </p>
           </div>
           <div className={pageStyles.seoCard}>

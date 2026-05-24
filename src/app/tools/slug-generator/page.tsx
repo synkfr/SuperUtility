@@ -19,7 +19,7 @@ export default function SlugGeneratorPage() {
           About URL Slug Optimization
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility offers an offline-first **SEO Slug Generator** designed for bloggers, content marketers, and web developers. A URL Slug represents the specific user-readable path component at the very end of a web address (e.g. `slug-generator` in our own URL).
+          SuperUtility offers an offline-first <strong>SEO Slug Generator</strong> designed for bloggers, content marketers, and web developers. A URL Slug represents the specific user-readable path component at the very end of a web address (e.g. `slug-generator` in our own URL).
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           Search engines index pages higher when the URL contains clean, descriptive, hyphen-separated keywords rather than complex database IDs or special symbols. Our generator strips non-alphanumeric characters, replaces whitespaces with clean separators, and filters out common english stop-words (such as "the", "a", or "is") that dilute keyword index density.

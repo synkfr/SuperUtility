@@ -17,7 +17,7 @@ export default function AgeCalculatorPage() {
           About Precise Age & Milestone Calculations
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility offers an offline-first **Age Calculator** that computes exact time elapsed between any two calendar dates. Calculating birth differences involves more than simple day counts, since different months have different day totals, and leap years add custom leap days.
+          SuperUtility offers an offline-first <strong>Age Calculator</strong> that computes exact time elapsed between any two calendar dates. Calculating birth differences involves more than simple day counts, since different months have different day totals, and leap years add custom leap days.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           Our calendar engine resolves all date math and outputs precise years, months, and days alongside totals in weeks, days, and hours to give you a complete picture of your life milestones.

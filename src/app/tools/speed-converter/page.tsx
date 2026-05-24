@@ -35,7 +35,7 @@ export default function SpeedConverterPage() {
       <section className={pageStyles.seoSection} aria-label="Detailed Description">
         <h2 className={pageStyles.seoTitle}>Free Browser-Based Speed & Velocity Converter</h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility includes a beautiful, local **Speed Converter** designed to translate velocity measurements in real-time. Everything happens in your browser, keeping your calculations safe and private.
+          SuperUtility includes a beautiful, local <strong>Speed Converter</strong> designed to translate velocity measurements in real-time. Everything happens in your browser, keeping your calculations safe and private.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           Convert speed values between metric meters per second (m/s), kilometers per hour (km/h), standard miles per hour (mph), marine knots (kt), and supersonic Mach numbers. Ideal for aviation, physics formulas, travel conversions, shipping logs, and automotive calculations.

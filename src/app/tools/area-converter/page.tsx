@@ -35,7 +35,7 @@ export default function AreaConverterPage() {
       <section className={pageStyles.seoSection} aria-label="Detailed Description">
         <h2 className={pageStyles.seoTitle}>Free Browser-Based Area Converter</h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility includes a beautiful, local **Area Converter** that helps you translate land, property, or construction dimensions instantly. 100% of the conversions are calculated client-side in the browser, providing instantaneous results with complete privacy.
+          SuperUtility includes a beautiful, local <strong>Area Converter</strong> that helps you translate land, property, or construction dimensions instantly. 100% of the conversions are calculated client-side in the browser, providing instantaneous results with complete privacy.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           Supports essential units: square meters, square centimeters, square feet, square yards, square miles, acres, and hectares. Excellent for real estate agents, landscape architects, home renovators, or engineering students.

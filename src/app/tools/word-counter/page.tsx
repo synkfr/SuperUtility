@@ -19,7 +19,7 @@ export default function WordCounterPage() {
           About SuperUtility Word Counter
         </h2>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
-          SuperUtility offers an offline-first, highly private **Word & Character Counter** designed for copywriters, students, editors, and developers. Whether you are drafting essay manuscripts, optimizing keywords for blog posts, checking length limits for social media updates, or reviewing technical reports, our analyzer provides instant, accurate, and completely private results.
+          SuperUtility offers an offline-first, highly private <strong>Word & Character Counter</strong> designed for copywriters, students, editors, and developers. Whether you are drafting essay manuscripts, optimizing keywords for blog posts, checking length limits for social media updates, or reviewing technical reports, our analyzer provides instant, accurate, and completely private results.
         </p>
         <p className={pageStyles.seoCardText} style={{ fontSize: "1rem" }}>
           In addition to basic word and character counts (including options with or without spaces), SuperUtility calculates the exact number of sentences, standard paragraphs, and estimated times for both silent reading and spoken presentations. It also features a gorgeous alphanumeric character frequency breakdown to analyze letter usage distributions.
@@ -41,13 +41,13 @@ export default function WordCounterPage() {
           <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>How is the estimated reading time calculated?</h3>
             <p className={pageStyles.seoCardText}>
-              We use a standard industry-wide formula based on average reading speeds. Silent reading time is calculated using an average benchmark speed of **200 words per minute (WPM)**, which is the standard speed for normal adults.
+              We use a standard industry-wide formula based on average reading speeds. Silent reading time is calculated using an average benchmark speed of <strong>200 words per minute (WPM)</strong>, which is the standard speed for normal adults.
             </p>
           </div>
           <div className={pageStyles.seoCard}>
             <h3 className={pageStyles.seoCardTitle}>How is the speaking time calculated?</h3>
             <p className={pageStyles.seoCardText}>
-              Verbal presentation speeds are significantly slower than silent reading speeds. Speaking time is calculated using a standard benchmark of **130 words per minute (WPM)**, helping public speakers and video creators pace their scripts.
+              Verbal presentation speeds are significantly slower than silent reading speeds. Speaking time is calculated using a standard benchmark of <strong>130 words per minute (WPM)</strong>, helping public speakers and video creators pace their scripts.
             </p>
           </div>
           <div className={pageStyles.seoCard}>
