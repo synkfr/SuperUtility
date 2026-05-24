@@ -87,13 +87,10 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
   const [images, setImages] = useState<ImageFile[]>([]);
   const [activeImageId, setActiveImageId] = useState<string | null>(null);
   const [selectedImageIds, setSelectedImageIds] = useState<Set<string>>(new Set());
-  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
-    resize: defaultFocusSection === "resize",
-    compress: defaultFocusSection === "compress",
-    convert: defaultFocusSection === "convert",
-    crop: defaultFocusSection === "crop",
-    rotate: defaultFocusSection === "rotate",
-  });
+  const [activeTool, setActiveTool] = useState<"resize" | "compress" | "convert" | "crop" | "rotate">(
+    defaultFocusSection === "convert" ? "convert" : defaultFocusSection
+  );
+  const [mobileTab, setMobileTab] = useState<"gallery" | "edit" | "export">("gallery");
 
   // Editor controls state (bound to the active image's editState)
   const [activeTab, setActiveTab] = useState<"processed" | "original">("processed");
@@ -118,11 +115,6 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
   } | null>(null);
 
   const activeImage = images.find((img) => img.id === activeImageId) || null;
-
-  // Toggle sections
-  const toggleSection = (section: string) => {
-    setExpandedSections((prev) => ({ ...prev, [section]: !prev[section] }));
-  };
 
   // Drag & drop handlers
   const handleDragOver = (e: React.DragEvent) => {
@@ -840,7 +832,7 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
         <div className={styles.container}>
           
           {/* LEFT PANEL: Uploaded Gallery */}
-          <aside className={styles.leftPanel}>
+          <aside className={`${styles.leftPanel} ${mobileTab === "gallery" ? styles.showMobile : ""}`}>
             <div className={styles.galleryHeader}>
               <div className={styles.galleryTitleRow}>
                 <span className={styles.galleryTitle}>Gallery</span>
@@ -918,7 +910,7 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
           </aside>
 
           {/* CENTER PANEL: Main Image Preview */}
-          <section className={styles.centerPanel}>
+          <section className={`${styles.centerPanel} ${mobileTab === "edit" || mobileTab === "export" ? styles.showMobile : ""}`}>
             {activeImage ? (
               <>
                 <div className={styles.previewHeader}>
@@ -1065,25 +1057,74 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
           </section>
 
           {/* RIGHT PANEL: Editing Controls Accordions */}
-          <aside className={styles.rightPanel}>
-            <div className={styles.controlsScrollArea}>
-              
-              {/* Section 1: RESIZE */}
-              <div className={styles.controlSection}>
-                <button onClick={() => toggleSection("resize")} className={styles.controlHeader}>
-                  <span className={styles.controlTitle}>
-                    Resize
-                  </span>
-                  <svg className={`${styles.caretIcon} ${expandedSections.resize ? styles.caretIconRotated : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
+          {/* RIGHT PANEL: Tool Controls & Export Actions */}
+          <aside className={`${styles.rightPanel} ${mobileTab === "edit" ? styles.showMobile + " " + styles.showToolsOnly : ""} ${mobileTab === "export" ? styles.showMobile + " " + styles.showExportOnly : ""}`}>
+            
+            {/* Tools Container */}
+            <div className={styles.toolsContainer}>
+              {/* Desktop Tool Selector Tabs */}
+              <div className={styles.toolTabsList}>
+                <button
+                  type="button"
+                  onClick={() => setActiveTool("resize")}
+                  className={`${styles.toolTabBtn} ${activeTool === "resize" ? styles.toolTabBtnActive : ""}`}
+                >
+                  Resize
                 </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveTool("crop");
+                    if (activeImage && !activeImage.editState.crop.active) {
+                      updateActiveEditState((prev) => ({
+                        ...prev,
+                        crop: {
+                          ...prev.crop,
+                          active: true,
+                          x: Math.round(activeImage.originalWidth * 0.1),
+                          y: Math.round(activeImage.originalHeight * 0.1),
+                          width: Math.round(activeImage.originalWidth * 0.8),
+                          height: Math.round(activeImage.originalHeight * 0.8),
+                        },
+                      }));
+                      setActiveTab("processed");
+                    }
+                  }}
+                  className={`${styles.toolTabBtn} ${activeTool === "crop" ? styles.toolTabBtnActive : ""}`}
+                >
+                  Crop
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTool("rotate")}
+                  className={`${styles.toolTabBtn} ${activeTool === "rotate" ? styles.toolTabBtnActive : ""}`}
+                >
+                  Rotate
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTool("compress")}
+                  className={`${styles.toolTabBtn} ${activeTool === "compress" ? styles.toolTabBtnActive : ""}`}
+                >
+                  Compress
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setActiveTool("convert")}
+                  className={`${styles.toolTabBtn} ${activeTool === "convert" ? styles.toolTabBtnActive : ""}`}
+                >
+                  Convert
+                </button>
+              </div>
 
-                {expandedSections.resize && activeImage && (
+              <div className={styles.controlsScrollArea}>
+                {/* Active Tool Content */}
+                {activeTool === "resize" && activeImage && (
                   <div className={styles.controlContent}>
                     {/* Toggle resize mode */}
                     <div className={styles.toggleWrapper} style={{ width: "100%" }}>
                       <button
+                        type="button"
                         onClick={() =>
                           updateActiveEditState((prev) => ({
                             ...prev,
@@ -1096,6 +1137,7 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                         Dimensions (px)
                       </button>
                       <button
+                        type="button"
                         onClick={() =>
                           updateActiveEditState((prev) => ({
                             ...prev,
@@ -1178,10 +1220,10 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                         <div>
                           <label className={styles.inputLabel}>Aspect Ratio Presets</label>
                           <div className={styles.presetGrid}>
-                            <button onClick={() => applyPresetSize(1920, 1080)} className={styles.presetBtn}>1920x1080 (16:9)</button>
-                            <button onClick={() => applyPresetSize(1280, 720)} className={styles.presetBtn}>1280x720 (HD)</button>
-                            <button onClick={() => applyPresetSize(1080, 1080)} className={styles.presetBtn}>1080x1080 (1:1)</button>
-                            <button onClick={() => applyPresetSize(800, 800)} className={styles.presetBtn}>800x800 (Square)</button>
+                            <button type="button" onClick={() => applyPresetSize(1920, 1080)} className={styles.presetBtn}>1920x1080 (16:9)</button>
+                            <button type="button" onClick={() => applyPresetSize(1280, 720)} className={styles.presetBtn}>1280x720 (HD)</button>
+                            <button type="button" onClick={() => applyPresetSize(1080, 1080)} className={styles.presetBtn}>1080x1080 (1:1)</button>
+                            <button type="button" onClick={() => applyPresetSize(800, 800)} className={styles.presetBtn}>800x800 (Square)</button>
                           </div>
                         </div>
                       </>
@@ -1210,6 +1252,7 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                         />
                         <div className={styles.presetGrid} style={{ marginTop: "12px" }}>
                           <button
+                            type="button"
                             onClick={() =>
                               updateActiveEditState((prev) => ({
                                 ...prev,
@@ -1221,6 +1264,7 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                             75% Size
                           </button>
                           <button
+                            type="button"
                             onClick={() =>
                               updateActiveEditState((prev) => ({
                                 ...prev,
@@ -1232,6 +1276,7 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                             50% Size
                           </button>
                           <button
+                            type="button"
                             onClick={() =>
                               updateActiveEditState((prev) => ({
                                 ...prev,
@@ -1243,6 +1288,7 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                             25% Size
                           </button>
                           <button
+                            type="button"
                             onClick={() =>
                               updateActiveEditState((prev) => ({
                                 ...prev,
@@ -1260,30 +1306,19 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                     <div className={styles.applyBar}>
                       <span className={styles.inputLabel} style={{ fontSize: "0.65rem" }}>Batch Resize Operations</span>
                       <div className={styles.applyBtnGroup}>
-                        <button onClick={() => applyConfigToBulk("selected")} disabled={selectedImageIds.size === 0} className={styles.applyBtn}>
+                        <button type="button" onClick={() => applyConfigToBulk("selected")} disabled={selectedImageIds.size === 0} className={styles.applyBtn}>
                           Apply Selected ({selectedImageIds.size})
                         </button>
-                        <button onClick={() => applyConfigToBulk("all")} className={styles.applyBtn}>
+                        <button type="button" onClick={() => applyConfigToBulk("all")} className={styles.applyBtn}>
                           Apply All ({images.length})
                         </button>
                       </div>
                     </div>
                   </div>
                 )}
-              </div>
 
-              {/* Section 2: COMPRESS */}
-              <div className={styles.controlSection}>
-                <button onClick={() => toggleSection("compress")} className={styles.controlHeader}>
-                  <span className={styles.controlTitle}>
-                    Compression
-                  </span>
-                  <svg className={`${styles.caretIcon} ${expandedSections.compress ? styles.caretIconRotated : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-
-                {expandedSections.compress && activeImage && (
+                {/* Active Tool Content: Compress */}
+                {activeTool === "compress" && activeImage && (
                   <div className={styles.controlContent}>
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "4px" }}>
                       <span className={styles.inputLabel}>Compression Quality</span>
@@ -1312,6 +1347,7 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                       <span className={styles.inputLabel}>Standard presets</span>
                       <div className={styles.presetGrid}>
                         <button
+                          type="button"
                           onClick={() =>
                             updateActiveEditState((prev) => ({
                               ...prev,
@@ -1323,6 +1359,7 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                           Low (90% Quality)
                         </button>
                         <button
+                          type="button"
                           onClick={() =>
                             updateActiveEditState((prev) => ({
                               ...prev,
@@ -1334,6 +1371,7 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                           Medium (75% Quality)
                         </button>
                         <button
+                          type="button"
                           onClick={() =>
                             updateActiveEditState((prev) => ({
                               ...prev,
@@ -1345,6 +1383,7 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                           High (60% Quality)
                         </button>
                         <button
+                          type="button"
                           onClick={() =>
                             updateActiveEditState((prev) => ({
                               ...prev,
@@ -1361,30 +1400,19 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                     <div className={styles.applyBar}>
                       <span className={styles.inputLabel} style={{ fontSize: "0.65rem" }}>Batch Compression Operations</span>
                       <div className={styles.applyBtnGroup}>
-                        <button onClick={() => applyConfigToBulk("selected")} disabled={selectedImageIds.size === 0} className={styles.applyBtn}>
+                        <button type="button" onClick={() => applyConfigToBulk("selected")} disabled={selectedImageIds.size === 0} className={styles.applyBtn}>
                           Apply Selected ({selectedImageIds.size})
                         </button>
-                        <button onClick={() => applyConfigToBulk("all")} className={styles.applyBtn}>
+                        <button type="button" onClick={() => applyConfigToBulk("all")} className={styles.applyBtn}>
                           Apply All ({images.length})
                         </button>
                       </div>
                     </div>
                   </div>
                 )}
-              </div>
 
-              {/* Section 3: FORMAT CONVERTER */}
-              <div className={styles.controlSection}>
-                <button onClick={() => toggleSection("convert")} className={styles.controlHeader}>
-                  <span className={styles.controlTitle}>
-                    Format Converter
-                  </span>
-                  <svg className={`${styles.caretIcon} ${expandedSections.convert ? styles.caretIconRotated : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-
-                {expandedSections.convert && activeImage && (
+                {/* Active Tool Content: Convert */}
+                {activeTool === "convert" && activeImage && (
                   <div className={styles.controlContent}>
                     <label className={styles.inputLabel}>Output Image Format</label>
                     <select
@@ -1406,30 +1434,19 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                     <div className={styles.applyBar}>
                       <span className={styles.inputLabel} style={{ fontSize: "0.65rem" }}>Batch Format Operations</span>
                       <div className={styles.applyBtnGroup}>
-                        <button onClick={() => applyConfigToBulk("selected")} disabled={selectedImageIds.size === 0} className={styles.applyBtn}>
+                        <button type="button" onClick={() => applyConfigToBulk("selected")} disabled={selectedImageIds.size === 0} className={styles.applyBtn}>
                           Apply Selected ({selectedImageIds.size})
                         </button>
-                        <button onClick={() => applyConfigToBulk("all")} className={styles.applyBtn}>
+                        <button type="button" onClick={() => applyConfigToBulk("all")} className={styles.applyBtn}>
                           Apply All ({images.length})
                         </button>
                       </div>
                     </div>
                   </div>
                 )}
-              </div>
 
-              {/* Section 4: CROP */}
-              <div className={styles.controlSection}>
-                <button onClick={() => toggleSection("crop")} className={styles.controlHeader}>
-                  <span className={styles.controlTitle}>
-                    Crop Controls
-                  </span>
-                  <svg className={`${styles.caretIcon} ${expandedSections.crop ? styles.caretIconRotated : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-
-                {expandedSections.crop && activeImage && (
+                {/* Active Tool Content: Crop */}
+                {activeTool === "crop" && activeImage && (
                   <div className={styles.controlContent}>
                     <label className={sharedStyles.checkboxLabel}>
                       <input
@@ -1443,7 +1460,6 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                             let nextW = prev.crop.width;
                             let nextH = prev.crop.height;
 
-                            // Reset crop coordinates to center if turning on
                             if (val && !prev.crop.active) {
                               nextX = Math.round(activeImage.originalWidth * 0.1);
                               nextY = Math.round(activeImage.originalHeight * 0.1);
@@ -1474,6 +1490,7 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                         <label className={styles.inputLabel} style={{ marginTop: "4px" }}>Aspect Ratio Constraint</label>
                         <div className={styles.presetGrid}>
                           <button
+                            type="button"
                             onClick={() => {
                               updateActiveEditState((prev) => {
                                 const nextCrop = { ...prev.crop, aspectRatio: null };
@@ -1485,6 +1502,7 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                             Free Crop
                           </button>
                           <button
+                            type="button"
                             onClick={() => {
                               updateActiveEditState((prev) => {
                                 const r = 1;
@@ -1501,6 +1519,7 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                             1:1 (Square)
                           </button>
                           <button
+                            type="button"
                             onClick={() => {
                               updateActiveEditState((prev) => {
                                 const r = 16 / 9;
@@ -1517,6 +1536,7 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                             16:9 (Widescreen)
                           </button>
                           <button
+                            type="button"
                             onClick={() => {
                               updateActiveEditState((prev) => {
                                 const r = 4 / 3;
@@ -1539,53 +1559,46 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                     <div className={styles.applyBar}>
                       <span className={styles.inputLabel} style={{ fontSize: "0.65rem" }}>Batch Bounding Crop Operations</span>
                       <div className={styles.applyBtnGroup}>
-                        <button onClick={() => applyConfigToBulk("selected")} disabled={selectedImageIds.size === 0} className={styles.applyBtn}>
+                        <button type="button" onClick={() => applyConfigToBulk("selected")} disabled={selectedImageIds.size === 0} className={styles.applyBtn}>
                           Apply Selected ({selectedImageIds.size})
                         </button>
-                        <button onClick={() => applyConfigToBulk("all")} className={styles.applyBtn}>
+                        <button type="button" onClick={() => applyConfigToBulk("all")} className={styles.applyBtn}>
                           Apply All ({images.length})
                         </button>
                       </div>
                     </div>
                   </div>
                 )}
-              </div>
 
-              {/* Section 5: ROTATE & FLIP */}
-              <div className={styles.controlSection}>
-                <button onClick={() => toggleSection("rotate")} className={styles.controlHeader}>
-                  <span className={styles.controlTitle}>
-                    Rotate & Flip
-                  </span>
-                  <svg className={`${styles.caretIcon} ${expandedSections.rotate ? styles.caretIconRotated : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-
-                {expandedSections.rotate && activeImage && (
+                {/* Active Tool Content: Rotate */}
+                {activeTool === "rotate" && activeImage && (
                   <div className={styles.controlContent}>
                     <div>
                       <span className={styles.inputLabel}>Rotation Degrees</span>
                       <div className={styles.presetGrid} style={{ gridTemplateColumns: "repeat(4, 1fr)" }}>
                         <button
+                          type="button"
                           onClick={() => updateActiveEditState((prev) => ({ ...prev, rotate: 0 }))}
                           className={`${styles.presetBtn} ${activeImage.editState.rotate === 0 ? styles.presetBtnActive : ""}`}
                         >
                           0°
                         </button>
                         <button
+                          type="button"
                           onClick={() => updateActiveEditState((prev) => ({ ...prev, rotate: 90 }))}
                           className={`${styles.presetBtn} ${activeImage.editState.rotate === 90 ? styles.presetBtnActive : ""}`}
                         >
                           90°
                         </button>
                         <button
+                          type="button"
                           onClick={() => updateActiveEditState((prev) => ({ ...prev, rotate: 180 }))}
                           className={`${styles.presetBtn} ${activeImage.editState.rotate === 180 ? styles.presetBtnActive : ""}`}
                         >
                           180°
                         </button>
                         <button
+                          type="button"
                           onClick={() => updateActiveEditState((prev) => ({ ...prev, rotate: 270 }))}
                           className={`${styles.presetBtn} ${activeImage.editState.rotate === 270 ? styles.presetBtnActive : ""}`}
                         >
@@ -1598,6 +1611,7 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                       <span className={styles.inputLabel}>Flipping Operations</span>
                       <div className={styles.grid2}>
                         <button
+                          type="button"
                           onClick={() =>
                             updateActiveEditState((prev) => ({
                               ...prev,
@@ -1609,6 +1623,7 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                           Horizontal Flip
                         </button>
                         <button
+                          type="button"
                           onClick={() =>
                             updateActiveEditState((prev) => ({
                               ...prev,
@@ -1625,10 +1640,10 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                     <div className={styles.applyBar}>
                       <span className={styles.inputLabel} style={{ fontSize: "0.65rem" }}>Batch Transform Operations</span>
                       <div className={styles.applyBtnGroup}>
-                        <button onClick={() => applyConfigToBulk("selected")} disabled={selectedImageIds.size === 0} className={styles.applyBtn}>
+                        <button type="button" onClick={() => applyConfigToBulk("selected")} disabled={selectedImageIds.size === 0} className={styles.applyBtn}>
                           Apply Selected ({selectedImageIds.size})
                         </button>
-                        <button onClick={() => applyConfigToBulk("all")} className={styles.applyBtn}>
+                        <button type="button" onClick={() => applyConfigToBulk("all")} className={styles.applyBtn}>
                           Apply All ({images.length})
                         </button>
                       </div>
@@ -1636,45 +1651,84 @@ export default function ImageEditor({ defaultFocusSection = "resize" }: ImageEdi
                   </div>
                 )}
               </div>
-
             </div>
 
-            {/* MASTER ACTIONS FOOTER PANEL */}
-            {activeImage && (
-              <div className={styles.actionCard}>
-                <div className={styles.suffixContainer}>
-                  <label className={styles.inputLabel} style={{ fontSize: "0.65rem", marginBottom: "2px" }}>Filename Suffix Option</label>
-                  <input
-                    type="text"
-                    value={zipSuffix}
-                    onChange={(e) => setZipSuffix(e.target.value)}
-                    placeholder="e.g. _edited"
-                    className={sharedStyles.input}
-                    style={{ padding: "6px 10px", fontSize: "0.75rem" }}
-                  />
-                </div>
+            {/* Export Container */}
+            <div className={styles.exportContainer}>
+              {/* MASTER ACTIONS FOOTER PANEL */}
+              {activeImage && (
+                <div className={styles.actionCard}>
+                  <div className={styles.suffixContainer}>
+                    <label className={styles.inputLabel} style={{ fontSize: "0.65rem", marginBottom: "2px" }}>Filename Suffix Option</label>
+                    <input
+                      type="text"
+                      value={zipSuffix}
+                      onChange={(e) => setZipSuffix(e.target.value)}
+                      placeholder="e.g. _edited"
+                      className={sharedStyles.input}
+                      style={{ padding: "6px 10px", fontSize: "0.75rem" }}
+                    />
+                  </div>
 
-                <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginTop: "4px" }}>
-                  <button onClick={() => downloadSingleProcessedImage(activeImage)} className={sharedStyles.btnPrimary} style={{ padding: "8px 12px", fontSize: "0.8rem", width: "100%" }}>
-                    Download Current Image
-                  </button>
-                  <button
-                    onClick={() => handleDownloadBulkZip("all")}
-                    className={sharedStyles.btnPrimary}
-                    style={{
-                      background: "var(--lime-600)",
-                      borderColor: "var(--lime-700)",
-                      padding: "8px 12px",
-                      fontSize: "0.8rem",
-                      width: "100%"
-                    }}
-                  >
-                    Download All as ZIP ({images.length})
-                  </button>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginTop: "4px" }}>
+                    <button type="button" onClick={() => downloadSingleProcessedImage(activeImage)} className={sharedStyles.btnPrimary} style={{ padding: "8px 12px", fontSize: "0.8rem", width: "100%" }}>
+                      Download Current Image
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleDownloadBulkZip("all")}
+                      className={sharedStyles.btnPrimary}
+                      style={{
+                        background: "var(--lime-600)",
+                        borderColor: "var(--lime-700)",
+                        padding: "8px 12px",
+                        fontSize: "0.8rem",
+                        width: "100%"
+                      }}
+                    >
+                      Download All as ZIP ({images.length})
+                    </button>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </aside>
+        </div>
+      )}
+
+      {/* Mobile Tab Navigation Bar */}
+      {images.length > 0 && (
+        <div className={styles.mobileTabBar}>
+          <button
+            type="button"
+            onClick={() => setMobileTab("gallery")}
+            className={`${styles.mobileTabBtn} ${mobileTab === "gallery" ? styles.mobileTabBtnActive : ""}`}
+          >
+            <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            </svg>
+            <span>Gallery</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setMobileTab("edit")}
+            className={`${styles.mobileTabBtn} ${mobileTab === "edit" ? styles.mobileTabBtnActive : ""}`}
+          >
+            <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+            </svg>
+            <span>Editor</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setMobileTab("export")}
+            className={`${styles.mobileTabBtn} ${mobileTab === "export" ? styles.mobileTabBtnActive : ""}`}
+          >
+            <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+            <span>Export</span>
+          </button>
         </div>
       )}
 

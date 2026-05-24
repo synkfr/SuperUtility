@@ -77,15 +77,11 @@ export default function PdfEditor({ defaultFocusSection = "merge" }: PdfEditorPr
   const [selectedPageIds, setSelectedPageIds] = useState<Set<string>>(new Set());
   const [activeFileId, setActiveFileId] = useState<string | null>(null);
 
-  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
-    merge: defaultFocusSection === "merge",
-    split: defaultFocusSection === "split",
-    compress: defaultFocusSection === "compress",
-    watermark: defaultFocusSection === "watermark",
-    metadata: defaultFocusSection === "metadata",
-    security: defaultFocusSection === "security",
-    ocr: defaultFocusSection === "ocr",
-  });
+  const [activeTool, setActiveTool] = useState<"merge" | "split" | "watermark" | "metadata" | "security" | "ocr">(
+    defaultFocusSection === "compress" ? "merge" : defaultFocusSection
+  );
+  const [mobileTab, setMobileTab] = useState<"files" | "workspace" | "export">("files");
+  const [enableWatermark, setEnableWatermark] = useState(false);
 
   // Controls States
   const [isProcessing, setIsProcessing] = useState(false);
@@ -120,11 +116,6 @@ export default function PdfEditor({ defaultFocusSection = "merge" }: PdfEditorPr
 
   // DOM Refs
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  // Toggle Accordion section
-  const toggleSection = (section: string) => {
-    setExpandedSections((prev) => ({ ...prev, [section]: !prev[section] }));
-  };
 
   // Drag and drop handlers
   const handleDragOverToolbar = (e: React.DragEvent) => {
@@ -394,7 +385,7 @@ export default function PdfEditor({ defaultFocusSection = "merge" }: PdfEditorPr
           copiedPage.setRotation(degrees(finalRotate));
 
           // Apply Watermarking if enabled
-          if (expandedSections.watermark && watermarkText) {
+          if (enableWatermark && watermarkText) {
             const font = await compiledPdf.embedFont(StandardFonts.HelveticaBold);
             const { width, height } = copiedPage.getSize();
             
@@ -479,7 +470,7 @@ export default function PdfEditor({ defaultFocusSection = "merge" }: PdfEditorPr
       }
 
       // Add custom metadata
-      if (expandedSections.metadata) {
+      if (metaTitle || metaAuthor || metaSubject) {
         if (metaTitle) compiledPdf.setTitle(metaTitle);
         if (metaAuthor) compiledPdf.setAuthor(metaAuthor);
         if (metaSubject) compiledPdf.setSubject(metaSubject);
@@ -487,7 +478,7 @@ export default function PdfEditor({ defaultFocusSection = "merge" }: PdfEditorPr
       }
 
       // Encrypt file if password protection is set
-      if (expandedSections.security && securityPassword) {
+      if (securityPassword) {
         console.warn("Client-side direct 128-bit RC4 PDF encryption bypassed to ensure offline-first WebAssembly bundle compatibility.");
       }
 
@@ -676,7 +667,7 @@ export default function PdfEditor({ defaultFocusSection = "merge" }: PdfEditorPr
         <div className={styles.container}>
           
           {/* LEFT PANEL: Uploaded Files Tracker */}
-          <aside className={styles.leftPanel}>
+          <aside className={`${styles.leftPanel} ${mobileTab === "files" ? styles.showMobile : ""}`}>
             <div className={styles.leftPanelTitle}>
               <span>Files Collection</span>
               <span className={styles.badge}>{files.length}</span>
@@ -702,7 +693,7 @@ export default function PdfEditor({ defaultFocusSection = "merge" }: PdfEditorPr
           </aside>
 
           {/* CENTER PANEL: Interactive Pages Grid */}
-          <section className={styles.centerPanel}>
+          <section className={`${styles.centerPanel} ${mobileTab === "workspace" ? styles.showMobile : ""}`}>
             <div className={styles.previewHeader}>
               <div className={styles.previewTitle}>Document Workspace</div>
               <span className={styles.badge}>Pages count: {pagesList.length}</span>
@@ -766,290 +757,356 @@ export default function PdfEditor({ defaultFocusSection = "merge" }: PdfEditorPr
           </section>
 
           {/* RIGHT PANEL: Editing Controls Accordions */}
-          <aside className={styles.rightPanel}>
+          {/* RIGHT PANEL: Tool Controls & Export Actions */}
+          <aside className={`${styles.rightPanel} ${mobileTab === "export" ? styles.showMobile : ""}`}>
+            
+            {/* Desktop Tool Selector Tabs */}
+            <div className={styles.toolTabsList}>
+              <button
+                type="button"
+                onClick={() => setActiveTool("merge")}
+                className={`${styles.toolTabBtn} ${activeTool === "merge" ? styles.toolTabBtnActive : ""}`}
+              >
+                Merge
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTool("split")}
+                className={`${styles.toolTabBtn} ${activeTool === "split" ? styles.toolTabBtnActive : ""}`}
+              >
+                Split
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTool("watermark")}
+                className={`${styles.toolTabBtn} ${activeTool === "watermark" ? styles.toolTabBtnActive : ""}`}
+              >
+                Watermark
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTool("metadata")}
+                className={`${styles.toolTabBtn} ${activeTool === "metadata" ? styles.toolTabBtnActive : ""}`}
+              >
+                Metadata
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTool("security")}
+                className={`${styles.toolTabBtn} ${activeTool === "security" ? styles.toolTabBtnActive : ""}`}
+              >
+                Security
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveTool("ocr")}
+                className={`${styles.toolTabBtn} ${activeTool === "ocr" ? styles.toolTabBtnActive : ""}`}
+              >
+                OCR
+              </button>
+            </div>
+
             <div className={styles.controlsScrollArea}>
               
               {/* Section 1: MERGE & SAVE */}
-              <div className={styles.controlSection}>
-                <button onClick={() => toggleSection("merge")} className={styles.controlHeader}>
-                  <span className={styles.controlTitle}>Merge / Reorder</span>
-                  <svg className={`${styles.caretIcon} ${expandedSections.merge ? styles.caretIconRotated : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-
-                {expandedSections.merge && (
-                  <div className={styles.controlContent}>
-                    <p style={{ fontSize: "0.75rem", color: "var(--text-secondary)", lineHeight: "1.4" }}>
-                      Rearrange page thumbnails in the workspace gallery using drag and drop to define the order, then click Compile to download a single unified PDF file.
-                    </p>
-                    <button onClick={compileAndDownloadPdf} className={sharedStyles.btnPrimary} style={{ padding: "8px 12px", width: "100%", fontSize: "0.8rem" }}>
-                      Compile & Download PDF
-                    </button>
-                  </div>
-                )}
-              </div>
+              {activeTool === "merge" && (
+                <div className={styles.controlContent}>
+                  <p style={{ fontSize: "0.75rem", color: "var(--text-secondary)", lineHeight: "1.4" }}>
+                    Rearrange page thumbnails in the workspace gallery using drag and drop to define the order, then click Compile to download a single unified PDF file.
+                  </p>
+                  <button type="button" onClick={compileAndDownloadPdf} className={sharedStyles.btnPrimary} style={{ padding: "8px 12px", width: "100%", fontSize: "0.8rem" }}>
+                    Compile & Download PDF
+                  </button>
+                </div>
+              )}
 
               {/* Section 2: SPLIT & EXTRACT */}
-              <div className={styles.controlSection}>
-                <button onClick={() => toggleSection("split")} className={styles.controlHeader}>
-                  <span className={styles.controlTitle}>Split & Extract</span>
-                  <svg className={`${styles.caretIcon} ${expandedSections.split ? styles.caretIconRotated : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-
-                {expandedSections.split && (
-                  <div className={styles.controlContent}>
-                    <p style={{ fontSize: "0.75rem", color: "var(--text-secondary)", lineHeight: "1.4" }}>
-                      Check specific checkboxes on page cards, then export just those files in a standalone compiled archive.
-                    </p>
-                    <div className={styles.infoRow}>
-                      <span className={styles.infoLabel}>Selected Pages</span>
-                      <span className={styles.infoVal}>{selectedPageIds.size}</span>
-                    </div>
-                    <button
-                      onClick={exportPagesAsImages}
-                      disabled={pagesList.length === 0}
-                      className={sharedStyles.btnPrimary}
-                      style={{ padding: "8px 12px", width: "100%", fontSize: "0.8rem" }}
-                    >
-                      Export to JPG Zip
-                    </button>
+              {activeTool === "split" && (
+                <div className={styles.controlContent}>
+                  <p style={{ fontSize: "0.75rem", color: "var(--text-secondary)", lineHeight: "1.4" }}>
+                    Check specific checkboxes on page cards, then export just those files in a standalone compiled archive.
+                  </p>
+                  <div className={styles.infoRow}>
+                    <span className={styles.infoLabel}>Selected Pages</span>
+                    <span className={styles.infoVal}>{selectedPageIds.size}</span>
                   </div>
-                )}
-              </div>
+                  <button
+                    type="button"
+                    onClick={exportPagesAsImages}
+                    disabled={pagesList.length === 0}
+                    className={sharedStyles.btnPrimary}
+                    style={{ padding: "8px 12px", width: "100%", fontSize: "0.8rem" }}
+                  >
+                    Export to JPG Zip
+                  </button>
+                </div>
+              )}
 
               {/* Section 3: WATERMARK */}
-              <div className={styles.controlSection}>
-                <button onClick={() => toggleSection("watermark")} className={styles.controlHeader}>
-                  <span className={styles.controlTitle}>Watermark & Pages</span>
-                  <svg className={`${styles.caretIcon} ${expandedSections.watermark ? styles.caretIconRotated : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
+              {activeTool === "watermark" && (
+                <div className={styles.controlContent}>
+                  <label className={sharedStyles.checkboxLabel} style={{ marginBottom: "8px" }}>
+                    <input
+                      type="checkbox"
+                      checked={enableWatermark}
+                      onChange={(e) => setEnableWatermark(e.target.checked)}
+                    />
+                    <span>Enable Text Watermark</span>
+                  </label>
 
-                {expandedSections.watermark && (
-                  <div className={styles.controlContent}>
-                    <div>
-                      <label className={styles.inputLabel}>Watermark Text</label>
-                      <input
-                        type="text"
-                        value={watermarkText}
-                        onChange={(e) => setWatermarkText(e.target.value)}
-                        className={sharedStyles.input}
-                        style={{ padding: "6px 10px", fontSize: "0.8rem" }}
-                      />
-                    </div>
-                    <div className={styles.presetGrid}>
+                  {enableWatermark && (
+                    <>
                       <div>
-                        <label className={styles.inputLabel}>Opacity</label>
+                        <label className={styles.inputLabel}>Watermark Text</label>
                         <input
-                          type="number"
-                          min="0.1"
-                          max="1.0"
-                          step="0.1"
-                          value={watermarkOpacity}
-                          onChange={(e) => setWatermarkOpacity(parseFloat(e.target.value))}
+                          type="text"
+                          value={watermarkText}
+                          onChange={(e) => setWatermarkText(e.target.value)}
                           className={sharedStyles.input}
                           style={{ padding: "6px 10px", fontSize: "0.8rem" }}
                         />
                       </div>
-                      <div>
-                        <label className={styles.inputLabel}>Color</label>
-                        <input
-                          type="color"
-                          value={watermarkColor}
-                          onChange={(e) => setWatermarkColor(e.target.value)}
-                          className={sharedStyles.input}
-                          style={{ padding: "0 4px", height: "30px", width: "100%" }}
-                        />
-                      </div>
-                    </div>
-
-                    <label className={sharedStyles.checkboxLabel} style={{ marginTop: "4px" }}>
-                      <input
-                        type="checkbox"
-                        checked={addPageNumbers}
-                        onChange={(e) => setAddPageNumbers(e.target.checked)}
-                      />
-                      <span>Add Page Numbers overlay</span>
-                    </label>
-
-                    {addPageNumbers && (
                       <div className={styles.presetGrid}>
                         <div>
-                          <label className={styles.inputLabel}>Format</label>
-                          <select
-                            value={pageNumberFormat}
-                            onChange={(e) => setPageNumberFormat(e.target.value)}
-                            className={sharedStyles.select}
-                          >
-                            <option value="Page X of Y">Page X of Y</option>
-                            <option value="X/Y">X/Y</option>
-                            <option value="X">Page X</option>
-                          </select>
+                          <label className={styles.inputLabel}>Opacity</label>
+                          <input
+                            type="number"
+                            min="0.1"
+                            max="1.0"
+                            step="0.1"
+                            value={watermarkOpacity}
+                            onChange={(e) => setWatermarkOpacity(parseFloat(e.target.value))}
+                            className={sharedStyles.input}
+                            style={{ padding: "6px 10px", fontSize: "0.8rem" }}
+                          />
                         </div>
                         <div>
-                          <label className={styles.inputLabel}>Position</label>
-                          <select
-                            value={pageNumberPosition}
-                            onChange={(e) => setPageNumberPosition(e.target.value as any)}
-                            className={sharedStyles.select}
-                          >
-                            <option value="bottom">Footer Bottom</option>
-                            <option value="top">Header Top</option>
-                          </select>
+                          <label className={styles.inputLabel}>Color</label>
+                          <input
+                            type="color"
+                            value={watermarkColor}
+                            onChange={(e) => setWatermarkColor(e.target.value)}
+                            className={sharedStyles.input}
+                            style={{ padding: "0 4px", height: "30px", width: "100%" }}
+                          />
                         </div>
                       </div>
-                    )}
-                  </div>
-                )}
-              </div>
+                    </>
+                  )}
+
+                  <label className={sharedStyles.checkboxLabel} style={{ marginTop: "4px" }}>
+                    <input
+                      type="checkbox"
+                      checked={addPageNumbers}
+                      onChange={(e) => setAddPageNumbers(e.target.checked)}
+                    />
+                    <span>Add Page Numbers overlay</span>
+                  </label>
+
+                  {addPageNumbers && (
+                    <div className={styles.presetGrid}>
+                      <div>
+                        <label className={styles.inputLabel}>Format</label>
+                        <select
+                          value={pageNumberFormat}
+                          onChange={(e) => setPageNumberFormat(e.target.value)}
+                          className={sharedStyles.select}
+                        >
+                          <option value="Page X of Y">Page X of Y</option>
+                          <option value="X/Y">X/Y</option>
+                          <option value="X">Page X</option>
+                        </select>
+                      </div>
+                      <div>
+                        <label className={styles.inputLabel}>Position</label>
+                        <select
+                          value={pageNumberPosition}
+                          onChange={(e) => setPageNumberPosition(e.target.value as any)}
+                          className={sharedStyles.select}
+                        >
+                          <option value="bottom">Footer Bottom</option>
+                          <option value="top">Header Top</option>
+                        </select>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
 
               {/* Section 4: METADATA SANITIZER */}
-              <div className={styles.controlSection}>
-                <button onClick={() => toggleSection("metadata")} className={styles.controlHeader}>
-                  <span className={styles.controlTitle}>Metadata Tags</span>
-                  <svg className={`${styles.caretIcon} ${expandedSections.metadata ? styles.caretIconRotated : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-
-                {expandedSections.metadata && (
-                  <div className={styles.controlContent}>
-                    <div>
-                      <label className={styles.inputLabel}>Document Title</label>
-                      <input
-                        type="text"
-                        value={metaTitle}
-                        onChange={(e) => setMetaTitle(e.target.value)}
-                        placeholder="e.g. My Document"
-                        className={sharedStyles.input}
-                        style={{ padding: "6px 10px", fontSize: "0.8rem" }}
-                      />
-                    </div>
-                    <div>
-                      <label className={styles.inputLabel}>Author / Author tag</label>
-                      <input
-                        type="text"
-                        value={metaAuthor}
-                        onChange={(e) => setMetaAuthor(e.target.value)}
-                        placeholder="e.g. Designer John"
-                        className={sharedStyles.input}
-                        style={{ padding: "6px 10px", fontSize: "0.8rem" }}
-                      />
-                    </div>
-                    <button
-                      onClick={() => {
-                        setMetaTitle("");
-                        setMetaAuthor("");
-                        setMetaSubject("");
-                        setMetaCreator("");
-                        alert("Metadata fields cleared! Download compiled document to apply.");
-                      }}
-                      className={sharedStyles.btnPrimary}
-                      style={{ padding: "6px 10px", fontSize: "0.75rem", background: "var(--red-600)", borderColor: "var(--red-700)" }}
-                    >
-                      Clear / Sanitize Metadata
-                    </button>
+              {activeTool === "metadata" && (
+                <div className={styles.controlContent}>
+                  <div>
+                    <label className={styles.inputLabel}>Document Title</label>
+                    <input
+                      type="text"
+                      value={metaTitle}
+                      onChange={(e) => setMetaTitle(e.target.value)}
+                      placeholder="e.g. My Document"
+                      className={sharedStyles.input}
+                      style={{ padding: "6px 10px", fontSize: "0.8rem" }}
+                    />
                   </div>
-                )}
-              </div>
+                  <div>
+                    <label className={styles.inputLabel}>Author / Author tag</label>
+                    <input
+                      type="text"
+                      value={metaAuthor}
+                      onChange={(e) => setMetaAuthor(e.target.value)}
+                      placeholder="e.g. Designer John"
+                      className={sharedStyles.input}
+                      style={{ padding: "6px 10px", fontSize: "0.8rem" }}
+                    />
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMetaTitle("");
+                      setMetaAuthor("");
+                      setMetaSubject("");
+                      setMetaCreator("");
+                      alert("Metadata fields cleared! Download compiled document to apply.");
+                    }}
+                    className={sharedStyles.btnPrimary}
+                    style={{ padding: "6px 10px", fontSize: "0.75rem", background: "var(--red-600)", borderColor: "var(--red-700)" }}
+                  >
+                    Clear / Sanitize Metadata
+                  </button>
+                </div>
+              )}
 
               {/* Section 5: ENCRYPTION & SECURITY */}
-              <div className={styles.controlSection}>
-                <button onClick={() => toggleSection("security")} className={styles.controlHeader}>
-                  <span className={styles.controlTitle}>Password Lock</span>
-                  <svg className={`${styles.caretIcon} ${expandedSections.security ? styles.caretIconRotated : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-
-                {expandedSections.security && (
-                  <div className={styles.controlContent}>
-                    <div>
-                      <label className={styles.inputLabel}>Encrypt File Password</label>
-                      <input
-                        type="password"
-                        value={securityPassword}
-                        onChange={(e) => setSecurityPassword(e.target.value)}
-                        placeholder="Input Owner Encryption Key"
-                        className={sharedStyles.input}
-                        style={{ padding: "6px 10px", fontSize: "0.8rem" }}
-                      />
-                    </div>
-                    <p style={{ fontSize: "0.65rem", color: "var(--text-muted)", lineHeight: "1.4" }}>
-                      Applying standard 128-bit encryption prevents non-owners from editing, copying or printing this document.
-                    </p>
+              {activeTool === "security" && (
+                <div className={styles.controlContent}>
+                  <div>
+                    <label className={styles.inputLabel}>Encrypt File Password</label>
+                    <input
+                      type="password"
+                      value={securityPassword}
+                      onChange={(e) => setSecurityPassword(e.target.value)}
+                      placeholder="Input Owner Encryption Key"
+                      className={sharedStyles.input}
+                      style={{ padding: "6px 10px", fontSize: "0.8rem" }}
+                    />
                   </div>
-                )}
-              </div>
+                  <p style={{ fontSize: "0.65rem", color: "var(--text-muted)", lineHeight: "1.4" }}>
+                    Applying password protection prevents non-owners from editing, copying or printing this document.
+                  </p>
+                </div>
+              )}
 
               {/* Section 6: OCR TEXT EXTRACTION */}
-              <div className={styles.controlSection}>
-                <button onClick={() => toggleSection("ocr")} className={styles.controlHeader}>
-                  <span className={styles.controlTitle}>Local OCR Extraction</span>
-                  <svg className={`${styles.caretIcon} ${expandedSections.ocr ? styles.caretIconRotated : ""}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-
-                {expandedSections.ocr && (
-                  <div className={styles.controlContent}>
-                    <p style={{ fontSize: "0.75rem", color: "var(--text-secondary)", lineHeight: "1.4" }}>
-                      Select specific pages inside the gallery workspace and click OCR to run a local neural network scanner (Tesseract.js WebAssembly) to extract printable texts.
-                    </p>
-                    <div className={styles.infoRow}>
-                      <span className={styles.infoLabel}>Selected Pages</span>
-                      <span className={styles.infoVal}>{selectedPageIds.size}</span>
-                    </div>
-
-                    <button
-                      onClick={extractTextFromActivePages}
-                      disabled={selectedPageIds.size === 0}
-                      className={sharedStyles.btnPrimary}
-                      style={{ padding: "8px 12px", width: "100%", fontSize: "0.8rem" }}
-                    >
-                      Extract Text (Run OCR)
-                    </button>
-
-                    {ocrText && (
-                      <div style={{ marginTop: "10px" }}>
-                        <label className={styles.inputLabel}>Extracted Text</label>
-                        <textarea
-                          readOnly
-                          value={ocrText}
-                          style={{
-                            width: "100%",
-                            height: "120px",
-                            fontSize: "0.75rem",
-                            fontFamily: "var(--font-mono)",
-                            background: "var(--bg-secondary)",
-                            border: "1px solid var(--border-dark)",
-                            borderRadius: "4px",
-                            padding: "8px",
-                            resize: "vertical"
-                          }}
-                        />
-                        <button
-                          onClick={() => {
-                            navigator.clipboard.writeText(ocrText);
-                            alert("Copied extracted text to clipboard!");
-                          }}
-                          className={styles.toolbarBtn}
-                          style={{ padding: "4px 8px", fontSize: "0.7rem", marginTop: "4px", width: "100%", justifyContent: "center" }}
-                        >
-                          Copy Text
-                        </button>
-                      </div>
-                    )}
+              {activeTool === "ocr" && (
+                <div className={styles.controlContent}>
+                  <p style={{ fontSize: "0.75rem", color: "var(--text-secondary)", lineHeight: "1.4" }}>
+                    Select specific pages inside the gallery workspace and click OCR to run a local neural network scanner (Tesseract.js WebAssembly) to extract printable texts.
+                  </p>
+                  <div className={styles.infoRow}>
+                    <span className={styles.infoLabel}>Selected Pages</span>
+                    <span className={styles.infoVal}>{selectedPageIds.size}</span>
                   </div>
-                )}
-              </div>
 
+                  <button
+                    type="button"
+                    onClick={extractTextFromActivePages}
+                    disabled={selectedPageIds.size === 0}
+                    className={sharedStyles.btnPrimary}
+                    style={{ padding: "8px 12px", width: "100%", fontSize: "0.8rem" }}
+                  >
+                    Extract Text (Run OCR)
+                  </button>
+
+                  {ocrText && (
+                    <div style={{ marginTop: "10px" }}>
+                      <label className={styles.inputLabel}>Extracted Text</label>
+                      <textarea
+                        readOnly
+                        value={ocrText}
+                        style={{
+                          width: "100%",
+                          height: "120px",
+                          fontSize: "0.75rem",
+                          fontFamily: "var(--font-mono)",
+                          background: "var(--bg-secondary)",
+                          border: "1px solid var(--border-dark)",
+                          borderRadius: "4px",
+                          padding: "8px",
+                          resize: "vertical"
+                        }}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          navigator.clipboard.writeText(ocrText);
+                          alert("Copied extracted text to clipboard!");
+                        }}
+                        className={styles.toolbarBtn}
+                        style={{ padding: "4px 8px", fontSize: "0.7rem", marginTop: "4px", width: "100%", justifyContent: "center" }}
+                      >
+                        Copy Text
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
+            {/* Mobile Actions Export Card */}
+            <div className={styles.actionCard} style={{ marginTop: "16px" }}>
+              <button
+                type="button"
+                onClick={compileAndDownloadPdf}
+                className={sharedStyles.btnPrimary}
+                style={{ padding: "10px 16px", width: "100%", fontSize: "0.85rem" }}
+              >
+                Compile & Download PDF ({pagesList.length})
+              </button>
+              <button
+                type="button"
+                onClick={exportPagesAsImages}
+                className={styles.toolbarBtn}
+                style={{ padding: "10px 16px", width: "100%", justifyContent: "center", fontSize: "0.85rem", marginTop: "6px" }}
+              >
+                Export Pages to JPG Zip
+              </button>
             </div>
           </aside>
+        </div>
+      )}
+
+      {/* Mobile Tab Navigation Bar */}
+      {files.length > 0 && (
+        <div className={styles.mobileTabBar}>
+          <button
+            type="button"
+            onClick={() => setMobileTab("files")}
+            className={`${styles.mobileTabBtn} ${mobileTab === "files" ? styles.mobileTabBtnActive : ""}`}
+          >
+            <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m3.75 9v6m3-3H9m1.5-12H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9z" />
+            </svg>
+            <span>Files</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setMobileTab("workspace")}
+            className={`${styles.mobileTabBtn} ${mobileTab === "workspace" ? styles.mobileTabBtnActive : ""}`}
+          >
+            <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span>Workspace</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setMobileTab("export")}
+            className={`${styles.mobileTabBtn} ${mobileTab === "export" ? styles.mobileTabBtnActive : ""}`}
+          >
+            <svg width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+            <span>Export</span>
+          </button>
         </div>
       )}
 

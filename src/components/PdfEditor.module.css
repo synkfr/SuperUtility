@@ -621,3 +621,131 @@
   flex-direction: column;
   gap: 6px;
 }
+
+/* ==========================================================================
+   Redesigned Tabs & Mobile Navigation Styles
+   ========================================================================== */
+
+.toolTabsList {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border-dark);
+  margin-bottom: 14px;
+  scrollbar-width: none; /* Firefox */
+}
+
+.toolTabsList::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+.toolTabBtn {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-dark);
+  color: var(--text-secondary);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+}
+
+.toolTabBtn:hover {
+  border-color: var(--lime-400);
+  background: var(--lime-50)/10;
+  color: var(--text-primary);
+}
+
+.toolTabBtnActive {
+  background: var(--lime-500);
+  border-color: var(--lime-600);
+  color: #fff !important;
+}
+
+/* Mobile Navigation Bar */
+.mobileTabBar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  background: var(--bg-surface);
+  border-top: 1px solid var(--border-dark);
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  justify-items: center;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.05);
+  z-index: 999;
+  padding: 4px 12px;
+}
+
+.mobileTabBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  background: transparent;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+  transition: color var(--transition-fast);
+}
+
+.mobileTabBtn svg {
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+}
+
+.mobileTabBtnActive {
+  color: var(--lime-600) !important;
+}
+
+.mobileTabBtnActive svg {
+  color: var(--lime-600) !important;
+}
+
+@media (max-width: 1199px) {
+  .container {
+    padding-bottom: 80px; /* Leave space for bottom tab bar */
+    grid-template-columns: 1fr !important;
+  }
+
+  .leftPanel,
+  .centerPanel,
+  .rightPanel {
+    display: none !important;
+  }
+
+  .leftPanel.showMobile {
+    display: flex !important;
+  }
+
+  .centerPanel.showMobile {
+    display: flex !important;
+    min-height: auto;
+  }
+
+  .rightPanel.showMobile {
+    display: flex !important;
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .mobileTabBar {
+    display: grid !important;
+  }
+}
+
