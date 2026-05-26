@@ -68,7 +68,7 @@ To spin up a local instance of SuperUtility on your computer:
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/AyoSynk/SuperUtility.git
+git clone https://github.com/synkfr/SuperUtility.git
 cd SuperUtility
 ```
 

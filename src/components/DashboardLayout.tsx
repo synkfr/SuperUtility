@@ -980,7 +980,7 @@ export default function DashboardLayout({
             </Link>
             <span className={styles.footerSeparator}>&bull;</span>
             <a 
-              href="https://github.com/AyoSynk/SuperUtility" 
+              href="https://github.com/synkfr/SuperUtility" 
               target="_blank" 
               rel="noopener noreferrer" 
               className={styles.footerLink}
