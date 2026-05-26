@@ -132,24 +132,36 @@ export default function RootLayout({
     }
   ];
 
+  const adsenseAccount = process.env.NEXT_PUBLIC_ADSENSE_ACCOUNT || "ca-pub-6504674181065992";
+  const enableAdsense = process.env.NEXT_PUBLIC_ENABLE_ADSENSE !== "false";
+  
+  const umamiWebsiteId = process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID || "b120a0f2-fae8-4ad1-8fd4-a56527d8019d";
+  const enableUmami = process.env.NEXT_PUBLIC_ENABLE_UMAMI !== "false";
+
   return (
     <html lang="en">
       <head>
-        <meta name="google-adsense-account" content="ca-pub-6504674181065992" />
+        {enableAdsense && (
+          <>
+            <meta name="google-adsense-account" content={adsenseAccount} />
+            <script
+              async
+              src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${adsenseAccount}`}
+              crossOrigin="anonymous"
+            />
+          </>
+        )}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6504674181065992"
-          crossOrigin="anonymous"
-        />
-        <script
-          defer
-          src="https://cloud.umami.is/script.js"
-          data-website-id="b120a0f2-fae8-4ad1-8fd4-a56527d8019d"
-        />
+        {enableUmami && (
+          <script
+            defer
+            src="https://cloud.umami.is/script.js"
+            data-website-id={umamiWebsiteId}
+          />
+        )}
       </head>
       <body>
         <DashboardLayout>

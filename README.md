@@ -82,8 +82,16 @@ Create a `.env.local` file in the root of the project to add your keys:
 ```env
 # Optional: Supply your own Web3Forms access key for the contact form
 NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=your_access_key_here
+
+# Optional: Google AdSense Configurations (defaults to AyoSynk's tags)
+NEXT_PUBLIC_ADSENSE_ACCOUNT=ca-pub-6504674181065992
+NEXT_PUBLIC_ENABLE_ADSENSE=true # Set to "false" to disable AdSense scripts entirely
+
+# Optional: Umami Analytics Configurations (defaults to AyoSynk's tags)
+NEXT_PUBLIC_UMAMI_WEBSITE_ID=b120a0f2-fae8-4ad1-8fd4-a56527d8019d
+NEXT_PUBLIC_ENABLE_UMAMI=true # Set to "false" to disable analytics scripts entirely
 ```
-*(If no key is supplied, the project automatically falls back to the default fallback key so contact forms work out-of-the-box).*
+*(If no environment variables are supplied, the project automatically falls back to default fallback values so forms, ads, and analytics work seamlessly out-of-the-box).*
 
 ### 4. Run the development server
 ```bash
