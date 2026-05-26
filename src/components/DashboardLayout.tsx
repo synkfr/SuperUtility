@@ -979,6 +979,16 @@ export default function DashboardLayout({
               Contact & Support
             </Link>
             <span className={styles.footerSeparator}>&bull;</span>
+            <a 
+              href="https://github.com/AyoSynk/SuperUtility" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className={styles.footerLink}
+              id="github-footer-link"
+            >
+              Open Source
+            </a>
+            <span className={styles.footerSeparator}>&bull;</span>
             <Link 
               href="/" 
               className={`${styles.footerLink} ${pathname === "/" ? styles.footerLinkActive : ""}`}
