@@ -1,4 +1,4 @@
-# 🛠️ SuperUtility — Premium Offline-First Utility Suite
+# SuperUtility — Premium Offline-First Utility Suite
 
 SuperUtility is a blazing-fast, state-of-the-art, and **100% free, private-by-design** utility suite. It houses over **50+ professional-grade developer, security, mathematical, and media tools** running entirely client-side inside your browser sandbox. 
 
@@ -6,7 +6,7 @@ SuperUtility is a blazing-fast, state-of-the-art, and **100% free, private-by-de
 
 ---
 
-## 🌟 Key Pillars of SuperUtility
+## Key Pillars of SuperUtility
 
 * **Privacy-by-Design**: By leveraging browser-based APIs (Web Cryptography, Canvas, WebAssembly), all calculations, text hashing, PDF manipulation, and image conversions happen locally on your computer. Your files and data **never** touch our servers.
 * **Local Neural Network AI**: Our background remover runs deep-learning extraction entirely client-side using **ONNX Runtime Web** and compiled **WebAssembly** instructions, running directly on your CPU/GPU hardware.
@@ -15,37 +15,37 @@ SuperUtility is a blazing-fast, state-of-the-art, and **100% free, private-by-de
 
 ---
 
-## 🛠️ Complete Tools Suite (50+ Utilities)
+## Complete Tools Suite (50+ Utilities)
 
 SuperUtility organizes its toolset into folders for frictionless discovery, complete with global fuzzy keyword search (`Ctrl + K` or `Esc` to clear):
 
-### 📸 Media & Image Processing
+### Media & Image Processing
 * **AI Background Remover**: Extract background matting, isolate fine hair details, add professional depth-of-field blurs, screen-blend backlit bloom halos, and solidify clothing/skin holes with our real-time **Subject Edge Sensitivity (Hole-Fill)** canvas slider.
 * **Unified Image Editor**: Sequential batch compiler for resizing, cropping, flipping, and compressing images.
 * **Lossless PNG to WEBP Converter**: Visual compression presets (`low` / `medium` / `high` / `max`) with real-time compression metrics cards.
 * **Color Picker from Image**: Interactive canvas-based loupe color sampler.
 * **Image to Base64 & vice versa**: Base64 binary string generator.
 
-### 📄 Document & PDF Tools
+### Document & PDF Tools
 * **Unified PDF Editor Workspace**: Drag-and-drop page reordering, page rotations, text watermarking overlays, auto-page numbering, and metadata sanitizer dictionary cleaning.
 * **Document Scanner**: Camera capture stream with Black & White clean-print shaders (removes camera shadows for clean document prints) and A4 PDF compilation.
 * **PDF Security Vulnerability Scanner**: Safely scans PDF binary streams client-side for auto-launch scripts, attachments, embedded JavaScript, and linkages.
 * **Local OCR Text Extractor**: Neural optical character recognition run locally via WASM.
 * **PDF Merger & Splitter**: Fast page extraction or ZIP archive compile.
 
-### 🔐 Security & Dev Tools
+### Security & Dev Tools
 * **Cryptography**: Password strength checkers, Bcrypt generators, HMAC generators, UUID v4 generators, Random String generators, and SHA-1/256/512 Hashing.
 * **Encoding**: HTML converter, URL parser, Base64/Unicode converter, Case converter, JWT decoder.
 * **Code Refiners**: CSS Minifier, JS Minifier, Regex tester.
 
-### 🧮 Calculations & Converters
+### Calculations & Converters
 * **Calculators**: Loan & EMI builders, GST calculators, Percentage calculators, Profit margins, and Age trackers.
 * **Dynamic Currency Converter**: Real-time conversion using live API fetch with instant offline local cache fallback status indicators.
 * **Unit & Measurement Suite**: Real-time conversions across 7 dimensions: Length, Weight, Area, Volume, Temperature, Speed, and Data storage.
 
 ---
 
-## 🧠 Technical Architecture
+## Technical Architecture
 
 ### 1. Offline AI Inference
 SuperUtility compiles the **RMBG-1.4 (Robust Multiclass Background Removal)** neural network model into optimized WebAssembly instructions. It executes client-side using **ONNX Runtime Web**, dynamically caching model weights (~72MB) once inside your browser's local **IndexedDB** database cache.
@@ -58,7 +58,7 @@ This executes instantly inside the user's thread (0ms lag), allowing smooth real
 
 ---
 
-## 🚀 Getting Started (Local Setup)
+## Getting Started (Local Setup)
 
 To spin up a local instance of SuperUtility on your computer:
 
@@ -68,7 +68,7 @@ To spin up a local instance of SuperUtility on your computer:
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/synkfr/SuperUtility.git
+git clone https://github.com/AyoSynk/SuperUtility.git
 cd SuperUtility
 ```
 
@@ -100,6 +100,6 @@ This builds and exports the entire suite into the `/out` directory, which can be
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details. Free for commercial, personal, and educational use.
