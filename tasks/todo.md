@@ -198,6 +198,11 @@
 - [x] Integrate architectural and educational explanations of local WASM-based AI background extraction into the FAQ/SEO section
 - [x] Verify static compiles successfully with `npm run build` with zero warnings/errors
 
+## Phase 15 — Open-Source Repository Preparation (LICENSE & Premium README)
+- [x] Create standard open-source MIT `LICENSE` file in the project root directory
+- [x] Rewrite the `README.md` to be a premium, feature-rich representation of SuperUtility (covering features, architecture, setup, environment configs, and licensing)
+- [x] Verify static compiles successfully with `npm run build` with zero warnings/errors
+
 ## Review & Results
 
 SuperUtility's SEO and technical capability have been fully optimized to outperform generic utility suites in search visibility, user trust, and performance:
