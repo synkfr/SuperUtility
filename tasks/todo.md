@@ -203,6 +203,12 @@
 - [x] Rewrite the `README.md` to be a premium, feature-rich representation of SuperUtility (covering features, architecture, setup, environment configs, and licensing)
 - [x] Verify static compiles successfully with `npm run build` with zero warnings/errors
 
+## Phase 16 — Beautiful Interactive XML Sitemap Stylesheet (sitemap.xsl)
+- [x] Create styled XML stylesheet [sitemap.xsl](file:///home/sayan/Projects/webpages/UtilityKit/public/sitemap.xsl) with Lime premium theme, counts summaries, and javascript real-time search/filter
+- [x] Create node build hook [post-build.js](file:///home/sayan/Projects/webpages/UtilityKit/scripts/post-build.js) to append the XSLT stylesheet instruction to statically exported `out/sitemap.xml`
+- [x] Modify `package.json` `build` script to trigger the build hook automatically on export
+- [x] Verify static compiles successfully with `npm run build` and sitemap styling is correctly linked
+
 ## Review & Results
 
 SuperUtility's SEO and technical capability have been fully optimized to outperform generic utility suites in search visibility, user trust, and performance:

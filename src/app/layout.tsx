@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import DashboardLayout from "@/components/DashboardLayout";
+import CanonicalHeader from "@/components/CanonicalHeader";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://superutility.xyz"),
@@ -140,6 +141,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <CanonicalHeader />
         {enableAdsense && (
           <>
             <meta name="google-adsense-account" content={adsenseAccount} />
