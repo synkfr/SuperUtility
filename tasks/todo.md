@@ -209,6 +209,14 @@
 - [x] Modify `package.json` `build` script to trigger the build hook automatically on export
 - [x] Verify static compiles successfully with `npm run build` and sitemap styling is correctly linked
 
+## Phase 17 — Custom QR Styles & Logo Upload
+- [x] Add style preferences state in QrCodeGenerator.tsx (shapes, ring, dot, gradient, logo variables)
+- [x] Implement canvas drawing engine (fluid paths, custom finders, logo backgrounds, and clipping)
+- [x] Implement matching XML vector SVG generator (linear/radial defs, embedded base64 images)
+- [x] Design interactive collapsible settings panels in QrCodeGenerator.tsx
+- [x] Add style rules in QrCodeGenerator.module.css (tabs, custom file drop zones, grid items)
+- [x] Validate Next.js static compilation with npm run build
+
 ## Review & Results
 
 SuperUtility's SEO and technical capability have been fully optimized to outperform generic utility suites in search visibility, user trust, and performance:
